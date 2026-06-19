@@ -1,0 +1,4 @@
+ID,voucher_ID,companyCode,chargehand,chargehandName,productivityCode,productivityName,wbs,unit,gang,outputAchieved,locationCode,costCode,costCodeName
+b2c3d4e5-0001-4000-8000-000000000001,a1b2c3d4-0001-4000-8000-000000000001,1000,CH-001,John Smith,PC-101,Concrete Pouring,WBS-001,M3,1,25.50,LOC-001,CC-001,Civil Works
+b2c3d4e5-0004-4000-8000-000000000004,a1b2c3d4-0002-4000-8000-000000000002,1000,CH-001,John Smith,PC-104,Excavation,WBS-002,M3,3,85.00,LOC-002,CC-004,Earthworks
+

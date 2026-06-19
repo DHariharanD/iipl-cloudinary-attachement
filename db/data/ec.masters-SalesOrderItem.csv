@@ -1,0 +1,3 @@
+ID,SalesOrder,SalesOrderItem,SalesOrderItemCategory,SalesOrderItemText,Product,ProductDescription,RequestedQuantity,RequestedQuantitySAPUnit,RequestedDeliveryDate,ConfirmedDeliveryDate,NetAmount,transactioncurrency,parent_ID,wbs_ID,ConfirmedQuanity
+9ca60fa1-ac72-4fa5-a058-2e82f0451f50,SO-10001,10,TAN,Concrete Work,Excavation (EC0001),Ready Mix Concrete,450.000 M3,M3,2024-01-15,2024-01-18,250000 AED,AED,7ac3fb7a-0db4-40f4-acbc-23cc77329f81,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,450.000 M3
+bbe72b66-617c-4a7f-b3d4-4e3927fc2ae3,SO-10001,20,TAN,Steel Reinforcement,Backfilling (EC0002),Reinforcement Steel,377.000 M3,TON,2024-01-20,2024-01-22,250000 AED,AED,7ac3fb7a-0db4-40f4-acbc-23cc77329f81,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,377.000 M3

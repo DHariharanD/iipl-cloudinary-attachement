@@ -1,0 +1,5 @@
+ID,parent_ID,item,description,unitOfMeasurement,quantity,bill,section,page,revision,retention,advance,peformanceBond,bankGuarantee,sumBack,boqNo,pcRate,nonClient,excludeActiveBudget,boqItem_ID
+74b53498-e2c2-4e22-9a64-1940154e5cdf,ed137af6-f8ed-4c3b-adc3-0aca796879f7,20,Backfilling and compaction,CUM,950,,,,,,,,,,,,BOQ-001,,, ,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002
+939288b6-a9c3-4080-a683-9e4682b63a62,ba8356f4-671d-44b3-81e9-3442fd503ac5,30,Electrical cable laying,CUM,350,,,,,,,,,,,,BOQ-002,,, ,b8d35e9f-3f66-4b8c-9e03-003c7d4e5003
+9b4204ac-2033-4bf5-bd59-05460e4e3112,ed137af6-f8ed-4c3b-adc3-0aca796879f7,10,Excavation works for foundation,CUM,1200,,,,,,,,,,,,BOQ-003,,, ,f3a91b6c-1c44-4d6a-9c01-001a9b2c3001
+fdd46ae7-cf4f-4c03-9384-f18bcbb82d81,ba8356f4-671d-44b3-81e9-3442fd503ac5,40,Electrical panel installation,CUM,12,,,,,,,,,,,,BOQ-004,,, ,c9e46fa0-4077-4c9d-af04-004d6e5f6004

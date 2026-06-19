@@ -1,0 +1,186 @@
+{
+  "_version": "1.83.0",
+  "sap.app": {
+    "id": "ns.tavouchers",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.22.0",
+      "toolsId": "147ba2cc-5c61-40d7-802f-732b08d3749e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/TAVouchersService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.147.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.tavouchers.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "TAVouchersList",
+          "target": "TAVouchersList"
+        },
+        {
+          "pattern": "TAVouchers({key}):?query:",
+          "name": "TAVouchersObjectPage",
+          "target": "TAVouchersObjectPage"
+        },
+        {
+          "name": "TAVouchers_detailsObjectPage",
+          "pattern": "TAVouchers({key})/details({detailsKey}):?query:",
+          "target": "TAVouchers_detailsObjectPage"
+        }
+      ],
+      "targets": {
+        "TAVouchersList": {
+          "type": "Component",
+          "id": "TAVouchersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/TAVouchers",
+              "variantManagement": "Page",
+              "navigation": {
+                "TAVouchers": {
+                  "detail": {
+                    "route": "TAVouchersObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "TAVouchersObjectPage": {
+          "type": "Component",
+          "id": "TAVouchersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/TAVouchers",
+              "navigation": {
+                "details": {
+                  "detail": {
+                    "route": "TAVouchers_detailsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TAVouchers_detailsObjectPage": {
+          "type": "Component",
+          "id": "TAVouchers_detailsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/TAVouchers/details"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

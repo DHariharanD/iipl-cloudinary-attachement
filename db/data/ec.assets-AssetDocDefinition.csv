@@ -1,0 +1,3 @@
+ID,documentCode,name,description,validityRequired,isMandatory,attachment_code,isAttachmentMandatory,assetDoc_ID,createdAt,createdBy,modifiedAt,modifiedBy
+dd1,RC001,Registration Certificate,Vehicle RC,true,true,SI,true,d1,2024-01-01T00:00:00Z,admin,2024-01-01T00:00:00Z,admin
+dd2,IN001,Insurance,Insurance Document,true,true,ML,true,d2,2024-01-01T00:00:00Z,admin,2024-01-01T00:00:00Z,admin

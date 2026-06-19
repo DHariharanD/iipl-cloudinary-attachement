@@ -1,0 +1,4 @@
+ID,company_CompanyCode,boq_ID,project_ID,wbs_ID,reqstatus,fromlocation,tolocation
+a1b2c3d4-0001-0001-0001-000000000001,3310,896ee9af-7419-41a2-8993-ef23ed2864b8,9b1fe95a-0e84-4803-8842-a73f9bf4277e,4906c2be-c74d-417c-98e0-37f2de8ff376,Active,Warehouse A,Site B
+a1b2c3d4-0002-0002-0002-000000000002,3310,41d0c84c-5f8d-4c66-a35b-355ada5302f1,acd33fc4-c220-47e4-b47a-f8dbdf43e46a,961a2c02-059a-4ad9-ab6d-4b5025ae2112,Pending,Warehouse B,Site C
+a1b2c3d4-0003-0003-0003-000000000003,3310,10236128-6103-4cf4-a3b4-fdb5d35b6200,acd33fc4-c220-47e4-b47a-f8dbdf43e46a,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,Approved,Store Room 1,Site A

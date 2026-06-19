@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog id="_IDGenDialog1" title="Edit Asset Model">
+
+        <VBox id="_IDGenVBox" class="sapUiSmallMargin">
+
+            <Label id="_IDGenLabel" text="Company Code"/>
+            <Input id="_IDGenInput" value="{modelCompany_CompanyCode}" />
+
+            <Label id="_IDGenLabel1" text="Make"/>
+            <Input id="_IDGenInput1" value="{modelMake}" />
+
+            <Label id="_IDGenLabel2" text="Model"/>
+            <Input id="_IDGenInput2" value="{modelModel}" />
+
+            <Label id="_IDGenLabel3" text="Description"/>
+            <Input id="_IDGenInput3" value="{modelDescr}" />
+
+        </VBox>
+
+        <beginButton>
+            <Button id="_IDGenButton" text="Save" press=".onSave"/>
+        </beginButton>
+
+        <endButton>
+            <Button id="_IDGenButton1" text="Cancel" press=".onCancel"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

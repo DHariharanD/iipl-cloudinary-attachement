@@ -1,0 +1,31 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Apr 16 2026 17:45:40 GMT+0530 (India Standard Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/ProjectService/",
+    "appName": "manageprojects",
+    "appTitle": "Manage Projects",
+    "appDescription": "Define and Manage Projects",
+    "appNamespace": "ns",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.146.0",
+    "enableEslint": true,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.22.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Projectsec"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "None"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  (```mvn spring-boot:run```) and navigate to the following location in your browser:\n\nhttp://localhost:8080/manageprojects/webapp/index.html"
+  }
+}

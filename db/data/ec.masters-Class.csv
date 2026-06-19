@@ -1,0 +1,6 @@
+ID,classCode,className,companyCode,description,createdAt,createdBy,modifiedAt,modifiedBy
+c1a2b3c4-0001-4000-a000-000000000001,C001,Mechanical Parts,3310,Class for mechanical components,2024-01-01T00:00:00Z,admin,2024-01-01T00:00:00Z,admin
+c1a2b3c4-0003-4000-a000-000000000003,C003,Civil Materials,1100,Class for civil construction materials,2024-01-03T00:00:00Z,admin,2024-01-03T00:00:00Z,admin
+c1a2b3c4-0005-4000-a000-000000000005,C005,Spare Parts,1200,Class for spare part inventory,2024-01-05T00:00:00Z,admin,2024-01-05T00:00:00Z,admin
+c1a2b3c4-0007-4000-a000-000000000007,C007,Tools,2000,Class for hand and power tools,2024-01-07T00:00:00Z,admin,2024-01-07T00:00:00Z,admin
+c1a2b3c4-0009-4000-a000-000000000009,C009,Vehicles,9000,Class for vehicle assets,2024-01-09T00:00:00Z,admin,2024-01-09T00:00:00Z,admin

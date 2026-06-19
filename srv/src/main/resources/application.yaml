@@ -1,0 +1,394 @@
+spring:
+  profiles:
+    active: posts
+---
+logging:
+  level:
+    com.sap.cloud.sdk: DEBUG
+spring:
+  config:
+    activate:
+      on-profile: default
+cds:
+  security:
+    mock:
+      enabled: false
+    authentication:
+      auth-config:
+        enabled: false
+  data-source:
+    auto-config:
+      enabled: false
+  remote:
+    services:
+      '[CE_PRODUCT_0002]':
+        destination:
+          name: ITS_S4
+        http:
+          service: '0002'
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_product/srvd_a2x/sap/product/
+        type: odata-v4
+      '[API_BUSINESS_PARTNER]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_GLACCOUNTINCHARTOFACCOUNTS_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_COMPANYCODE_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_COSTCNTRACTIVITYTYPE_CRUD_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[YY1_WORKFORCE_CDS]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_ENTERPRISE_PROJECT_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          service: "API_ENTERPRISE_PROJECT_SRV;v=0002"
+          suffix: "/sap/opu/odata/sap/"
+        type: odata-v2
+      '[S4FixedAsset]':
+        destination:
+          name: ITS_S4
+        http:
+          service: '0001'
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_fixedasset/srvd_a2x/sap/fixedasset/
+        type: odata-v4
+---
+logging:
+  level:
+    com.sap.cloud.sdk: DEBUG
+spring:
+  web:
+    resources:
+      static-locations: file:./app/
+  datasource:
+    password: ${DATABASE_PASSWORD}
+    embedded-database-connection: none
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/${DATABASE_NAME}
+    username: postgres
+  config:
+    activate:
+      on-profile: posts
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key:    ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}
+
+cds:
+  security:
+    mock:
+      enabled: false
+    authentication:
+      auth-config:
+        enabled: false
+  data-source:
+    auto-config:
+      enabled: false
+  remote:
+    services:
+      '[API_COMPANYCODE_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[CE_PRODUCT_0002]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_product/srvd_a2x/sap/product/
+          service: "0002"
+        type: odata-v4
+      '[API_COSTCNTRACTIVITYTYPE_CRUD_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[API_BUSINESS_PARTNER]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_GLACCOUNTINCHARTOFACCOUNTS_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[YY1_WORKFORCE_CDS]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_ENTERPRISE_PROJECT_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          service: "API_ENTERPRISE_PROJECT_SRV;v=0002"
+          suffix: "/sap/opu/odata/sap/"
+        type: odata-v2
+      '[S4FixedAsset]':
+        destination:
+          name: ITS_S4
+        http:
+          service: '0001'
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_fixedasset/srvd_a2x/sap/fixedasset/
+        type: odata-v4
+---
+logging:
+  level:
+    com.sap.cloud.sdk: DEBUG
+spring:
+  config:
+    activate:
+      on-profile: hana
+  datasource:
+    driver-class-name: com.sap.db.jdbc.Driver
+    url: "jdbc:sap://20da51bd-e74f-47e6-93ab-84c7339b0d59.hna1.prod-us10.hanacloud.ondemand.com:443?encrypt=true&validateCertificate=true&currentschema=C058738CA05D4BA5A898650A979E9EC1"
+    username: "C058738CA05D4BA5A898650A979E9EC1_8LLP340SNA0G7NYE54XGNNGX0_RT"
+    password: "50Ql/#[JgIWK]5+qDVuKC~k)8+K*X&i?D!5UZ n)<gDy]~@:8zF2t].#zkIEuCLt|DTml?09 =!H7s:H.fuu2J_B7,<s6-*w/mh: (^:zBMD,R~ fE#dTp*8X,9P#pKo"
+cds:
+  security:
+    mock:
+      enabled: false
+    authentication:
+      auth-config:
+        enabled: false
+  data-source:
+    auto-config:
+      enabled: false
+  remote:
+    services:
+      '[API_COMPANYCODE_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[CE_PRODUCT_0002]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_product/srvd_a2x/sap/product/
+          service: "0002"
+        type: odata-v4
+      '[API_COSTCNTRACTIVITYTYPE_CRUD_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[API_BUSINESS_PARTNER]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_GLACCOUNTINCHARTOFACCOUNTS_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[YY1_WORKFORCE_CDS]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_ENTERPRISE_PROJECT_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          service: "API_ENTERPRISE_PROJECT_SRV;v=0002"
+          suffix: "/sap/opu/odata/sap/"
+        type: odata-v2
+      '[S4FixedAsset]':
+        destination:
+          name: ITS_S4
+        http:
+          service: '0001'
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_fixedasset/srvd_a2x/sap/fixedasset/
+        type: odata-v4
+---
+logging:
+  level:
+    com.sap.cloud.sdk: DEBUG
+spring:
+  config:
+    activate:
+      on-profile: cloud
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${vcap.services.ec_master-postgres.credentials.hostname}:${vcap.services.ec_master-postgres.credentials.port}/${vcap.services.ec_master-postgres.credentials.dbname}
+    username: ${vcap.services.ec_master-postgres.credentials.username}
+    password: ${vcap.services.ec_master-postgres.credentials.password}
+cds:
+  security:
+    mock:
+      enabled: false
+    authentication:
+      auth-config:
+        enabled: false
+  data-source:
+    auto-config:
+      enabled: false
+  remote:
+    services:
+      '[API_COMPANYCODE_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[CE_PRODUCT_0002]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_product/srvd_a2x/sap/product/
+          service: "0002"
+        type: odata-v4
+      '[API_COSTCNTRACTIVITYTYPE_CRUD_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          suffix: /sap/opu/odata/sap
+          csrf:
+            enabled: true
+        type: odata-v2
+      '[API_BUSINESS_PARTNER]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_GLACCOUNTINCHARTOFACCOUNTS_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[YY1_WORKFORCE_CDS]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata/sap
+        type: odata-v2
+      '[API_ENTERPRISE_PROJECT_SRV]':
+        destination:
+          name: ITS_S4
+        http:
+          csrf:
+            enabled: true
+          service: "API_ENTERPRISE_PROJECT_SRV;v=0002"
+          suffix: "/sap/opu/odata/sap/"
+        type: odata-v2
+      '[S4FixedAsset]':
+        destination:
+          name: ITS_S4
+        http:
+          service: '0001'
+          csrf:
+            enabled: true
+          suffix: /sap/opu/odata4/sap/api_fixedasset/srvd_a2x/sap/fixedasset/
+        type: odata-v4
+---
+management:
+  endpoint:
+    health:
+      show-components: always
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    defaults:
+      enabled: false
+    ping:
+      enabled: true
+    db:
+      enabled: true

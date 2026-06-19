@@ -1,0 +1,72 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="vhActivityTypeDialog"
+        title="Select Activity Types"
+        contentWidth="60%"
+        draggable="true"
+        resizable="true">
+
+        <!-- Search header -->
+        <subHeader>
+            <Toolbar>
+
+                <SearchField
+                    id="searchActType"
+                    placeholder="Search by Activity Type"
+                    width="30%"
+                    liveChange="onActivitySearch"/>
+
+                <SearchField
+                    id="searchActName"
+                    placeholder="Search by Name"
+                    width="40%"
+                    liveChange="onActivitySearch"/>
+
+                <ToolbarSpacer/>
+
+            </Toolbar>
+        </subHeader>
+
+        <!-- Table -->
+        <Table
+            id="tblActivityTypes"
+            inset="false"
+            mode="MultiSelect"
+            items="{rtModel>/items}">
+
+            <columns>
+              
+
+                <Column>
+                    <Text text="Activity Type"/>
+                </Column>
+
+                <Column>
+                    <Text text="Name"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{rtModel>CostCtrActivityType}"/>
+                        <Text text="{rtModel>CostCtrActivityTypeName}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <beginButton>
+            <Button text="Add" type="Emphasized" press="onActivityConfirm"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancel" press="onActivityCancel"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

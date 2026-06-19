@@ -1,0 +1,4 @@
+ID,companyCode,code,assetType_code,assetCtegory,resourceCode,fixedAsset,fixedAssetDesc,location,CBSCode,standardHours,assetStatus_code,timeSheetRequired,quantity,uom,Document
+11111111-1111-1111-1111-111111111111,1000,AST001,MC,Heavy,RES001,10000000,Buildings AE99,Bangalore,CBS001,8,WK,true,10.00,HRS,true
+22222222-2222-2222-2222-222222222222,1100,AST002,VH,Transport,RES002,10000001,Buildings AE33,Chennai,CBS002,9,UR,true,5.50,HRS,true
+33333333-3333-3333-3333-333333333333,1200,AST003,MC,Construction,RES003,10000002,Real estate AE99,Hyderabad,CBS003,7,WK,false,12.75,HRS,false

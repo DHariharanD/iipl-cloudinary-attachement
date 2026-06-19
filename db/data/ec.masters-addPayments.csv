@@ -1,0 +1,30 @@
+ID,srNo,itemDecr,unit,q1,q2,q3,q4,q5,parentBoq_ID,createdAt,createdBy,modifiedAt,modifiedBy
+11111111-aaaa-4aaa-8aaa-000000000001,20,Backfilling and compaction,CUM,15,25,0,0,0,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+11111111-aaaa-4aaa-8aaa-000000000002,21,Soil leveling work,CUM,10,35,0,0,0,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+11111111-aaaa-4aaa-8aaa-000000000003,22,Compaction layer setup,CUM,20,30,0,0,0,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+11111111-aaaa-4aaa-8aaa-000000000004,23,Subgrade preparation,CUM,25,25,0,0,0,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+11111111-aaaa-4aaa-8aaa-000000000005,24,Earth filling activity,CUM,30,20,0,0,0,a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+
+22222222-bbbb-4bbb-9bbb-000000000006,30,Electrical cable laying,CUM,12,28,0,0,0,896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+22222222-bbbb-4bbb-9bbb-000000000007,31,Cable trench digging,CUM,18,22,0,0,0,896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+22222222-bbbb-4bbb-9bbb-000000000008,32,Wire routing work,CUM,20,40,0,0,0,896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+22222222-bbbb-4bbb-9bbb-000000000009,33,Electrical conduit setup,CUM,25,35,0,0,0,896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+22222222-bbbb-4bbb-9bbb-000000000010,34,Cable jointing work,CUM,30,30,0,0,0,896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+
+33333333-cccc-4ccc-accc-000000000011,10,Excavation works for foundation,CUM,14,26,0,0,0,2f5ac506-a6dd-4223-0510-00ad0e15c010,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+33333333-cccc-4ccc-accc-000000000012,11,Foundation digging,CUM,16,34,0,0,0,2f5ac506-a6dd-4223-0510-00ad0e15c010,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+33333333-cccc-4ccc-accc-000000000013,12,Soil removal work,CUM,22,28,0,0,0,2f5ac506-a6dd-4223-0510-00ad0e15c010,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+33333333-cccc-4ccc-accc-000000000014,13,Ground leveling,CUM,28,32,0,0,0,2f5ac506-a6dd-4223-0510-00ad0e15c010,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+33333333-cccc-4ccc-accc-000000000015,14,Pit excavation,CUM,35,25,0,0,0,2f5ac506-a6dd-4223-0510-00ad0e15c010,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+
+44444444-dddd-4ddd-bddd-000000000016,40,Electrical panel installation,CUM,10,20,0,0,0,c9e46fa0-4077-4c9d-af04-004d6e5f6004,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+44444444-dddd-4ddd-bddd-000000000017,41,Panel wiring work,CUM,15,25,0,0,0,c9e46fa0-4077-4c9d-af04-004d6e5f6004,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+44444444-dddd-4ddd-bddd-000000000018,42,Control panel fixing,CUM,20,30,0,0,0,c9e46fa0-4077-4c9d-af04-004d6e5f6004,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+44444444-dddd-4ddd-bddd-000000000019,43,Electrical panel testing,CUM,25,35,0,0,0,c9e46fa0-4077-4c9d-af04-004d6e5f6004,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+44444444-dddd-4ddd-bddd-000000000020,44,Panel commissioning,CUM,30,40,0,0,0,c9e46fa0-4077-4c9d-af04-004d6e5f6004,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+
+55555555-eeee-4eee-beee-000000000021,50,Sanitary fixture installation,SQM,12,18,0,0,0,eb1681c2-6299-4e1f-c106-006f4a718006,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+55555555-eeee-4eee-beee-000000000022,51,Wash basin fixing,SQM,18,22,0,0,0,eb1681c2-6299-4e1f-c106-006f4a718006,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+55555555-eeee-4eee-beee-000000000023,52,Toilet installation,SQM,20,30,0,0,0,eb1681c2-6299-4e1f-c106-006f4a718006,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+55555555-eeee-4eee-beee-000000000024,53,Pipeline fitting,SQM,25,35,0,0,0,eb1681c2-6299-4e1f-c106-006f4a718006,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous
+55555555-eeee-4eee-beee-000000000025,54,Drainage connection,SQM,30,20,0,0,0,eb1681c2-6299-4e1f-c106-006f4a718006,2026-03-23T10:00:00Z,anonymous,2026-03-23T10:00:00Z,anonymous

@@ -1,0 +1,10 @@
+ProductType,ProductTypeName,ProductTypeGroupCode
+ESRA,Spare Parts,1
+FERT,Finished Products,2
+HALB,Semi-Finished Products,3
+SERV,Services,4
+HAWA,Trading Goods,5
+HERS,Manufacturer Parts,6
+FHMI,Production Resource/Tool,7
+ZEQX,Custom Equipment,8
+ZMAT,Raw Materials,9

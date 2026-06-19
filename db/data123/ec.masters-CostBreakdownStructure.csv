@@ -1,0 +1,15 @@
+ID,code,name,descr,parent_ID,cbshierarchy_ID
+2af0d921-46d5-493b-81c0-51c0a7e65412,0010,Preliminaries,Preliminaries,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0aa30,01000101,Overhead Cost,Indirect costs,2af0d921-46d5-493b-81c0-51c0a7e65412,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0aa31,0020,Concrete Works,Concrete Works,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0aa32,02000202,Formwork Maintenance,Formwork Maintenance,72e57cbf-cb49-48d1-97e5-6582a5f0aa31,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0aa33,02000210,Concrete Formwork,Concrete Formwork,72e57cbf-cb49-48d1-97e5-6582a5f0aa32,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0ab01,0070,Builders Works,Builders Works,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0ab02,07000710,Openings,Openings,72e57cbf-cb49-48d1-97e5-6582a5f0ab01,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0ab03,0700071000,Assistant Charge Hand,Assistant Charge Hand,72e57cbf-cb49-48d1-97e5-6582a5f0ab02,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0ab04,0700071001,Sub Frame Fabrication,Sub Frame Fabrication,72e57cbf-cb49-48d1-97e5-6582a5f0ab02,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0cb01,1000,Subcontracts,Subcontracts,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0cb02,1700,Equipements,Equipements,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0cb03,1800,Furnishing,Furnishing,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0cb04,0030,Masonry Works,Masonry Works,,17e00347-dc7e-4ca9-9c5d-06ccef69f064
+72e57cbf-cb49-48d1-97e5-6582a5f0cb05,1300,Metals,Metals,,17e00347-dc7e-4ca9-9c5d-06ccef69f064

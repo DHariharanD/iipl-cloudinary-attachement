@@ -1,0 +1,6 @@
+ID,familyCode,familyName,companyCode,description,createdAt,createdBy,modifiedAt,modifiedBy
+f1a2b3c4-0001-4000-a000-000000000001,F001,Chain Parts,3310,Family for chain related parts,2024-01-01T00:00:00Z,admin,2024-01-01T00:00:00Z,admin
+f1a2b3c4-0003-4000-a000-000000000003,F003,Upholstery Material,1100,Family for upholstery items,2024-01-03T00:00:00Z,admin,2024-01-03T00:00:00Z,admin
+f1a2b3c4-0005-4000-a000-000000000005,F005,Battery,1200,Family for battery components,2024-01-05T00:00:00Z,admin,2024-01-05T00:00:00Z,admin
+f1a2b3c4-0007-4000-a000-000000000007,F007,Hose,2000,Family for hose and piping,2024-01-07T00:00:00Z,admin,2024-01-07T00:00:00Z,admin
+f1a2b3c4-0009-4000-a000-000000000009,F009,Oil And Grease,9000,Family for lubricants and oils,2024-01-09T00:00:00Z,admin,2024-01-09T00:00:00Z,admin

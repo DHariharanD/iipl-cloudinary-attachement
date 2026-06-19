@@ -1,0 +1,13 @@
+streetName,region,country,postalCode,phoneNumber,EmailAddress,parent_ID
+MG Road,Karnataka,India,560001,9876543210,rahul.sharma@company.com,cc3b01ee-3380-49b6-a709-c5e5309b4637
+Park Street,West Bengal,India,700016,9123456789,amit.verma@company.com,4400375d-f6a3-406a-8f0b-5bcc95d9683a
+Linking Road,Maharashtra,India,400050,9988776655,neha.gupta@company.com,10d66cee-1aa0-417a-b91a-0b0f69906b4b
+Anna Salai,Tamil Nadu,India,600002,9090909090,priya.mehta@company.com,bd2beb60-9b01-4ae8-a9ce-84f31de4c60a
+Sector 18,Uttar Pradesh,India,201301,9812345678,suresh.kumar@company.com,732c1f6c-880d-44ac-9296-7ba0b6108a0e
+Banjara Hills,Telangana,India,500034,9700011122,kavita.singh@company.com,83d3d63b-e244-4287-b5a4-58dc23677ca9
+CG Road,Gujarat,India,380009,9898989898,anil.patel@company.com,7f5be83c-efca-4332-8674-1b38a9461b46
+Marine Drive,Maharashtra,India,400020,9765432109,pooja.nair@company.com,7e775e89-2559-4222-8756-515a3aec9d42
+DLF Phase 3,Haryana,India,122002,9654321098,rohit.malhotra@company.com,3ba23c9c-38e6-48e2-b000-596a785a3b67
+Civil Lines,Rajasthan,India,302006,9543210987,sunita.joshi@company.com,ab788dc6-587a-4a82-92e8-fb830e09a938
+AL Bakar Road,Abu Dhabi,UAE,560001,9876543210,rahul.sharma@company.com,cc3b01ee-3380-49b6-a709-c5e5309b4637
+New Jersy Street,New Jersy,USA,700016,9123456789,amit.verma@company.com,4400375d-f6a3-406a-8f0b-5bcc95d9683a

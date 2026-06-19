@@ -1,0 +1,203 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "ns.projectbudget",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "c6365227-ba9f-4e94-a436-a78b3280f951"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ProjectBudgetService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbsprimaveramapping-display": {
+          "semanticObject": "wbsprimaveramapping",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.145.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.projectbudget.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ProjectBudgetList",
+          "target": "ProjectBudgetList"
+        },
+        {
+          "pattern": "ProjectBudget({key}):?query:",
+          "name": "ProjectBudgetObjectPage",
+          "target": "ProjectBudgetObjectPage"
+        }
+      ],
+      "targets": {
+        "ProjectBudgetList": {
+          "type": "Component",
+          "id": "ProjectBudgetList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ProjectBudget",
+              "variantManagement": "Page",
+              "navigation": {
+                "ProjectBudget": {
+                  "detail": {
+                    "route": "ProjectBudgetObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "ProjectBudgetObjectPage": {
+          "type": "Component",
+          "id": "ProjectBudgetObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ProjectBudget",
+              "controlConfiguration": {
+                "wbsItems/@com.sap.vocabularies.UI.v1.LineItem#i18nWbsItems": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "creationMode": {
+                      "name": "CreationDialog",
+                      "creationFields": "com.sap.vocabularies.UI.v1.FieldGroup#WbsItemDetails"
+                    }
+                  }
+                },
+                "WbsItems/@com.sap.vocabularies.UI.v1.LineItem#WBSItems": {
+                  "columns": {
+                    "DataField::wbsElement": {
+                      "width": "8em"
+                    },
+                    "DataField::description": {
+                      "width": "10em"
+                    },
+                    "DataField::quantity": {
+                      "width": "5em"
+                    },
+                    "DataField::cbs": {
+                      "width": "10em"
+                    },
+                    "DataField::resource": {
+                      "width": "10em"
+                    },
+                    "DataField::unitPrice": {
+                      "width": "8em"
+                    },
+                    "DataField::budgetQuantity": {
+                      "width": "8em"
+                    },
+                    "DataField::budgetAmount": {
+                      "width": "8em"
+                    },
+                    "DataField::actualQuantity": {
+                      "width": "8em"
+                    },
+                    "DataField::actualAmount": {
+                      "width": "8em"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

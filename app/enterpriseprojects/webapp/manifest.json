@@ -1,0 +1,232 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "ns.enterpriseprojects",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ProjectEnterpriseService/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        }
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ProjectsList",
+          "target": [
+            "ProjectsList"
+          ]
+        },
+        {
+          "pattern": "Projects({key}):?query:",
+          "name": "ProjectsObjectPage",
+          "target": [
+            "ProjectsList",
+            "ProjectsObjectPage"
+          ]
+        },
+        {
+          "pattern": "Projects({key})/SalesOrders({key2}):?query:",
+          "name": "Projects_SalesOrdersObjectPage",
+          "target": [
+            "ProjectsList",
+            "ProjectsObjectPage",
+            "Projects_SalesOrdersObjectPage"
+          ]
+        },
+        {
+          "pattern": "Projects({key})/PurchaseOrders({key2}):?query:",
+          "name": "Projects_PurchaseOrdersObjectPage",
+          "target": [
+            "ProjectsList",
+            "ProjectsObjectPage",
+            "Projects_PurchaseOrdersObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "ProjectsList": {
+          "type": "Component",
+          "id": "ProjectsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Projects",
+              "variantManagement": "Page",
+              "navigation": {
+                "Projects": {
+                  "detail": {
+                    "route": "ProjectsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "upload": {
+                      "press": "ns.enterpriseprojects.ext.controller.UploadEnterpriseProject.onUploadEnterpriseProject",
+                      "text": "Upload",
+                      "requiresSelection": false
+                    },
+                    "ExcelDownload": {
+                      "press": "ns.enterpriseprojects.ext.controller.ExcelTemplates.DownloadTemplate",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Template"
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "ProjectsObjectPage": {
+          "type": "Component",
+          "id": "ProjectsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Projects",
+              "navigation": {
+                "SalesOrders": {
+                  "detail": {
+                    "route": "Projects_SalesOrdersObjectPage"
+                  }
+                },
+                "PurchaseOrders": {
+                  "detail": {
+                    "route": "Projects_PurchaseOrdersObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "pjHierarchies/@com.sap.vocabularies.UI.v1.LineItem#WBSElements": {
+                  "tableSettings": {
+                    "type": "TreeTable",
+                    "hierarchyQualifier": "ProjectPlanning"
+                  },
+                  "columns": {
+                    "AddNode": {
+                      "header": "Add Node",
+                      "width": "5rem",
+                      "position": {
+                        "placement": "After"
+                      },
+                      "template": "ns.enterpriseprojects.ext.fragment.AddNode",
+                      "availability": "Default"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/Projects({key})"
+        },
+        "Projects_SalesOrdersObjectPage": {
+          "type": "Component",
+          "id": "Projects_SalesOrdersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Projects/SalesOrders"
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/Projects({key})/SalesOrders({key2})"
+        },
+        "Projects_PurchaseOrdersObjectPage": {
+          "type": "Component",
+          "id": "Projects_PurchaseOrdersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Projects/PurchaseOrders"
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/Projects({key})/PurchaseOrders({key2})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

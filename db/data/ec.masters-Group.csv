@@ -1,0 +1,6 @@
+ID,groupCode,groupName,description,costOfSales,salesAc,companyCode,createdAt,createdBy,modifiedAt,modifiedBy
+cc3b01ee-3380-49b6-a709-c5e5309b4637,GRP01,Electronics,Electronic goods and devices,5000.00,7000.00,3310,2026-03-20T10:15:30Z,admin,2026-03-22T14:20:10Z,admin
+a1f7c9d2-91b3-4f3e-b8c1-2a7d9c5e8f21,GRP02,Furniture,Home and office furniture,3000.00,5500.00,1100,2026-03-21T09:10:20Z,admin,2026-03-23T11:30:45Z,admin
+b2e4d6f8-2c11-4a9e-9d7f-3c6b8a1e5d32,GRP03,Groceries,Daily grocery items,2000.00,4000.00,1200,2026-03-22T08:25:15Z,admin,2026-03-24T12:40:50Z,admin
+c3d9e1f4-7b22-45fa-a9c8-4d7e2b6c9f43,GRP04,Clothing,Men and women apparel,3500.00,6000.00,2000,2026-03-23T11:45:00Z,admin,2026-03-25T15:10:30Z,admin
+d4f1a2b3-8c33-4b6e-b7d9-5e8f3c7a0b54,GRP05,Stationery,Office and school supplies,1500.00,3000.00,9000,2026-03-24T07:55:10Z,admin,2026-03-26T09:20:40Z,admin

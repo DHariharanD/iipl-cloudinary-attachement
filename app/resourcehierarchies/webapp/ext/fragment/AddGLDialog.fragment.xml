@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="vhGLDialog"
+        title="Select GL Accounts"
+        contentWidth="50%"
+        draggable="true"
+        resizable="true">
+
+        <content>
+            <VBox>
+
+                 <HBox width="100%" justifyContent="SpaceBetween" renderType="Bare">
+
+        <SearchField
+            id="searchGLAccount"
+            width="48%"
+            liveChange="onGLFilter"
+            placeholder="Search GL Account" />
+
+        <SearchField
+            id="searchGLName"
+            width="48%"
+            liveChange="onGLFilter"
+            placeholder="Search GL Name" />
+
+    </HBox>
+
+                <Table
+                    id="tblGL"
+                    mode="None"
+                    items="{rtModel>/items}">
+
+                    <columns>
+                        <Column width="3rem" hAlign="Center">
+                            <header>
+                                <CheckBox select="onSelectAllGL"/>
+                            </header>
+                        </Column>
+
+                        <Column>
+                            <Text text="GL Account"/>
+                        </Column>
+
+                        <Column>
+                            <Text text="GL Name"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <CheckBox
+                                    selected="{rtModel>isSelected}"
+                                    enabled="{rtModel>isEnabled}" />
+                                <Text text="{rtModel>GLAccount}" />
+                                <Text text="{rtModel>GLAccountLongName}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+
+                </Table>
+            </VBox>
+        </content>
+
+        <beginButton>
+            <Button text="Add" type="Emphasized" press="onConfirmGL"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancel" press="onCancelGL"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

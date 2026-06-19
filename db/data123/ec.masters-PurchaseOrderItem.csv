@@ -1,0 +1,9 @@
+ID,PurchaseOrder,PurchaseOrderCategory,DocumentCurrency,Material,MaterialDescription,parent_ID
+5e1a9c44-3f7d-4b92-8a11-7c2d1e5f9001,PO-1001,Standard,INR,MAT-1001,Steel Rods,c381115d-7a9a-4dc1-bf62-2a222fc205d5
+6f2b0d55-4a8e-4c13-9b22-8d3e2f6a9002,PO-1001,Standard,INR,MAT-1002,Cement Bags,c381115d-7a9a-4dc1-bf62-2a222fc205d5
+7a3c1e66-5b9f-4d24-ac33-9e4f3a7b9003,PO-1002,Standard,INR,MAT-1003,Electrical Cables,8a9c2b1b-2b74-426a-a595-aad213404c6a
+8b4d2f77-6c0a-4e35-bd44-af5a4b8c9004,PO-1002,Standard,INR,MAT-1004,Switch Boards,394d53bb-5819-4742-af0f-bb5a1c1ee83a
+9c5e3a88-7d1b-4f46-ce55-b06b5c9d9005,PO-1003,Service,INR,SERV-2001,Site Inspection,394d53bb-5819-4742-af0f-bb5a1c1ee83a
+ad6f4b99-8e2c-4057-df66-c17c6d0e9006,PO-1003,Service,INR,SERV-2002,Quality Audit,394d53bb-5819-4742-af0f-bb5a1c1ee83a
+be7a5caa-9f3d-4168-e077-d28d7e1f9007,PO-1004,Standard,INR,MAT-1005,Bricks,6d08d41d-5e92-42c7-9e70-544221a9f367
+cf8b6dbb-0a4e-4279-f188-e39e8f2a9008,PO-1004,Standard,INR,MAT-1006,Sand,6d08d41d-5e92-42c7-9e70-544221a9f367

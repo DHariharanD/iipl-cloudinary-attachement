@@ -1,0 +1,6 @@
+ID,assetCode,assetName,assetDescr,companyCode,createdAt,createdBy,modifiedAt,modifiedBy
+a1b1c1d1-0001-0001-0001-000000000001,AST001,Excavator,Heavy duty excavator machine,3310,2026-01-01T00:00:00Z,admin,2026-01-01T00:00:00Z,admin
+a1b1c1d1-0002-0002-0002-000000000002,AST002,Crane,Tower crane for construction,1200,2026-01-02T00:00:00Z,admin,2026-01-02T00:00:00Z,admin
+a1b1c1d1-0003-0003-0003-000000000003,AST003,Dump Truck,Used for transporting materials,2000,2026-01-03T00:00:00Z,admin,2026-01-03T00:00:00Z,admin
+a1b1c1d1-0004-0004-0004-000000000004,AST004,Concrete Mixer,Mixing concrete materials,9000,2026-01-04T00:00:00Z,admin,2026-01-04T00:00:00Z,admin
+a1b1c1d1-0005-0005-0005-000000000005,AST005,Forklift,Material handling equipment,1100,2026-01-05T00:00:00Z,admin,2026-01-05T00:00:00Z,admin

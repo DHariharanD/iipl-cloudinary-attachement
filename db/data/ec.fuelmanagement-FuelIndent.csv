@@ -1,0 +1,8 @@
+ID,indentNo,fuelType_code,requestedQty,issuedQty,requestedBy,approvedBy,rejectedBy,rejectionComment,requestedTime,approvedTime,companyCode,odometerReading,parent_ID,createdAt,createdBy,modifiedAt,modifiedBy
+f189e22c-2f16-4a80-beee-27a53abbc910,1111,DE,12,,Driver,,,,,,,12000,03cd180e-943a-4edd-a0f5-af9512f3573a,2026-04-22T11:54:58.881917700Z,anonymous,2026-04-22T11:54:58.881917700Z,anonymous
+9de89e46-5a2d-423f-83be-a9c8c2df0c84,2222,DE,15,,Driver,,,,,,,55000,03cd180e-943a-4edd-a0f5-af9512f3573a,2026-04-22T11:54:58.881917700Z,anonymous,2026-04-22T11:54:58.881917700Z,anonymous
+08af5913-f3db-430d-b616-75e1512e23cc,3423,DE,45,,Driver,,,,,,,15000,7400aec0-a851-4f6c-977a-24f5e2616b11,2026-04-22T11:57:20.504600300Z,anonymous,2026-04-22T11:57:20.504600300Z,anonymous
+e94bd062-1112-4079-beb3-cdb1ce3972bf,3342,DE,45,,Driver,,,,,,,14584,77088f20-4580-451e-a5e4-da855382ec46,2026-04-22T11:57:44.872574Z,anonymous,2026-04-22T11:57:44.872574Z,anonymous
+14d3d79d-2b8b-4eb7-bed4-9c5ff3400328,1123,DE,50,,Driver,,,,,,,25687,779ebfe4-14c1-4893-9066-7f81aa4de981,2026-04-22T11:56:46.292308Z,anonymous,2026-04-22T11:56:46.292308Z,anonymous
+6b8d8c98-5b60-40d6-ab42-8f2acbffe570,1211,PE,16,,Driver,,,,,,,115478,f0ddcfea-4fea-420a-b576-36e6fa394710,2026-04-22T11:56:17.776279300Z,anonymous,2026-04-22T11:56:17.776279300Z,anonymous
+11ea2c38-e371-4e97-9fd9-ec35e0b07808,1222,PE,12,,Driver,,,,,,,2548857,f0ddcfea-4fea-420a-b576-36e6fa394710,2026-04-22T11:56:17.776279300Z,anonymous,2026-04-22T11:56:17.776279300Z,anonymous

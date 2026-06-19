@@ -1,0 +1,11 @@
+ControllingArea,CostCtrActivityType,ValidityEndDate,ValidityStartDate,CostCtrActivityTypeQtyUnit,CostCtrActivityTypeCategory,AllocationCostElement,CostCtrActivityTypeOutpQtyUnit,CreationDate,EnteredByUser,CostOriginGroup,ActlPostgCostCenterActyTypeCat,OutputQuantityFactor,ActivityTypeIsBlocked,FixedCostIsPredistributed,PriceAllocationMethod,PeriodPriceIsAverage,ActualPriceAllocationMethod,ActualQuantityIsSetManually,PlanQuantityIsSetManually,CostCtrActivityTypeValidCat
+A000,T001,9999-12-31,2010-01-01,H,Excavator,94300001,H,2022-01-01,SAP_USER,GRP1,1,1.00,N,false,3,false,1,false,false,C
+A000,T002,9999-12-31,2011-04-01,H,Bulldozer,94300002,H,2022-01-02,SAP_USER,GRP1,1,1.50,N,false,3,false,1,false,false,C
+A000,T003,9999-12-31,2012-07-01,H,Crane,94300003,H,2022-01-03,SAP_USER,GRP2,1,2.00,N,false,3,false,1,false,false,C
+A000,T004,9999-12-31,2013-10-01,H,Loader,94300004,H,2022-01-04,SAP_USER,GRP2,1,2.50,N,false,3,false,1,false,false,C
+A000,T005,9999-12-31,2014-01-01,H,Truck,94300005,H,2022-01-05,SAP_USER,GRP3,1,3.00,N,false,3,false,1,false,false,C
+A000,T006,9999-12-31,2015-06-01,H,Manager,94300006,H,2022-01-06,SAP_USER,GRP3,1,3.50,N,false,3,false,1,false,false,C
+A000,T007,9999-12-31,2016-01-01,H,Supervisor,94300007,H,2022-01-07,SAP_USER,GRP4,1,4.00,N,false,3,false,1,false,false,C
+A000,T008,9999-12-31,2017-03-01,H,Engineer,94300008,H,2022-01-08,SAP_USER,GRP4,1,4.50,N,false,3,false,1,false,false,C
+A000,T009,9999-12-31,2018-08-01,H,Technician,94300009,H,2022-01-09,SAP_USER,GRP5,1,5.00,N,false,3,false,1,false,false,C
+A000,T010,9999-12-31,2019-11-01,H,Operator,94300010,H,2022-01-10,SAP_USER,GRP5,1,5.50,N,false,3,false,1,false,false,C

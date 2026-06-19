@@ -1,0 +1,15 @@
+SalesOrder,SalesOrderItem,SalesOrderItemCategory,SalesOrderItemText,Product,MaterialByCustomer,RequestedQuantity,RequestedQuantitySAPUnit,RequestedDeliveryDate,ConfirmedDeliveryDate,NetAmount,TransactionCurrency,_SalesOrder_SalesOrder,WBSElementExternalID
+SO100001,10,TAN,Office Keyboard,PRD001,USB Keyboard Mechanical,2,EA,2026-02-01,2026-02-01,800.00,INR,SO100001,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc
+SO100001,20,TAN,Optical Mouse,PRD002,Wireless Optical Mouse,3,EA,2026-02-01,2026-02-01,900.00,INR,SO100001,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc
+
+SO100002,10,TAN,LED Monitor,PRD003,24 Inch LED Monitor,1,EA,2026-02-03,2026-02-03,12000.00,INR,SO100002,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc
+SO100002,20,TAN,HDMI Cable,PRD004,HDMI Cable 1.5 Meter,2,EA,2026-02-03,2026-02-03,400.00,INR,SO100002,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc
+
+SO100003,10,TAN,Laptop Stand,PRD005,Aluminium Laptop Stand,2,EA,2026-02-05,2026-02-06,2500.00,USD,SO100003,e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11
+SO100003,20,TAN,Wireless Keyboard,PRD006,Wireless Keyboard Slim,1,EA,2026-02-05,2026-02-06,1800.00,USD,SO100003,e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11
+
+SO100004,10,TAN,Desk Chair,PRD007,Ergonomic Office Chair,1,EA,2026-02-07,2026-02-07,7000.00,INR,SO100004,f7b91c44-8b6d-4d12-9e3d-7a0f2d8e55a2
+SO100004,20,TAN,Floor Mat,PRD008,Anti Slip Floor Mat,1,EA,2026-02-07,2026-02-07,1300.00,INR,SO100004,f7b91c44-8b6d-4d12-9e3d-7a0f2d8e55a2
+
+SO100005,10,TAN,Printer,PRD009,Laser Printer Mono,1,EA,2026-02-10,2026-02-11,9500.00,EUR,SO100005,b2e4f9a6-0c3a-45b8-a6e1-9f7c3d1b8a55
+SO100005,20,TAN,Toner Cartridge,PRD010,Toner Cartridge Black,2,EA,2026-02-10,2026-02-11,1800.00,EUR,SO100005,b2e4f9a6-0c3a-45b8-a6e1-9f7c3d1b8a55

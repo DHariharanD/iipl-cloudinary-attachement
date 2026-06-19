@@ -1,0 +1,10 @@
+ID,name,descr,note
+17e00347-dc7e-4ca9-9c5d-06ccef69f064,Tower,Tower Resource Hierarchy,created for towers
+a1f5c7e2-9b34-4c9a-8f2a-3b6d7c9e0a11,Building,Building Resource Hierarchy,created for buildings
+b2e6d8f3-1c45-4d9b-9f3b-4c7d8e0b1c22,Floor,Floor Resource Level,created for floors
+c3f7e9a4-2d56-4e0c-af4c-5d8e9f1c2d33,Rack,Equipment Rack,includes servers and switches
+d4a8f0b5-3e67-4f1d-b05d-6e9f0a2d3e44,Server,Physical Server,host machines
+e5b9a1c6-4f78-401e-c16e-7f0a1b3e4f55,Network,Network Equipment,routers and switches
+f6c0b2d7-5089-412f-d27f-801b2c4f5066,Power,Power Infrastructure,UPS and PDUs
+a7d1c3e8-619a-4230-e390-912c3d5a6177,Storage,Storage Systems,SAN and NAS arrays
+b8e2d4f9-72ab-4341-f4a1-a123b4c58188,Cooling,Cooling Systems,CRAC units and chillers

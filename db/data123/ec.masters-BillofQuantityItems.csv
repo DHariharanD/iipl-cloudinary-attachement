@@ -1,0 +1,11 @@
+ID,item,description,unitOfMeasurement,quantity,bqitemsHierarchy_ID
+f3a91b6c-1c44-4d6a-9c01-001a9b2c3001,10,Excavation works for foundation,CUM,1200.00,896ee9af-7419-41a2-8993-ef23ed2864b8
+a7c24d8e-2e55-4a7b-8d02-002b8c3d4002,20,Backfilling and compaction,CUM,950.00,896ee9af-7419-41a2-8993-ef23ed2864b8
+b8d35e9f-3f66-4b8c-9e03-003c7d4e5003,30,Electrical cable laying,CUM,350.0000000,8b8e0625-a0ea-4ca5-980d-e4f4db87ae0b
+c9e46fa0-4077-4c9d-af04-004d6e5f6004,40,Electrical panel installation,CUM,12.0000000,8b8e0625-a0ea-4ca5-980d-e4f4db87ae0b
+da0570b1-5188-4d0e-b005-005e5f607005,50,Water pipe installation,SQM,180.7500000,1d6678d0-4124-4b51-8caf-66dcde7d3dee
+eb1681c2-6299-4e1f-c106-006f4a718006,60,Sanitary fixture installation,SQM,25.0000000,1d6678d0-4124-4b51-8caf-66dcde7d3dee
+fc2792d3-73aa-4f20-d207-007a3b829007,70,False ceiling gypsum work,SQM,220.0000000,41d0c84c-5f8d-4c66-a35b-355ada5302f1
+0d38a3e4-84bb-4021-e308-008b2c93a008,80,Floor tile laying work,SQM,310.5000000,41d0c84c-5f8d-4c66-a35b-355ada5302f1
+1e49b4f5-95cc-4122-f409-009c1d04b009,90,Road construction asphalt work,SQM,1500.0000000,10236128-6103-4cf4-a3b4-fdb5d35b6200
+2f5ac506-a6dd-4223-0510-00ad0e15c010,110,Drainage pipeline construction,SQM,420.2500000,10236128-6103-4cf4-a3b4-fdb5d35b6200

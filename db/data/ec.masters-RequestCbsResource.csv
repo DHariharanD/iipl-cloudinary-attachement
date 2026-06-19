@@ -1,0 +1,6 @@
+ID,code,name,descr,parent_ID,requestedQuantity,createdAt,createdBy,modifiedAt,modifiedBy
+554735ff-d61d-469b-87e9-b48c00b555dc,15,Paper Cover,VERP,ed137af6-f8ed-4c3b-adc3-0aca796879f7,,2026-03-02T08:16:49.755531700Z,anonymous,2026-03-02T08:16:49.755531700Z,anonymous
+a9da2790-4359-40d2-9fae-0f6c5477111f,3,Green Boiler,FERT,ed137af6-f8ed-4c3b-adc3-0aca796879f7,,2026-03-02T08:16:49.755531700Z,anonymous,2026-03-02T08:16:49.755531700Z,anonymous
+cb44fa44-af36-4dab-8d00-a3fb9aa04db1,52,NON STOCK MATERIAL,NLAG,ed137af6-f8ed-4c3b-adc3-0aca796879f7,,2026-03-02T08:16:49.755531700Z,anonymous,2026-03-02T08:16:49.755531700Z,anonymous
+d0dc5496-39e9-492b-a093-9d7cd25deeb9,3,Green Boiler,FERT,ba8356f4-671d-44b3-81e9-3442fd503ac5,,2026-03-02T08:17:20.151291900Z,anonymous,2026-03-02T08:17:20.151291900Z,anonymous
+fc7a9a18-fd4d-4e51-a6d1-7cdff79b4bf6,15,Paper Cover,VERP,ba8356f4-671d-44b3-81e9-3442fd503ac5,,2026-03-02T08:17:20.151291900Z,anonymous,2026-03-02T08:17:20.151291900Z,anonymous

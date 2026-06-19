@@ -1,0 +1,11 @@
+ValidityEndDate,ControllingArea,CostCtrActivityType,Language,CostCtrActivityTypeName,CostCtrActivityTypeDesc
+9999-12-31,A000,T001,EN,Excavator equipment
+9999-12-31,A000,T002,EN,Bulldozer,equipment
+9999-12-31,A000,T003,EN,Crane,Equipment
+9999-12-31,A000,T004,EN,Loader,Equipment
+9999-12-31,A000,T005,EN,Truck,Equipment
+9999-12-31,A000,T006,EN,Manager,Workforce
+9999-12-31,A000,T007,EN,Supervisor,Workforce
+9999-12-31,A000,T008,EN,Engineer,Workforce
+9999-12-31,A000,T009,EN,Technician,Workforce
+9999-12-31,A000,T010,EN,Operator,Workforce

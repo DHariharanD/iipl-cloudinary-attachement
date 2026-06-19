@@ -1,0 +1,4 @@
+code,name,descr
+NORMAL,Normal,Standard priority request
+HIGH,High,Important request requiring faster processing
+URGENCY,Urgency,Critical request needing immediate action

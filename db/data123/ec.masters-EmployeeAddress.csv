@@ -1,0 +1,13 @@
+ID,streetName,region,country,postalCode,phoneNumber,EmailAddress,parent_ID
+6f9c2b6e-8c44-4d3a-b6e1-1a7f0b2d9c01,MG Road,Karnataka,India,560001,9876543210,rahul.sharma@company.com,cc3b01ee-3380-49b6-a709-c5e5309b4637
+a4d1e7c9-2b35-4f6a-9e72-2b8c1d3f4a02,Park Street,West Bengal,India,700016,9123456789,amit.verma@company.com,4400375d-f6a3-406a-8f0b-5bcc95d9683a
+b7e3c2d4-9f12-4a8b-bc63-3c9d2e4f5b03,Linking Road,Maharashtra,India,400050,9988776655,neha.gupta@company.com,10d66cee-1aa0-417a-b91a-0b0f69906b4b
+c1f4d8e6-3a27-4b9c-ae54-4d0e3f6a7c04,Anna Salai,Tamil Nadu,India,600002,9090909090,priya.mehta@company.com,bd2beb60-9b01-4ae8-a9ce-84f31de4c60a
+d2a6e9f1-5c38-4c0d-bf45-5e1f4a7b8d05,Sector 18,Uttar Pradesh,India,201301,9812345678,suresh.kumar@company.com,732c1f6c-880d-44ac-9296-7ba0b6108a0e
+e3b7f0a2-6d49-4d1e-ac36-6f2a5b8c9e06,Banjara Hills,Telangana,India,500034,9700011122,kavita.singh@company.com,83d3d63b-e244-4287-b5a4-58dc23677ca9
+f4c8a1b3-7e5a-4e2f-bd27-7a3b6c9d0f07,CG Road,Gujarat,India,380009,9898989898,anil.patel@company.com,7f5be83c-efca-4332-8674-1b38a9461b46
+0a9d2c4e-8f6b-4f3a-ce18-8b4c7d0e1a08,Marine Drive,Maharashtra,India,400020,9765432109,pooja.nair@company.com,7e775e89-2559-4222-8756-515a3aec9d42
+1b0e3d5f-9a7c-4a4b-df09-9c5d8e1f2b09,DLF Phase 3,Haryana,India,122002,9654321098,rohit.malhotra@company.com,3ba23c9c-38e6-48e2-b000-596a785a3b67
+2c1f4e6a-0b8d-4b5c-ea10-ad6e9f2a3c10,Civil Lines,Rajasthan,India,302006,9543210987,sunita.joshi@company.com,ab788dc6-587a-4a82-92e8-fb830e09a938
+3d2a5f7b-1c9e-4c6d-fb21-be7f0a3b4d11,AL Bakar Road,Abu Dhabi,UAE,560001,9876543210,rahul.sharma@company.com,cc3b01ee-3380-49b6-a709-c5e5309b4637
+4e3b6a8c-2d0f-4d7e-ac32-cf8a1b4c5e12,New Jersy Street,New Jersy,USA,700016,9123456789,amit.verma@company.com,4400375d-f6a3-406a-8f0b-5bcc95d9683a

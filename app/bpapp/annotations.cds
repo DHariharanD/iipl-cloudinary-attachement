@@ -1,0 +1,1 @@
+using ResourceServices as service from '../../srv/resource-type-service';

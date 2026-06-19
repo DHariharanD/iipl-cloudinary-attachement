@@ -1,0 +1,5 @@
+ID,code,name,description,hourlyRate,companyCode,createdAt,createdBy,modifiedAt,modifiedBy
+cc3b01ee-3380-49b6-a709-c5e5309b4637,SD01,Senior Developer,Experienced backend/fullstack developer,1200.00,3310,2026-03-20T10:15:30Z,admin,2026-03-22T14:20:10Z,admin
+a1f47c2d-9c12-4bde-8c91-1f23a7b8c111,UI5C,UI5 Consultant,SAP UI5 frontend specialist,1100.00,1100,2026-03-21T09:10:25Z,admin,2026-03-23T11:45:00Z,admin
+b2e56d7a-2f44-4c9b-9f7e-5d9c0e3a2222,BD01,Backend Developer,Server-side application developer,1000.00,1200,2026-03-18T08:00:00Z,system,2026-03-21T16:30:45Z,admin
+c3d67f8b-7a55-4a1d-8e12-6a7f9c4b3333,PM01,Project Manager,Project planning and delivery,1500.00,2000,2026-03-17T12:20:10Z,system,2026-03-22T10:10:10Z,admin

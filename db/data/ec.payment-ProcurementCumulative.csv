@@ -1,0 +1,4 @@
+ID,workDone,meterial,totalDue,advPayRecovery,retention,retentionMaterial,advPayRecoveryMaterial,otherDeduction,netPaymentDue,claimAmount,advanceAmount,retentionRelease,procurementCumulative_ID,createdAt,createdBy,modifiedAt,modifiedBy
+cu1,192126281.92,0,192126281.92,8000000,16000000,0,0,0,160000000,0,40000000,0,15bc1be2-9b1e-44d5-ac51-339e79447100,2026-03-23T07:02:19.838Z,anonymous,2026-03-23T07:02:19.838Z,anonymous
+cu2,100000000,0,100000000,4000000,10000000,0,0,0,86000000,0,20000000,0,31db29fa-7a2b-4ac7-919f-94a63f27988a,2026-03-23T07:01:51.626Z,anonymous,2026-03-23T07:01:51.626Z,anonymous
+cu3,60000000,0,60000000,2000000,6000000,0,0,0,51000000,0,11000000,0,850ec6eb-f0b9-4f28-b955-9df34ef64296,2026-03-23T07:03:18.229Z,anonymous,2026-03-23T07:03:18.229Z,anonymous

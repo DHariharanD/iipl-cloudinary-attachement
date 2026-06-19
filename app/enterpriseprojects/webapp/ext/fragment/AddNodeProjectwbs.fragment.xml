@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    core:require="{ handler: 'ns/enterpriseprojects/ext/fragment/AddNode'}">
+
+    <Dialog id="_IDGenDialogWbs" title="Add WBS Node" contentWidth="450px">
+        <content>
+            <VBox id="_IDGenVBoxWbs" class="sapUiSmallMargin">
+                <form:SimpleForm
+                    id="_IDGenSimpleFormWbs"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    class="sapUiTinyMarginTop"
+                >
+                    <Label id="_IDGenLblNameWbs" text="Name" required="true" />
+                    <Input id="wbsInpName" />
+
+                    <Label id="_IDGenLblDescWbs" text="Description" />
+                    <Input id="wbsInpDesc" />
+                </form:SimpleForm>
+            </VBox>
+        </content>
+        <beginButton>
+            <Button
+                id="_IDGenBtnCreateWbs"
+                text="Create"
+                type="Emphasized"
+                press="handler.onSubmit"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="_IDGenBtnCancelWbs"
+                text="Cancel"
+                press="handler.onCancel"
+            />
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>

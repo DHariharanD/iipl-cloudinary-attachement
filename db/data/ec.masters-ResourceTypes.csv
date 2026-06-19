@@ -1,0 +1,4 @@
+ID,resourceType,resourceTypeDesc,isGlAccount,timeSheetReq,typeOfResource_code
+4c7055f5-5c46-463b-abad-5e1ff02eaa9c,Material123000,Material Resource123000,false,true,PT
+6125fcb7-d4ca-493b-b7b7-48cbff30b9db,Asset,Asset Resource,false,true,PT
+fc8cd9b2-f58e-40e0-9588-135f5d3ac7eb,Machine,Machine Resource,true,true,GL

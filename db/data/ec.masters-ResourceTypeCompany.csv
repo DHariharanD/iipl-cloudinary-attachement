@@ -1,0 +1,19 @@
+ID,parent_ID,companyCode,companyName
+f1a23b45-c678-4d90-8abc-1d2e3f4a5001,fca287f3-49cf-41a6-98f1-549979f6de38,3310,AE Company Code
+a2b34c56-d789-4e01-9bcd-2e3f4a5b6002,fca287f3-49cf-41a6-98f1-549979f6de38,1100,Innovate LLC
+b3c45d67-e890-4f12-abde-3f4a5b6c7003,a1f5c7e2-9b34-4c9a-8f2a-3b6d7c9e0a11,3310,AE Company Code
+c4d56e78-f901-4013-bcef-4a5b6c7d8004,a1f5c7e2-9b34-4c9a-8f2a-3b6d7c9e0a11,1100,Innovate LLC
+d5e67f89-0a12-4124-cdf0-5b6c7d8e9005,b2e6d8f3-1c45-4d9b-9f3b-4c7d8e0b1c22,3310,AE Company Code
+e6f78a90-1b23-4235-d0f1-6c7d8e9f0006,b2e6d8f3-1c45-4d9b-9f3b-4c7d8e0b1c22,1100,Innovate LLC
+f7a89b01-2c34-4346-e1f2-7d8e9f0a1007,c3f7e9a4-2d56-4e0c-af4c-5d8e9f1c2d33,3310,AE Company Code
+a8b90c12-3d45-4457-f2a3-8e9f0a1b2008,c3f7e9a4-2d56-4e0c-af4c-5d8e9f1c2d33,1100,Innovate LLC
+b9c01d23-4e56-4568-a3b4-9f0a1b2c3009,d4a8f0b5-3e67-4f1d-b05d-6e9f0a2d3e44,3310,AE Company Code
+c0d12e34-5f67-4679-b4c5-0a1b2c3d4010,d4a8f0b5-3e67-4f1d-b05d-6e9f0a2d3e44,1100,Innovate LLC
+d1e23f45-6078-478a-c5d6-1b2c3d4e5011,e5b9a1c6-4f78-401e-c16e-7f0a1b3e4f55,3310,AE Company Code
+e2f34a56-7189-489b-d6e7-2c3d4e5f6012,e5b9a1c6-4f78-401e-c16e-7f0a1b3e4f55,1100,Innovate LLC
+f3a45b67-829a-49ac-e7f8-3d4e5f6a7013,f6c0b2d7-5089-412f-d27f-801b2c4f5066,3310,AE Company Code
+a4b56c78-93ab-4abd-f8a9-4e5f6a7b8014,f6c0b2d7-5089-412f-d27f-801b2c4f5066,1100,Innovate LLC
+b5c67d89-a4bc-4bce-a9ba-5f6a7b8c9015,a7d1c3e8-619a-4230-e390-912c3d5a6177,3310,AE Company Code
+c6d78e90-b5cd-4cdf-bacb-6a7b8c9d0016,a7d1c3e8-619a-4230-e390-912c3d5a6177,1100,Innovate LLC
+d7e89f01-c6de-4de0-cbdc-7b8c9d0e1017,b8e2d4f9-72ab-4341-f4a1-a123b4c58188,3310,AE Company Code
+e8f90a12-d7ef-4ef1-dced-8c9d0e1f2018,b8e2d4f9-72ab-4341-f4a1-a123b4c58188,1100,Innovate LLC

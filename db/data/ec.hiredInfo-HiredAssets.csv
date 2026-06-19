@@ -1,0 +1,4 @@
+ID,AssetID,code,assetType,assetCtegory,resourceCode,fixedAsset,location,CBSCode,standardHours,assetStatus_code,timeSheetRequired,quantity,uom,createdAt,createdBy,modifiedAt,modifiedBy
+a1b2c3d4-1111-2222-3333-abcdef123456,AST--001,1202,Excavator,Heavy,10011,FA001,Bangalore,CBS001,8,AC,true,1,HRS,2026-04-16T07:00:00Z,admin,2026-04-16T07:00:00Z,admin
+b2c3d4e5-2222-3333-4444-bcdefa234567,AST--002,1203,Crane,Heavy,10012,FA002,Hyderabad,CBS002,12,IC,false,2,HRS,2026-04-16T07:10:00Z,user1,2026-04-16T07:10:00Z,user1
+c3d4e5f6-3333-4444-5555-cdefab345678,AST--003,1204,Loader,Medium,10013,FA003,Chennai,CBS003,10,AC,true,3,HRS,2026-04-16T07:20:00Z,user2,2026-04-16T07:20:00Z,user2

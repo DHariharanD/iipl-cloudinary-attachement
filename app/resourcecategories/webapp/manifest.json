@@ -1,0 +1,190 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "ns.resourcecategories",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.16.5",
+      "toolsId": "a9f6e5d8-61c9-4d8c-9e63-59ee9ed7c2db"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ResourceServices/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.resourcecategories.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ResourceCategoriesList",
+          "target": "ResourceCategoriesList"
+        },
+        {
+          "name": "ResourceCategoriesObjectPage",
+          "pattern": "ResourceCategories({ResourceCategoriesKey}):?query:",
+          "target": "ResourceCategoriesObjectPage"
+        },
+        {
+          "name": "ResourceCategories_resourceMeterialObjectPage",
+          "pattern": "ResourceCategories({ResourceCategoriesKey})/resourceMeterial({resourceMeterialKey}):?query:",
+          "target": "ResourceCategories_resourceMeterialObjectPage"
+        }
+      ],
+      "targets": {
+        "ResourceCategoriesList": {
+          "type": "Component",
+          "id": "ResourceCategoriesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ResourceCategories",
+              "variantManagement": "Page",
+              "navigation": {
+                "ResourceCategories": {
+                  "detail": {
+                    "route": "ResourceCategoriesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "TreeTable",
+                    "hierarchyQualifier": "ResourceCategories"
+                  },
+                  "actions": {
+                    "uploadExcel": {
+                      "press": "ns.resourcecategories.ext.controller.UploadExcel.uploadExcel",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Upload"
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "ResourceCategoriesObjectPage": {
+          "type": "Component",
+          "id": "ResourceCategoriesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "resourceMeterial": {
+                  "detail": {
+                    "route": "ResourceCategories_resourceMeterialObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/ResourceCategories"
+            }
+          }
+        },
+        "ResourceCategories_resourceMeterialObjectPage": {
+          "type": "Component",
+          "id": "ResourceCategories_resourceMeterialObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ResourceCategories/resourceMeterial"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

@@ -1,0 +1,16 @@
+ID,isDefaultBudgetHead,isBudgetValidation,parent_ID,name,descr,resourceType_code,ResourceHierarchy_ID,code
+4ec86296-5ac2-4561-bbd7-f101c7ec6c1c,false,false,,Material,Material,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,10
+9b03a05b-7d98-40a2-8220-944057b03330,false,false,4ec86296-5ac2-4561-bbd7-f101c7ec6c1c,MATERIAL LUMSUM,material LUMSUM,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,1000
+4e610734-9dd2-4792-a57b-6c7189c2219b,false,true,4ec86296-5ac2-4561-bbd7-f101c7ec6c1c,ALUMINUM MATERIAL,Aluminum material,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,1001
+77d241ee-0fb1-442d-b2f5-fdbf409e4e76,false,false,4e610734-9dd2-4792-a57b-6c7189c2219b,ALUMINUM MATERIAL,ALUMINUM MATERIAL,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,100101
+5b2b8201-bcc4-4da5-8225-d49e3cdd2a82,false,false,77d241ee-0fb1-442d-b2f5-fdbf409e4e76,ALUMINUM MATERIAL,Aluminum material,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,100101001
+5b2b8201-bcc4-4da5-8225-d49e3cdd2a92,false,false,5b2b8201-bcc4-4da5-8225-d49e3cdd2a82,ALUMINUM ACCESS PANEL,Aluminum access panel,MT,17e00347-dc7e-4ca9-9c5d-06ccef69f064,1001010010001
+6db486c4-1d1e-4802-95ec-31d2e8728dcd,false,false,,Manpower,Manpower,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,20
+e6b09b74-9190-4025-abbf-ac1a32f0bc56,false,false,6db486c4-1d1e-4802-95ec-31d2e8728dcd,Manpower,Manpower,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,
+0a48d2e4-b996-4dd2-87f5-c1a7431029be,false,false,e6b09b74-9190-4025-abbf-ac1a32f0bc56,Labour,Labour,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,
+f9627ccb-4aff-46be-9a53-928f76a8651a,false,false,0a48d2e4-b996-4dd2-87f5-c1a7431029be,Skilled Labour,Skilled Labour,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,
+67f3f6a9-cb06-417e-bf68-de47182304d2,false,false,0a48d2e4-b996-4dd2-87f5-c1a7431029be,Unskilled Labour,Unskilled Labour,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,
+67f31223-dd07-234t-gh56-dd33335354e2,false,false,,Asset,Asset,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,30
+67f31223-dd07-234t-gh56-dd33335354s2,false,false,,Subcontractors,Subcontractors,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,40
+67f31223-dd07-234t-gh56-dd33335354c2,false,false,,Contingencies,Contingencies,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,50
+67f31223-dd07-234t-gh56-dd33335354r2,false,false,,Contract Revenue,Contract Revenue,,17e00347-dc7e-4ca9-9c5d-06ccef69f064,60

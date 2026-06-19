@@ -1,0 +1,284 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "ns.projectboqmapping",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "b0c57739-dbee-466e-9f31-4c5a6a6161a3"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ProjectBOQMappingService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.projectboqmapping.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ProjectBOQMappingList",
+          "target": [
+            "ProjectBOQMappingList"
+          ]
+        },
+        {
+          "pattern": "ProjectBOQMapping({key}):?query:",
+          "name": "ProjectBOQMappingObjectPage",
+          "target": [
+            "ProjectBOQMappingList",
+            "ProjectBOQMappingObjectPage"
+          ]
+        },
+        {
+          "name": "ProjectBOQMapping_wbsListObjectPage",
+          "pattern": "ProjectBOQMapping({key})/wbsList({wbsListKey}):?query:",
+          "target": [
+            "ProjectBOQMappingList",
+            "ProjectBOQMappingObjectPage",
+            "ProjectBOQMapping_wbsListObjectPage"
+          ]
+        },
+        {
+          "name": "ProjectBOQMapping_wbsList_WbsBoqObjectPage",
+          "pattern": "ProjectBOQMapping({key})/wbsList({wbsListKey})/WbsBoq({WbsBoqKey}):?query:",
+          "target": [
+            "ProjectBOQMapping_wbsList_WbsBoqObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "ProjectBOQMappingList": {
+          "type": "Component",
+          "id": "ProjectBOQMappingList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ProjectBOQMapping",
+              "variantManagement": "Page",
+              "navigation": {
+                "ProjectBOQMapping": {
+                  "detail": {
+                    "route": "ProjectBOQMappingObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "ProjectBOQMappingObjectPage": {
+          "type": "Component",
+          "id": "ProjectBOQMappingObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ProjectBOQMapping",
+              "controlConfiguration": {
+                "wbsList/@com.sap.vocabularies.UI.v1.LineItem#i18nWbsElements1": {
+                  "tableSettings": {
+                    "type": "TreeTable",
+                    "hierarchyQualifier": "ProjectPlanningHierarchy"
+                  }
+                }
+              },
+              "navigation": {
+                "wbsList": {
+                  "detail": {
+                    "route": "ProjectBOQMapping_wbsListObjectPage"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/ProjectBOQMapping({key})"
+        },
+        "ProjectBOQMapping_wbsListObjectPage": {
+          "type": "Component",
+          "id": "ProjectBOQMapping_wbsListObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "WbsBoq": {
+                  "detail": {
+                    "route": "ProjectBOQMapping_wbsList_WbsBoqObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/ProjectBOQMapping/wbsList",
+              "controlConfiguration": {
+                "WbsBoq/@com.sap.vocabularies.UI.v1.LineItem#BOQ": {
+                  "actions": {
+                    "AddBoq": {
+                      "press": "ns.projectboqmapping.ext.controller.AddBoq.addBoq",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add"
+                    }
+                  },
+                  "tableSettings": {
+                    "type": "TreeTable",
+                    "hierarchyQualifier": "WBSBOQHierarchy"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/ProjectBOQMapping({key})/wbsList({wbsListKey})"
+        },
+        "ProjectBOQMapping_wbsList_WbsBoqObjectPage": {
+          "type": "Component",
+          "id": "ProjectBOQMapping_wbsList_WbsBoqObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "endColumnPages",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ProjectBOQMapping/wbsList/WbsBoq",
+              "controlConfiguration": {
+                "boqResources/@com.sap.vocabularies.UI.v1.LineItem#Resources": {
+                  "actions": {
+                    "AddBoqResource": {
+                      "press": "ns.projectboqmapping.ext.controller.AddBoqChilds.AddResource",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Add"
+                    }
+                  }
+                },
+                "boqCBS/@com.sap.vocabularies.UI.v1.LineItem#CBS": {
+                  "actions": {
+                    "AddBoqCbs": {
+                      "press": "ns.projectboqmapping.ext.controller.AddBoqChilds.AddCbs",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Add"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "contextPattern": "/ProjectBOQMapping({key})/wbsList({wbsListKey})/WbsBoq({WbsBoqKey})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

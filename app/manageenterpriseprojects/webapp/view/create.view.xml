@@ -1,0 +1,115 @@
+<mvc:View
+    controllerName="ns.manageenterpriseprojects.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table">
+
+    <Page id="createPage" title="Create Project" showNavButton="true" navButtonPress="onBack">
+
+        <content>
+
+            <!-- ================= HEADER SECTION ================= -->
+            <VBox class="sapUiSmallMargin">
+
+                <Title id="titleHeader" text="Project Details"/>
+
+                <HBox justifyContent="SpaceBetween">
+
+                    <!-- LEFT SIDE -->
+                    <VBox width="48%" class="sapUiSmallMarginEnd">
+
+                        <Label id="lblId" text="Project"/>
+                        <Input id="projectId" value="{Project}" class="sapUiSmallMarginBottom"/>
+
+                        <Label id="lblName" text="Project Description"/>
+                        <Input id="projectName" value="{ProjectDescription}" class="sapUiSmallMarginBottom"/>
+
+
+                        <Label id="lblentype" text="Enterprise Project Type"/>
+                        <Input id="enpttype" value="{EnterpriseProjectType}"/>
+
+                        <Label id="lblpfcode" text="Project Profile Code"/>
+                        <Input id="enprofilecode" value="{ProjectProfileCode}"/>
+
+                        <Label id="lblcocode" text="Company Code"/>
+                        <Input id="enempcode" value="{CompanyCode}"/>
+
+                      
+
+                    </VBox>
+
+                    <!-- RIGHT SIDE -->
+                    <VBox width="48%">
+
+                        <Label id="lblStart" text="Planned Start"/>
+                        <DatePicker id="startDate"   value="{ProjectStartDate}" placeholder="e.g. 12/31/2026" class="sapUiSmallMarginBottom"/>
+
+                        <Label id="lblEnd" text="Planned Finish"/>
+                        <DatePicker id="endDate"  value="{ProjectEndDate}" placeholder="e.g. 12/31/2026"/>
+
+                        <Label id="lblProfile" text="Priority Code"/>
+                        <Input id="profile" value="{PriorityCode}" class="sapUiSmallMarginBottom"/>
+
+                         <Label id="lblProfit" text="Profit Center"/>
+                        <Input id="enpc" value="{ProfitCenter}" class="sapUiSmallMarginBottom"/>
+
+                         <Label id="lblCost" text="Responsible Cost Center"/>
+                        <Input id="encc" value="{ResponsibleCostCenter}" class="sapUiSmallMarginBottom"/>
+
+                    </VBox>
+
+                </HBox>
+
+            </VBox>
+
+            <!-- ================= TREE TABLE SECTION ================= -->
+            <VBox class="sapUiSmallMarginTop">
+
+                <Toolbar id="treeToolbar">
+                    <Title id="treeTitle" text="Project Planning"/>
+                    <ToolbarSpacer/>
+                    <Button id="btnAddParent" text="Add Parent" press="onAddParent"/>
+                    <Button id="btnAddChild" text="Add Child" press="onAddChild"/>
+                </Toolbar>
+
+                <table:TreeTable
+                    id="treeTable"
+                    rows="{
+                        path: 'treeModel>/',
+                        parameters: { arrayNames: ['children'] }
+                    }"
+                    selectionMode="Single"
+                    visibleRowCount="10">
+
+                    <table:columns>
+
+                        <table:Column id="colName" width="300px">
+                            <Label text="Name"/>
+                            <table:template>
+                                <Input value="{treeModel>ProjectElementDescription}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column id="colId" width="200px">
+                            <Label text="ID"/>
+                            <table:template>
+                                <Input value="{treeModel>ProjectElement}"/>
+                            </table:template>
+                        </table:Column>
+
+                    </table:columns>
+
+                </table:TreeTable>
+
+                <Button 
+                    id="btnSave"
+                    text="Save Project"
+                    type="Emphasized"
+                    class="sapUiSmallMarginTop"
+                    press="onSave"/>
+
+            </VBox>
+
+        </content>
+    </Page>
+</mvc:View>

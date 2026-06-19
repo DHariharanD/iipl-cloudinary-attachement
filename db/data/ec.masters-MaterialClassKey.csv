@@ -1,0 +1,13 @@
+code,name,descr
+CON,Concrete,Concrete works including all cast-in-place and precast elements
+RFT,Reinforcement,Steel reinforcement bars and mesh for structural works
+FMW,Formwork,Temporary molds and shuttering for concrete casting
+BLK,Blockwork,Masonry and block laying works
+PLS,Plaster & finishes,Plastering rendering and surface finishing works
+TLG,Tiling,Floor and wall tiling works
+PNT,Paint,Painting and coating works
+MEP_PLB,MEP - Plumbing,Mechanical electrical and plumbing - plumbing systems
+MEP_ELC,MEP - Electrical,Mechanical electrical and plumbing - electrical systems
+MEP_HVC,MEP - HVAC,Mechanical electrical and plumbing - HVAC systems
+JNR,Joinery / Hardware,Joinery carpentry and hardware items
+CSM,Consumables,General consumable materials and sundries

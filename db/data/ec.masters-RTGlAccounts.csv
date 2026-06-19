@@ -1,0 +1,7 @@
+glAccount,parent_ID,glAccountName
+100010,4c7055f5-5c46-463b-abad-5e1ff02eaa9c,Cash Account
+200020,6125fcb7-d4ca-493b-b7b7-48cbff30b9db,Equipment Account
+300030,fc8cd9b2-f58e-40e0-9588-135f5d3ac7eb,Machine Account
+100040,4c7055f5-5c46-463b-abad-5e1ff02eaa9c,Cash Account
+200050,fc8cd9b2-f58e-40e0-9588-135f5d3ac7eb,Equipment Account
+300060,fc8cd9b2-f58e-40e0-9588-135f5d3ac7eb,Machine Account

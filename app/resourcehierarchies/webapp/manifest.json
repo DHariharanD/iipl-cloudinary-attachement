@@ -1,0 +1,432 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "ns.resourcehierarchies",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.16.5",
+      "toolsId": "d0f82db6-56e2-47c2-a497-f82c51bd9765"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ResourceServices/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController#ns.resourcehierarchies::ResourceHierarchies_HierarchiesObjectPage": {
+            "controllerName": "ns.resourcehierarchies.ext.controller.ResourceHierarchy"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.resourcehierarchies.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ResourceHierarchiesList",
+          "target": [
+            "ResourceHierarchiesList"
+          ]
+        },
+        {
+          "pattern": "ResourceHierarchies({key}):?query:",
+          "name": "ResourceHierarchiesObjectPage",
+          "target": [
+            "ResourceHierarchiesList",
+            "ResourceHierarchiesObjectPage"
+          ]
+        },
+        {
+          "name": "ResourceHierarchies_HierarchiesObjectPage",
+          "pattern": "ResourceHierarchies({key})/Hierarchies({HierarchiesKey}):?query:",
+          "target": [
+            "ResourceHierarchiesList",
+            "ResourceHierarchiesObjectPage",
+            "ResourceHierarchies_HierarchiesObjectPage"
+          ]
+        },
+        {
+          "name": "ResourceHierarchies_Hierarchies_resourceMeterialObjectPage",
+          "pattern": "ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceMeterial({resourceMeterialKey}):?query:",
+          "target": [
+            "ResourceHierarchies_Hierarchies_resourceMeterialObjectPage"
+          ]
+        },
+        {
+          "name": "ResourceHierarchies_Hierarchies_resourceAssetsObjectPage",
+          "pattern": "ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceAssets({resourceAssetsKey}):?query:",
+          "target": [
+            "ResourceHierarchies_Hierarchies_resourceAssetsObjectPage"
+          ]
+        },
+        {
+          "name": "ResourceHierarchies_Hierarchies_resourceSubcontractObjectPage",
+          "pattern": "ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceSubcontract({resourceSubcontractKey}):?query:",
+          "target": [
+            "ResourceHierarchies_Hierarchies_resourceSubcontractObjectPage"
+          ]
+        },
+        {
+          "name": "ResourceHierarchies_Hierarchies_resourceWorkforceObjectPage",
+          "pattern": "ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceWorkforce({resourceWorkforceKey}):?query:",
+          "target": [
+            "ResourceHierarchies_Hierarchies_resourceWorkforceObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "ResourceHierarchiesList": {
+          "type": "Component",
+          "id": "ResourceHierarchiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ResourceHierarchies",
+              "variantManagement": "Page",
+              "navigation": {
+                "ResourceHierarchies": {
+                  "detail": {
+                    "route": "ResourceHierarchiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "enableExport": true
+                  },
+                  "actions": {
+                    "RCH1": {
+                      "press": "ns.resourcehierarchies.ext.controller.UploadResourceHierarchy.onUploadResourceHierarchy",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Upload"
+                    },
+                    "uplooadExcel": {
+                      "press": "ns.resourcehierarchies.ext.controller.ExcellTemplate.downloadExcel",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Template",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "RCH1"
+                      }
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "ResourceHierarchiesObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ResourceHierarchies",
+              "controlConfiguration": {
+                "Hierarchies/@com.sap.vocabularies.UI.v1.LineItem#ResourceCategories": {
+                  "tableSettings": {
+                    "hierarchyQualifier": "ResourceCategories",
+                    "type": "TreeTable",
+                    "rowCount": 30,
+                    "creationMode": {
+                      "name": "CreationDialog",
+                      "creationFields": "code,name,descr"
+                    }
+                  },
+                  "columns": {
+                    "AddNode": {
+                      "header": "Add Node",
+                      "width": "5rem",
+                      "position": {
+                        "anchor": "DataField::resourceType::name",
+                        "placement": "After"
+                      },
+                      "template": "ns.resourcehierarchies.ext.fragment.AddNode",
+                      "availability": "Default"
+                    }
+                  },
+                  "actions": {
+                    "uploadExcelRC": {
+                      "press": "ns.resourcehierarchies.ext.controller.UploadResourceCategories.uploadExcel",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Upload"
+                    }
+                  }
+                },
+                "resourceTypeCompany/@com.sap.vocabularies.UI.v1.LineItem#i18nCompanyCodes": {
+                  "actions": {
+                    "AddCompanyCode": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddCompamyCode.addCompanyCode",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Company Code"
+                    }
+                  }
+                }
+              },
+              "navigation": {
+                "Hierarchies": {
+                  "detail": {
+                    "route": "ResourceHierarchies_HierarchiesObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ResourceHierarchies_HierarchiesObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchies_HierarchiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "resourceMeterial": {
+                  "detail": {
+                    "route": "ResourceHierarchies_Hierarchies_resourceMeterialObjectPage"
+                  }
+                },
+                "resourceAssets": {
+                  "detail": {
+                    "route": "ResourceHierarchies_Hierarchies_resourceAssetsObjectPage"
+                  }
+                },
+                "resourceSubcontract": {
+                  "detail": {
+                    "route": "ResourceHierarchies_Hierarchies_resourceSubcontractObjectPage"
+                  }
+                },
+                "resourceWorkforce": {
+                  "detail": {
+                    "route": "ResourceHierarchies_Hierarchies_resourceWorkforceObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/ResourceHierarchies/Hierarchies",
+              "controlConfiguration": {
+                "resourceMeterial/@com.sap.vocabularies.UI.v1.LineItem#Products1": {
+                  "actions": {
+                    "AddResource": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddResource.AddProducts",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Products"
+                    }
+                  },
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                },
+                "resourceGlAccounts/@com.sap.vocabularies.UI.v1.LineItem#GLAccounts1": {
+                  "actions": {
+                    "add_gl_resource": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddResource.addGlResource",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add GL"
+                    }
+                  },
+                  "tableSettings": {
+                    "quickVariantSelection": {
+                      "hideTableTitle": false
+                    }
+                  }
+                },
+                "resourceAssets/@com.sap.vocabularies.UI.v1.LineItem#Assets": {
+                  "actions": {
+                    "addAsset": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddResource.addAsset",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Asset"
+                    }
+                  }
+                },
+                "resourceWorkforce/@com.sap.vocabularies.UI.v1.LineItem#WorkForce": {
+                  "actions": {
+                    "AddWorkforces": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddResource.addWorkforce",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Workforce"
+                    }
+                  }
+                },
+                "resourceSubcontract/@com.sap.vocabularies.UI.v1.LineItem#SubContract": {
+                  "actions": {
+                    "addSubcontract": {
+                      "press": "ns.resourcehierarchies.ext.controller.AddResource.addSubContract",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Subcontract"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ResourceHierarchies_Hierarchies_resourceMeterialObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchies_Hierarchies_resourceMeterialObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "endColumnPages",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ResourceHierarchies/Hierarchies/resourceMeterial"
+            }
+          },
+          "contextPattern": "/ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceMeterial({resourceMeterialKey})"
+        },
+        "ResourceHierarchies_Hierarchies_resourceAssetsObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchies_Hierarchies_resourceAssetsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "endColumnPages",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ResourceHierarchies/Hierarchies/resourceAssets"
+            }
+          },
+          "contextPattern": "/ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceAssets({resourceAssetsKey})"
+        },
+        "ResourceHierarchies_Hierarchies_resourceSubcontractObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchies_Hierarchies_resourceSubcontractObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "endColumnPages",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ResourceHierarchies/Hierarchies/resourceSubcontract"
+            }
+          },
+          "contextPattern": "/ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceSubcontract({resourceSubcontractKey})"
+        },
+        "ResourceHierarchies_Hierarchies_resourceWorkforceObjectPage": {
+          "type": "Component",
+          "id": "ResourceHierarchies_Hierarchies_resourceWorkforceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "endColumnPages",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ResourceHierarchies/Hierarchies/resourceWorkforce"
+            }
+          },
+          "contextPattern": "/ResourceHierarchies({key})/Hierarchies({HierarchiesKey})/resourceWorkforce({resourceWorkforceKey})"
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

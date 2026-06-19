@@ -1,0 +1,236 @@
+<mvc:View
+    controllerName="ns.manageenterpriseprojects.controller.View1"
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar">
+
+    <f:DynamicPage headerExpanded="true">
+
+        <!-- PAGE TITLE -->
+        <f:title>
+
+            <f:DynamicPageTitle>
+
+                <f:heading>
+                    <Title text="Manage Enterprise Projects"/>
+                </f:heading>
+
+            </f:DynamicPageTitle>
+
+        </f:title>
+
+        <!-- FILTER BAR -->
+        <f:header>
+
+            <f:DynamicPageHeader>
+
+                <f:content>
+
+                    <fb:FilterBar
+                        id="filterbar"
+                        useToolbar="false"
+                        search=".onSearch">
+
+                        <fb:filterGroupItems>
+
+                            <!-- SEARCH -->
+                            <fb:FilterGroupItem
+                                name="Search"
+                                label="Search"
+                                groupName="Group1"
+                                visibleInFilterBar="true">
+
+                                <fb:control>
+
+                                    <SearchField
+                                        id="globalSearch"
+                                        width="100%"
+                                        placeholder="Search"/>
+
+                                </fb:control>
+
+                            </fb:FilterGroupItem>
+
+                            <!-- EDITING STATUS -->
+                            <fb:FilterGroupItem
+                                name="EditingStatus"
+                                label="Editing Status"
+                                groupName="Group1"
+                                visibleInFilterBar="true">
+
+                                <fb:control>
+
+                                    <Select
+                                        id="editingStatus"
+                                        width="250px">
+
+                                        <items>
+
+                                            <core:Item
+                                                key="All"
+                                                text="All"/>
+
+                                        </items>
+
+                                    </Select>
+
+                                </fb:control>
+
+                            </fb:FilterGroupItem>
+
+                            <!-- PROJECT -->
+                            <fb:FilterGroupItem
+                                name="Project"
+                                label="Project"
+                                groupName="Group1"
+                                visibleInFilterBar="true">
+
+                                <fb:control>
+
+                                    <Input
+                                        id="projectInput"
+                                        width="250px"
+                                        placeholder="Project"
+                                        showValueHelp="true"/>
+
+                                </fb:control>
+
+                            </fb:FilterGroupItem>
+
+                            <!-- PROJECT DESCRIPTION -->
+                            <fb:FilterGroupItem
+                                name="ProjectDescription"
+                                label="Project Description"
+                                groupName="Group1"
+                                visibleInFilterBar="true">
+
+                                <fb:control>
+
+                                    <Input
+                                        id="projectDescInput"
+                                        width="250px"
+                                        placeholder="Project Description"
+                                        showValueHelp="true"/>
+
+                                </fb:control>
+
+                            </fb:FilterGroupItem>
+
+                        </fb:filterGroupItems>
+
+                    </fb:FilterBar>
+
+                </f:content>
+
+            </f:DynamicPageHeader>
+
+        </f:header>
+
+        <!-- CONTENT -->
+        <f:content>
+
+            <VBox class="sapUiSmallMargin">
+
+                <!-- BUTTON TOOLBAR -->
+
+                <!-- TABLE -->
+                <Table
+                    id="projectTable"
+                    inset="false"
+                    mode="MultiSelect"
+                    items="{/Projectsec}">
+
+                    <!-- TABLE HEADER -->
+                    <headerToolbar>
+
+                        <Toolbar>
+
+                            <Title
+                                text="Enterprise Projects ({= ${/Projectsec}.length })"
+                                level="H4"/>
+
+                            <ToolbarSpacer/>
+                            <Button
+                        text="Create"
+                        type="Emphasized"
+                        press="onCreatePress"/>
+
+                            <Button
+                                text="Upload"
+                                type="Transparent"/>
+
+                            <Button
+                                text="Template"
+                                type="Transparent"/>
+
+                            <Button
+                                text="Delete"
+                                type="Transparent"
+                                enabled="false"/>
+
+                        </Toolbar>
+
+                    </headerToolbar>
+
+                    <!-- COLUMNS -->
+                    <columns>
+
+                        <Column width="14%">
+                            <Text text="Project"/>
+                        </Column>
+
+                        <Column width="36%">
+                            <Text text="Project Description"/>
+                        </Column>
+
+                        <Column width="16%">
+                            <Text text="Project Start Date"/>
+                        </Column>
+
+                        <Column width="16%">
+                            <Text text="Project End Date"/>
+                        </Column>
+
+                        <Column width="12%">
+                            <Text text="Project Currency"/>
+                        </Column>
+
+                    </columns>
+
+                    <!-- ROWS -->
+                    <items>
+
+                        <ColumnListItem
+                            type="Navigation"
+                            press="onItemPress">
+
+                            <cells>
+
+                                <Link text="{Project}"/>
+
+                                <Text text="{ProjectDescription}"/>
+
+                                <Text text="{ProjectStartDate}"/>
+
+                                <Text text="{ProjectEndDate}"/>
+
+                                <Text text="{ProjectCurrency}"/>
+
+                            </cells>
+
+                        </ColumnListItem>
+
+                    </items>
+
+                </Table>
+
+            </VBox>
+
+        </f:content>
+
+    </f:DynamicPage>
+
+</mvc:View>

@@ -1,0 +1,6 @@
+ID,project,projectDescription,projectStartDate,projectEndDate,projectCurrency,awardedDate,status,advance,retention,defectLiability,performanceSecurity,advancePaymentGuarantee,companyCode,createdAt,createdBy,modifiedAt,modifiedBy,projectManager
+9b1fe95a-0e84-4803-8842-a73f9bf4277e,C.00.006,Integrated Infrastructure Development Project,2023-04-05,2024-10-31,AED,2024-10-31,Active,10,10,10,10,10,3310,2026-02-25T10:00:00Z,system,2026-02-25T10:00:00Z,system,Mohamed ziyaul Haq (10002)
+acd33fc4-c220-47e4-b47a-f8dbdf43e46a,C.00.001,Tower Project,2023-03-15,2024-09-30,AED,2025-01-01,Active,10,15,12,10,10,3310,2026-02-25T10:00:00Z,system,2026-02-25T10:00:00Z,system,Mohamed ziyaul Haq (10002)
+e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11,C.00.002,Residential Housing Development,2023-01-10,2024-06-30,AED,2024-07-01,Active,12,10,12,15,10,3310,2026-02-25T10:00:00Z,system,2026-02-25T10:00:00Z,system,Mohamed ziyaul Haq (10002)
+f7b91c44-8b6d-4d12-9e3d-7a0f2d8e55a2,C.00.003,Commercial Complex Construction,2022-11-20,2024-12-15,AED,2024-12-20,Active,15,12,10,12,15,1200,2026-02-25T10:00:00Z,system,2026-02-25T10:00:00Z,system,Mohamed ziyaul Haq (10002)
+b2e4f9a6-0c3a-45b8-a6e1-9f7c3d1b8a55,C.00.007,Water Treatment Plant Project,2023-02-18,2025-01-31,AED,2025-02-10,Active,12,15,15,18,12,2000,2026-02-25T10:00:00Z,system,2026-02-25T10:00:00Z,system,Mohamed ziyaul Haq (10002)

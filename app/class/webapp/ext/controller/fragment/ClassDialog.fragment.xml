@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m"
+xmlns:core="sap.ui.core">
+
+
+<Dialog id="_IDGenDialog1" title="Edit Class">
+
+    <VBox id="_IDGenVBox" class="sapUiSmallMargin">
+
+        <Label id="_IDGenLabel" text="Class Code"/>
+        <Input id="_IDGenInput" value="{classCode}" />
+
+        <Label id="_IDGenLabel1" text="Class Name"/>
+        <Input id="_IDGenInput1" value="{className}" />
+
+        <Label id="_IDGenLabel2" text="Company Code"/>
+        <Input id="_IDGenInput2" value="{companyCode}" />
+
+        <Label id="_IDGenLabel3" text="Description"/>
+        <Input id="_IDGenInput3" value="{description}" />
+
+    </VBox>
+
+    <beginButton>
+        <Button id="_IDGenButton" text="Save" press=".onSave"/>
+    </beginButton>
+
+    <endButton>
+        <Button id="_IDGenButton1" text="Cancel" press=".onCancel"/>
+    </endButton>
+
+</Dialog>
+
+
+</core:FragmentDefinition>

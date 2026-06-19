@@ -1,0 +1,11 @@
+ID,GLNo,GLName,parent_ID,createdAt,createdBy,modifiedAt,modifiedBy
+26f876c6-a97a-4c42-9f50-ce41a4cc8720,21613011,Tax Collected at Source (IN),9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+369d905c-9c3e-4a5e-bb8d-e16e1c8e4992,29110000,Other Payables due within 1-5 Years,9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+3c8ab87e-4ec4-426d-9304-3a3a50e2e2a0,94227000,COPA-Non-Operating Income,9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+5635bcef-f0db-4337-a891-e6fef120ab5f,21721000,Reserves for Unrealized Costs,9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+6275e497-2945-4dda-98ce-8c9c995ee68e,12590000,Vendors with a Debit Balance,9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+6e9c3777-68a1-4200-925c-3d505e458866,21533000,Tax - PIS to Pay (BR),9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+6f9814f3-6d1e-4ea7-ae37-148bba8322e4,52541200,Activity Price Diff. writeoff from WIP (PRM),9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+7e572dcc-a01b-49d9-87e0-052411f9fafa,12540200,Other Receivables Adjustments,9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+98ccdd12-d7ac-4b98-9368-b15fb10f63ca,22008000,VAT regularizations&out of scope (payables),9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous
+9b0b8bfc-cbf9-48f8-9edc-de560379a91d,22006041,land incremental value tax payable (CN),9ae18de6-5bb6-492e-9d59-dc0e5431ee0e,2026-02-19T09:35:09.593505100Z,anonymous,2026-02-19T09:35:09.589808900Z,anonymous

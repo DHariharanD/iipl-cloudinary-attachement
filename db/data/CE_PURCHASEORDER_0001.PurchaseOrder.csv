@@ -1,0 +1,11 @@
+PurchaseOrder,PurchaseOrderType,PurchaseOrderDate,Supplier
+PO1001,Standard,2025-01-05,ABC Traders
+PO1002,Service,2025-01-07,Global Services Ltd
+PO1003,Standard,2025-01-10,Tech Supplies Pvt Ltd
+PO1004,Subcontract,2025-01-12,BuildWell Constructions
+PO1005,Standard,2025-01-15,OfficeMart
+PO1006,Service,2025-01-18,QuickFix Solutions
+PO1007,Standard,2025-01-20,Electro World
+PO1008,Consignment,2025-01-22,LogiTrans Corp
+PO1009,Standard,2025-01-25,Paper & Pen Co
+PO1010,Service,2025-01-28,IT Support Services

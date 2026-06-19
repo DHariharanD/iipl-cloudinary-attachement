@@ -1,0 +1,134 @@
+{
+  "_version": "1.83.0",
+  "sap.app": {
+    "id": "ns.accidentmanagement.accidentmanagement",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": { "version": "0.0.1" },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.22.0",
+      "toolsId": "631fc0af-fac8-4ada-998e-7d9dbb85ed0f"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/AccidentService/",
+        "type": "OData",
+        "settings": { "annotations": [], "odataVersion": "4.0" }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": { "parameters": {}, "additionalParameters": "allowed" }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": { "icon": "", "favIcon": "", "phone": "", "phone@2": "", "tablet": "", "tablet@2": "" },
+    "deviceTypes": { "desktop": true, "tablet": true, "phone": true }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.147.1",
+      "libs": { "sap.m": {}, "sap.ui.core": {}, "sap.fe.templates": {} }
+    },
+    "contentDensities": { "compact": true, "cozy": true },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": { "bundleName": "ns.accidentmanagement.accidentmanagement.i18n.i18n" }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": { "operationMode": "Server", "autoExpandSelect": true, "earlyRequests": true }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": { "css": [] },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt"
+          }
+        }
+      }
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        { "pattern": ":?query:", "name": "AccidentList", "target": "AccidentList" },
+        { "pattern": "Accident({key}):?query:", "name": "AccidentObjectPage", "target": "AccidentObjectPage" }
+      ],
+      "targets": {
+        "AccidentList": {
+          "type": "Component",
+          "id": "AccidentList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Accident",
+              "variantManagement": "Page",
+              "navigation": { "Accident": { "detail": { "route": "AccidentObjectPage" } } },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": { "type": "ResponsiveTable" }
+                }
+              }
+            }
+          }
+        },
+        "AccidentObjectPage": {
+          "type": "Component",
+          "id": "AccidentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Accident",
+              "controlConfiguration": {
+                "attachments/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "selectionMode": "Single"
+                  },
+                  "actions": {
+                    "CustomUploadAttachment": {
+                      "press": "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt.onUploadAttachment",
+                      "text": "Upload Attachment",
+                      "visible": "{= ${ui>/editMode} === 'Editable' }",
+                      "enabled": true
+                    },
+                    "CustomDeleteAttachment": {
+                      "press": "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt.onDeleteAttachment",
+                      "text": "Delete Attachment",
+                      "visible": "{= ${ui>/editMode} === 'Editable' }",
+                      "enabled": true,
+                      "requiresSelection": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": { "registrationIds": [], "archeType": "transactional" },
+  "sap.fe": { "app": { "enableLazyLoading": true } },
+  "sap.cloud": { "public": true, "service": "ec_master.service" }
+}

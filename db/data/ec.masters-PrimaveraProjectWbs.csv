@@ -1,0 +1,21 @@
+ID                                  , primaverawbs                        , primaverawbsCode, parent_ID                               , ppHierarchy_ID                      , LimitedDescendantCount, DistanceFromRoot, DrillState, Matched, MatchedDescendantCount, createdAt, createdBy, modifiedAt, modifiedBy
+7a1c2d3e-4f56-4789-9a1b-1c2d3e4f5a10, Enterprise Implementation Program   , ENT-1000        ,                                         , 08cbc583-6299-429c-a6ee-1f2d9b375657
+81b2c3d4-5e67-489a-a2b3-2d3e4f5a6b11, Business Requirement Finalization   , ENT-1100        , 7a1c2d3e-4f56-4789-9a1b-1c2d3e4f5a10    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+92c3d4e5-6f78-49ab-b3c4-3e4f5a6b7c12, System Configuration & Build        , ENT-1200        , 7a1c2d3e-4f56-4789-9a1b-1c2d3e4f5a10    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+a3d4e5f6-7089-4abc-c4d5-4f5a6b7c8d13, User Acceptance Testing             , ENT-1300        , 7a1c2d3e-4f56-4789-9a1b-1c2d3e4f5a10    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+b4e5f6a7-8190-4bcd-d5e6-5a6b7c8d9e14, Digital Transformation Initiative   , DTI-2000        ,                                         , 08cbc583-6299-429c-a6ee-1f2d9b375657
+c5f6a7b8-9201-4cde-e6f7-6b7c8d9e0f15, Legacy System Assessment            , DTI-2100        , b4e5f6a7-8190-4bcd-d5e6-5a6b7c8d9e14    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+d6a7b8c9-0312-4def-f708-7c8d9e0f1a16, Cloud Migration Execution           , DTI-2200        , b4e5f6a7-8190-4bcd-d5e6-5a6b7c8d9e14    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+e7b8c9d0-1423-4e0f-0819-8d9e0f1a2b17, Go-Live & Hypercare Support         , DTI-2300        , b4e5f6a7-8190-4bcd-d5e6-5a6b7c8d9e14    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+f8c9d0e1-2534-4f10-192a-9e0f1a2b3c18, Infrastructure Modernization Project, IMP-3000        ,                                         , 08cbc583-6299-429c-a6ee-1f2d9b375657
+a9d0e1f2-3645-4021-2a3b-0f1a2b3c4d19, Network Architecture Redesign       , IMP-3100        , f8c9d0e1-2534-4f10-192a-9e0f1a2b3c18    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+b0e1f2a3-4756-4132-3b4c-1a2b3c4d5e20, Server Environment Upgrade          , IMP-3200        , f8c9d0e1-2534-4f10-192a-9e0f1a2b3c4d5e20, 08cbc583-6299-429c-a6ee-1f2d9b375657
+c1f2a3b4-5867-4243-4c5d-2b3c4d5e6f21, Security Compliance Validation      , IMP-3300        , f8c9d0e1-2534-4f10-192a-9e0f1a2b3c18    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+d2a3b4c5-6978-4354-5d6e-3c4d5e6f7a22, ERP Rollout Program                 , ERP-4000        ,                                         , 08cbc583-6299-429c-a6ee-1f2d9b375657
+e3b4c5d6-7089-4465-6e7f-4d5e6f7a8b23, Finance Module Deployment           , ERP-4100        , d2a3b4c5-6978-4354-5d6e-3c4d5e6f7a22    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+f4c5d6e7-8190-4576-7f80-5e6f7a8b9c24, Supply Chain Integration            , ERP-4200        , d2a3b4c5-6978-4354-5d6e-3c4d5e6f7a22    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+a5d6e7f8-9201-4687-8091-6f7a8b9c0d25, Training & Change Management        , ERP-4300        , d2a3b4c5-6978-4354-5d6e-3c4d5e6f7a22    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+b6e7f8a9-0312-4798-91a2-7a8b9c0d1e26, Smart Analytics Implementation      , SAI-5000        ,                                         , 08cbc583-6299-429c-a6ee-1f2d9b375657
+c7f8a9b0-1423-48a9-a2b3-8b9c0d1e2f27, Data Warehouse Setup                , SAI-5100        , b6e7f8a9-0312-4798-91a2-7a8b9c0d1e26    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+d8a9b0c1-2534-49ba-b3c4-9c0d1e2f3a28, Dashboard Development               , SAI-5200        , b6e7f8a9-0312-4798-91a2-7a8b9c0d1e26    , 08cbc583-6299-429c-a6ee-1f2d9b375657
+e9b0c1d2-3645-4acb-c4d5-0d1e2f3a4b29, Advanced Predictive Modeling        , SAI-5300        , b6e7f8a9-0312-4798-91a2-7a8b9c0d1e26    , 08cbc583-6299-429c-a6ee-1f2d9b375657

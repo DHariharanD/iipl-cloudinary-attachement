@@ -1,0 +1,11 @@
+item,description,unitOfMeasurement,quantity,boqHierarchy_ID
+Excavation,Earth excavation work,CUM,120.0000000,1347e27c-5a2a-45d5-8375-15e81a086b30
+Backfilling,Backfilling with soil,CUM,95.5000000,1347e27c-5a2a-45d5-8375-15e81a086b30
+Cable Laying,Electrical cable laying,M,350.0000000,27d2d927-59d6-4462-9633-5a0f3cdf435f
+Panel Installation,Electrical panel installation,EA,12.0000000,27d2d927-59d6-4462-9633-5a0f3cdf435f
+Pipe Installation,Water pipe installation,M,180.7500000,cbc92b7e-3b02-4399-857b-8263e9d4366b
+Sanitary Fittings,Sanitary fixture installation,EA,25.0000000,cbc92b7e-3b02-4399-857b-8263e9d4366b
+False Ceiling,False ceiling gypsum work,SQM,220.0000000,78c8dc1c-3e73-4e4e-840e-ed4b6238f1bd
+Floor Finishing,Floor tile laying work,SQM,310.5000000,78c8dc1c-3e73-4e4e-840e-ed4b6238f1bd
+Road Work,Road construction asphalt work,SQM,1500.0000000,7a2c0074-ba2d-40ee-9bb6-742360c6e204
+Drainage System,Drainage pipeline construction,M,420.2500000,7a2c0074-ba2d-40ee-9bb6-742360c6e204

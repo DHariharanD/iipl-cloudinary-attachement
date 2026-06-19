@@ -1,0 +1,162 @@
+<mvc:View
+    controllerName="ns.manageenterpriseprojects.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table">
+
+    <Page
+        id="detailPage"
+        title="Project Planning"
+        showNavButton="true"
+        navButtonPress="onBack">
+
+        <content>
+
+            <!-- ================= HEADER SECTION ================= -->
+            <VBox class="sapUiSmallMargin">
+
+                <Title
+                    id="titleHeader"
+                    text="Project Details"/>
+
+                <HBox justifyContent="SpaceBetween">
+
+                    <!-- LEFT SIDE -->
+                    <VBox
+                        width="48%"
+                        class="sapUiSmallMarginEnd">
+
+                        <Label
+                            id="lblName"
+                            text="Project Name"/>
+
+                        <Input
+                            id="projectName"
+                            value="{detailModel>/ProjectDescription}"
+                            editable="false"
+                            class="sapUiSmallMarginBottom"/>
+
+                        <Label
+                            id="lblId"
+                            text="Project ID"/>
+
+                        <Input
+                            id="projectId"
+                            value="{detailModel>/Project}"
+                            editable="false"
+                            class="sapUiSmallMarginBottom"/>
+
+                        <Label
+                            id="lblStatus"
+                            text="Processing Status"/>
+
+                        <Input
+                            id="status"
+                            value="{detailModel>/ProcessingStatus}"
+                            editable="false"/>
+
+                    </VBox>
+
+                    <!-- RIGHT SIDE -->
+                    <VBox width="48%">
+
+                        <Label
+                            id="lblProfile"
+                            text="Project Profile"/>
+
+                        <Input
+                            id="profile"
+                            value="{detailModel>/ProjectProfile}"
+                            editable="false"
+                            class="sapUiSmallMarginBottom"/>
+
+                        <Label
+                            id="lblStart"
+                            text="Planned Start"/>
+
+                        <DatePicker
+                            id="startDate"
+                            value="{detailModel>/ProjectStartDate}"
+                            editable="false"
+                            class="sapUiSmallMarginBottom"/>
+
+                        <Label
+                            id="lblEnd"
+                            text="Planned Finish"/>
+
+                        <DatePicker
+                            id="endDate"
+                            value="{detailModel>/ProjectEndDate}"
+                            editable="false"/>
+
+                    </VBox>
+
+                </HBox>
+
+            </VBox>
+
+            <!-- ================= TREE TABLE SECTION ================= -->
+            <VBox class="sapUiSmallMarginTop">
+
+                <Toolbar id="treeToolbar">
+
+                    <Title
+                        id="treeTitle"
+                        text="Project Structure"/>
+
+                </Toolbar>
+
+                <table:TreeTable
+                    id="treeTable"
+                    rows="{
+                        path: 'treeModel>/',
+                        parameters: {
+                            arrayNames: ['children']
+                        }
+                    }"
+                    selectionMode="None"
+                    visibleRowCount="15">
+
+                    <table:columns>
+
+                        <!-- NAME -->
+                        <table:Column
+                            id="colName"
+                            width="300px">
+
+                            <Label text="Name"/>
+
+                            <table:template>
+
+                                <Text text="{treeModel>ProjectElementDescription}"/>
+
+                            </table:template>
+
+                        </table:Column>
+
+                        <!-- ID -->
+                        <table:Column
+                            id="colId"
+                            width="200px">
+
+                            <Label text="ID"/>
+
+                            <table:template>
+
+                                <Text text="{treeModel>ProjectElement}"/>
+
+                            </table:template>
+
+                        </table:Column>
+
+                    </table:columns>
+
+                </table:TreeTable>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

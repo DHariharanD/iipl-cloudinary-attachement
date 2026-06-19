@@ -1,0 +1,9 @@
+ID,tripName,tripType_code,status_code,startDate,endDate,route,createdAt,createdBy,modifiedAt,modifiedBy
+c4f9a7d2-6e51-4b4d-9c35-9a2c2d4a6f01,Trip 1,DEL,PLN,2026-04-20,2026-04-21,Bangalore-Mysore,2026-04-20T08:00:00Z,admin,2026-04-20T08:00:00Z,admin
+e91c2a6b-2f34-4d7c-8c71-1c3b6f9d2a02,Trip 2,PIC,RUN,2026-04-21,2026-04-22,Chennai-Vellore,2026-04-21T09:00:00Z,admin,2026-04-21T09:00:00Z,admin
+a7d3c5e1-5b7a-4c91-9d22-7f1b3c2e8a03,Trip 3,DEL,CMP,2026-04-22,2026-04-23,Hyderabad-Warangal,2026-04-22T10:00:00Z,admin,2026-04-22T10:00:00Z,admin
+d2e8a4c7-1f63-4b9e-8c44-3c7d2f5a1b04,Trip 4,PIC,PLN,2026-04-23,2026-04-24,Pune-Mumbai,2026-04-23T08:30:00Z,admin,2026-04-23T08:30:00Z,admin
+f6b2c1a9-3e75-4d88-bc92-5a2d9e3c6f05,Trip 5,DEL,RUN,2026-04-24,2026-04-25,Delhi-Agra,2026-04-24T07:00:00Z,admin,2026-04-24T07:00:00Z,admin
+b1c3e5d7-8a92-4f6b-9c21-6d7a2e4b3f06,Trip 6,PIC,CMP,2026-04-25,2026-04-26,Kolkata-Durgapur,2026-04-25T06:00:00Z,admin,2026-04-25T06:00:00Z,admin
+9e7a2c5b-4d11-4a8f-8b73-2c1d7e6f5a07,Trip 7,DEL,PLN,2026-04-26,2026-04-27,Ahmedabad-Surat,2026-04-26T05:00:00Z,admin,2026-04-26T05:00:00Z,admin
+2d6f1a3b-7c22-4e9d-b841-9a3c5e7d8f08,Trip 8,PIC,RUN,2026-04-27,2026-04-28,Jaipur-Udaipur,2026-04-27T04:00:00Z,admin,2026-04-27T04:00:00Z,admin

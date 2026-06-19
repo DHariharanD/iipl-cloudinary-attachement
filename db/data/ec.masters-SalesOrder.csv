@@ -1,0 +1,11 @@
+ID,SalesOrder,SoldToParty,RequestedDeliveryDate,BillingDocumentDate,TotalNetAmount,TransactionCurrency,Project_ID,Customer,CustomerReference,SalesOrderType,PaymentTerms,NetValue,OverallStatus
+7ac3fb7a-0db4-40f4-acbc-23cc77329f81,SO-10001,CUST-EC01,2024-01-15,2024-01-10,500000,AED,9b1fe95a-0e84-4803-8842-a73f9bf4277e,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+7f5a481f-2172-483a-8052-ca6817ee9529,SO-10002,CUST-EC02,2024-02-15,2024-02-10,750000,AED,9b1fe95a-0e84-4803-8842-a73f9bf4277e,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+2167019e-8c03-4e55-a1e3-01481d795537,SO-10003,CUST-EC03,2024-03-01,2024-02-25,1200000,AED,acd33fc4-c220-47e4-b47a-f8dbdf43e46a,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+d0572b1c-e298-487d-a073-ce8df03a0f7d,SO-10004,CUST-EC04,2024-04-01,2024-03-25,950000,AED,acd33fc4-c220-47e4-b47a-f8dbdf43e46a,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+10abedb3-f8e1-4deb-8562-82eb1e8fcdec,SO-10005,CUST-EC05,2024-01-20,2024-01-15,2000000,AED,e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+cab2bfd2-9bdb-4da3-81c7-a3029551f790,SO-10006,CUST-EC06,2024-02-20,2024-02-15,1800000,AED,e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+613f5c8b-6dd4-441d-9952-83985fa1b2c8,SO-10007,CUST-EC07,2024-03-10,2024-03-05,2500000,AED,f7b91c44-8b6d-4d12-9e3d-7a0f2d8e55a2,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+64e37ace-3171-4066-a2fd-97565fefd36e,SO-10008,CUST-EC08,2024-04-10,2024-04-05,2750000,AED,f7b91c44-8b6d-4d12-9e3d-7a0f2d8e55a2,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+d0cc5e40-c410-4dc0-a213-fa730936759d,SO-10009,CUST-EC09,2024-05-01,2024-04-25,1600000,AED,b2e4f9a6-0c3a-45b8-a6e1-9f7c3d1b8a55,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process
+68eef575-5abf-4c7f-b99e-ccaf919c58a4,SO-10010,CUST-EC10,2024-06-01,2024-05-25,1900000,AED,b2e4f9a6-0c3a-45b8-a6e1-9f7c3d1b8a55,Domestic Customer 1,EC - Construction,90 days,Initial,605484.50 AED,In Process

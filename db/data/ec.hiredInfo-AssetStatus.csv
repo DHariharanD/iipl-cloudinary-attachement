@@ -1,0 +1,11 @@
+code,name,descr
+WK,Working,Asset is currently in working condition
+UR,Under Repair,Asset is currently under maintenance or repair
+SC,Scrap,Asset has been scrapped and is no longer in use
+RS,Reserved,Asset is reserved for upcoming project
+LS,Lost/Stolen,Asset has been reported lost or stolen
+DN,Donated,Asset has been donated
+SD,Sold,Asset has been sold
+WO,Write OFF,Asset has been written off from books
+IC,Insurance Claim,Asset is under insurance claim process
+IT,In Transit/Disposed,Asset is in transit or disposed

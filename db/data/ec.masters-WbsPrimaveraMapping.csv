@@ -1,0 +1,5 @@
+ID,wbs_ID,wbsElementDescription,projectId,primavearID,primaveraName,createdAt,createdBy,modifiedAt,modifiedBy
+1b1c014b-3b93-4bf5-b363-ac522a48c771,,Core Infrastructure Construction,C.00.001.005,1000,Core Infrastructure Construction - Primavera Mapping,2026-02-23T07:22:21.022886600Z,Admin,2026-02-23T07:22:21.022886600Z,Admin
+cb226ee8-0169-4be7-ab84-0ab5197a0d47,,Construction,C.00.002,1001,Construction - Primavera Mapping,2026-02-23T07:22:02.698649700Z,Admin,2026-02-23T07:22:02.698649700Z,Admin
+e9003fc7-636c-4c76-ac2e-1e93506e2544,,Smart Systems & Digital Infrastructure,C.00.001.015,1002,Smart Systems & Digital Infrastructure - Primavera Mapping,2026-02-23T07:27:43.849941700Z,Admin,2026-02-23T07:27:43.849941700Z,Admin
+ed4d25a2-0af7-4926-b569-02e7923aa001,,Civil Engg & Utility Deployment,P.00.003.002,1003,Civil Engg & Utility Deployment - Primavera Mapping,2026-02-23T07:21:48.200363800Z,Admin,2026-02-23T07:21:48.200363800Z,Admin

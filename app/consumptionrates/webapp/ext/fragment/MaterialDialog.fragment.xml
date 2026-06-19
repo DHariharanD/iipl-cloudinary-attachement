@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="materialDialog"
+        contentWidth="60%">
+
+        <subHeader>
+            <Toolbar id="materialSearchToolbar">
+
+                <SearchField
+                    id="inpMatId"
+                    placeholder="Search Product ID"
+                    liveChange="onMaterialSearch"
+                    width="30%" />
+
+                <SearchField
+                    id="inpMatName"
+                    placeholder="Search Product Name"
+                    liveChange="onMaterialSearch"
+                    width="40%" />
+
+            </Toolbar>
+        </subHeader>
+
+<Table
+    id="tblMaterial"
+    mode="SingleSelectLeft"
+    growing="true"
+    growingScrollToLoad="true"
+    items="{matModel>/items}">
+
+            <columns>
+                <Column id="colProductId">
+                    <Text id="colProductIdText" text="Product ID"/>
+                </Column>
+                <Column id="colProductName">
+                    <Text id="colProductNameText" text="Product Name"/>
+                </Column>
+                <Column id="colProductType">
+                    <Text id="colProductTypeText" text="Product Type"/>
+                </Column>
+                <Column id="colUom">
+                    <Text id="colUomText" text="UOM"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem id="materialColumnListItem">
+                    <cells>
+                        <Text id="txtProductId"   text="{matModel>productId}"/>
+                        <Text id="txtProductName" text="{matModel>productName}"/>
+                        <Text id="txtProductType" text="{matModel>productType}"/>
+                        <Text id="txtUom"         text="{matModel>unitofMeasure}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+        <beginButton>
+            <Button
+                id="btnConfirmMaterial"
+                text="Add"
+                type="Emphasized"
+                press="onConfirmMaterial"/>
+        </beginButton>
+
+        <endButton>
+            <Button
+                id="btnCancelMaterial"
+                text="Cancel"
+                press="onCancelMaterial"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

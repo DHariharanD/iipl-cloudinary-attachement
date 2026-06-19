@@ -1,0 +1,15 @@
+ID,boqCbs_ID,code,name,descr,parent_ID
+04581881-bb85-4c7b-98b0-a01c4d209957,56e18d4a-19c6-4202-a0de-14a869131789,02000202,Formwork Maintenance,Formwork Maintenance,ed137af6-f8ed-4c3b-adc3-0aca796879f7
+0893adff-7e7d-466a-a912-db479c7d0a88,c3ce543b-cda3-4ff3-9194-65378421add2,02000210,Concrete Formwork,Concrete Formwork,ed137af6-f8ed-4c3b-adc3-0aca796879f7
+59d8ec1d-3ba2-4bd7-a286-46243b311026,62af90e7-2af6-406f-97c9-2ed8f8403c64,01000101,Overhead Cost,Indirect costs,ed137af6-f8ed-4c3b-adc3-0aca796879f7
+d81134ba-cfef-4d71-9c75-050f1f4a5949,ffe0de46-183c-4ffd-b326-2c09711379de,0020,Concrete Works,Concrete Works,ed137af6-f8ed-4c3b-adc3-0aca796879f7
+e0e2c9c3-c20a-44f2-ade2-d8db745bd75c,ec7bd97f-76a8-4965-a70f-55a20f2e1f17,0010,Preliminaries,Preliminaries,ed137af6-f8ed-4c3b-adc3-0aca796879f7
+
+1ffc0f47-ea18-4c71-b7c6-741424c0f8f7,85c7225b-ce3b-49ca-91cc-694f820a4b24,1000,Subcontracts,Subcontracts,ba8356f4-671d-44b3-81e9-3442fd503ac5
+2046ba88-3378-40f3-a806-b22c573c8a80,1ce2f498-b27a-4477-9a99-dfe7ef2beaae,1700,Equipements,Equipements,ba8356f4-671d-44b3-81e9-3442fd503ac5
+6a762e3a-4538-47bb-94b7-59ad63c02f89,38e450ea-40ff-4523-a829-3fbcd1bd7fbc,1800,Furnishing,Furnishing,ba8356f4-671d-44b3-81e9-3442fd503ac5
+a0947a09-6e6a-41e6-9ecf-4ef09e984f99,4cbb614f-b4c6-4e56-a25a-cb0de611c560,0030,Masonry Works,Masonry Works,ba8356f4-671d-44b3-81e9-3442fd503ac5
+cfab0564-4ce9-42f5-a177-617dbd6022cf,7ed5061f-e659-4598-a901-165e3c238c08,0700071001,Sub Frame Fabrication,Sub Frame Fabrication,ba8356f4-671d-44b3-81e9-3442fd503ac5
+dde39a6e-003e-42bb-b26c-4f246bcd036d,c8962f6c-e5f8-449f-83e9-b6db9bab0cab,1300,Metals,Metals,ba8356f4-671d-44b3-81e9-3442fd503ac5
+fa3240ae-23f8-45fe-8d15-ed1066a38ce7,94310b4c-20a0-4766-9d5f-c8111a155288,01000101,Overhead Cost,Indirect costs,ba8356f4-671d-44b3-81e9-3442fd503ac5
+ff3afd68-4eb9-4c0f-a435-1fec362e9c0a,6e0fd0b2-da2d-4646-b07a-4c9ba1ac93b1,0010,Preliminaries,Preliminaries,ba8356f4-671d-44b3-81e9-3442fd503ac5

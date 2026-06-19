@@ -1,0 +1,82 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="vhDialogCBS"
+        title="Select Resource Material" 
+        contentWidth="55%"
+        resizable="true">
+
+        <subHeader>
+            <Toolbar>
+                <SearchField 
+                    id="searchId" 
+                    placeholder="Search ID..." 
+                    width="25%" 
+                    liveChange="onSearch" />
+
+                <SearchField 
+                    id="searchName" 
+                    placeholder="Search Name..." 
+                    width="35%" 
+                    liveChange="onSearch" />
+
+                <ToolbarSpacer />
+
+                <Select 
+                    id="selectType" 
+                    width="30%" 
+                    change="onSearch"
+                    items="{rtModel>/uniqueTypes}">
+                    <core:Item key="{rtModel>key}" text="{rtModel>text}" />
+                </Select>
+            </Toolbar>
+        </subHeader>
+
+        <Table
+            id="tblCBSMat" inset="false" mode="None"
+            items="{
+                path: 'rtModel>/items' 
+            }">
+
+            <columns>
+                <Column width="3rem" hAlign="Center">
+                    <header>
+                        <CheckBox select="onSelectAll" />
+                    </header>
+                </Column>
+                
+                <Column id="_cbsCol1"><Text text="Product ID"/></Column>
+                <Column id="_cbsCol2"><Text text="Product Name"/></Column>
+                <Column id="_cbsColType"><Text text="Product Type"/></Column>
+                <Column id="_cbsCol3"><Text text="UoM"/></Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <CheckBox 
+                            selected="{rtModel>isSelected}" 
+                            enabled="{rtModel>isEnabled}" 
+                        />
+
+                        <Text text="{rtModel>productId}" />
+                        <Text text="{rtModel>productName}" />
+                        <Text text="{rtModel>productType}" />
+                        <Text text="{rtModel>unitofMeasure}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <endButton>
+            <Button id="_cbsBtnCancel" text="Cancel" press="onCancelPress"/>
+        </endButton>
+
+        <beginButton>
+            <Button id="_cbsBtnAdd" text="Add" type="Emphasized" press="onVHConfirm"/>
+        </beginButton>
+
+    </Dialog>
+</core:FragmentDefinition>

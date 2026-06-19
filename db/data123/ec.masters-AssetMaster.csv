@@ -1,0 +1,11 @@
+ID,type,asset,technicalObject,external,fuelManagement,description,company_CompanyCode
+162537a2-8aa1-4e7f-91da-a698fc0fb8a9,Transport Vehicle,Dump Truck,TECH-DT-005,true,false,Dump truck,1000
+18e0c065-2be8-43fe-95f3-bbb7f5c87b67,Compaction Equipment,Road Roller,TECH-RR-006,false,true,Road roller,1000
+b6231425-ce55-4d25-9353-938bb9c4370a,MultiPurpose,Backhoe Loader,TECH-BL-007,true,false,Backhoe loader,1000
+ce4a2997-998b-4118-8af2-d794bd920d84,Temporary Structure,Scaffolding,TECH-SC-008,false,true,Scaffolding,1200
+665f320f-07b6-4664-a145-80413241b80c,Power Equipment,Generator,TECH-GN-009,true,false,generator supplying,1200
+a9f2c4b1-1d23-4e6a-8b91-2c3d4e5f603a,Earthmoving Equipment,Excavator,TECH-EX-010,true,false,Excavator,1000
+b3d7e9a2-2e34-4f7b-9c02-3d4e5f6a604b,Lifting Equipment,Mobile Crane,TECH-MC-011,false,true,Crane,1200
+c8e4a1d9-3f45-4e8c-8d13-4e5f6a7b605c,Concrete Equipment,Concrete Mixer,TECH-CM-012,true,false,Mixer,1000
+d2f9b6a3-4a56-4f9d-9e24-5f6a7b8c606d,Utility Vehicle,Water Tanker,TECH-WT-013,true,true,Water tanker,1000
+e7a3c8d4-5b67-4e0e-8f35-6a7b8c9d607e,Maintenance Equipment,Welding Machine,TECH-WM-014,false,true,Welding machine,1200

@@ -1,0 +1,42 @@
+using from './resourcecategories/annotations';
+using from './costbreakdownstructure/annotations';
+using from './resourcehierarchies/annotations';
+using from './costbreakdownhierarchy/annotations';
+using from './assettype/annotations';
+using from './assetmaster/annotations';
+using from './employeemaster/annotations';
+using from './wbs/annotations';
+using from './boqtemplate/annotations';
+using from './billofquantity/annotations';
+using from './enterpriseprojects/annotations';
+using from './projectboqmapping/annotations';
+using from './projectprimaveramapping/annotations';
+using from './resourcerequest/annotations';
+using from './projectprimaverawbsmapping/annotations';
+using from './projectbudget/annotations';
+using from './procurementpayment/annotations';
+using from './customerapplication/annotations';
+using from './employeedetails/annotations';
+using from './designation/annotations';
+using from './asset-model/annotations';
+using from './asset-make/annotations';
+using from './documents/annotations';
+using from './asset-info/annotations';
+using from './hired-assetinfo/annotations';
+using from './assetcategory/annotations';
+using from './boqcontract/annotations';
+using from './asset-request/annotations';
+using from './hired-assetinfo/annotations';
+using from './trip/annotations';
+using from './fuel/annotations';
+using from './accident-management/annotations';
+using from './ta-vouchers/annotations';
+using from './productivityentry/annotations';
+using from './asset-time-sheet-daily/annotations';
+
+using from './asset_service/annotations';
+
+using from './productivity-rate/annotations';
+using from './consumptionrates/annotations';
+
+using from './allocations/annotations';

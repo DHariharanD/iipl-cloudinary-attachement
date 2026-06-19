@@ -1,0 +1,12 @@
+ID,PurchaseOrder,PurchaseOrderCategory,DocumentCurrency,Material,MaterialDescription,parent_ID,wbs_ID,createdAt,createdBy,modifiedAt,modifiedBy,PurchaseOrderItems,Product,PurchasedQuantity,NetValue,SalesItemContract
+8c1f7a9e-5b4c-4d2a-9f01-1a2b3c4d5e01,PO-1001,Standard,INR,MAT-1001,Steel Rods,c381115d-7a9a-4dc1-bf62-2a222fc205d5,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,10,Slab (EC0009),30.000 M3,39000.00 AED,1899 - Excavation
+91a2b3c4-d5e6-47f8-9012-3a4b5c6d7e02,PO-1001,Standard,INR,MAT-1002,Cement Bags,c381115d-7a9a-4dc1-bf62-2a222fc205d5,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,20,Stircase (EC0011),50.000 M3,89000.00 AED,1899 - Backfilling
+
+a12b3c4d-5e6f-4789-9012-3b4c5d6e7f03,PO-1002,Standard,INR,MAT-1003,Electrical Cables,8a9c2b1b-2b74-426a-a595-aad213404c6a,961a2c02-059a-4ad9-ab6d-4b5025ae2112,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,10,Slab (EC0009),30.000 M3,39000.00 AED,1899 - Excavation
+b23c4d5e-6f78-4890-1234-4c5d6e7f8a04,PO-1002,Standard,INR,MAT-1004,Switch Boards,394d53bb-5819-4742-af0f-bb5a1c1ee83a,961a2c02-059a-4ad9-ab6d-4b5025ae2112,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,20,Stircase (EC0011),50.000 M3,89000.00 AED,1899 - Backfilling
+
+c34d5e6f-7890-4a12-3456-5d6e7f8a9b05,PO-1003,Service,INR,SERV-2001,Site Inspection,394d53bb-5819-4742-af0f-bb5a1c1ee83a,4453a6be-8ed7-45fc-9954-c46c00188130,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,10,Slab (EC0009),30.000 M3,39000.00 AED,1899 - Excavation
+d45e6f78-9012-4b34-5678-6e7f8a9b0c06,PO-1003,Service,INR,SERV-2002,Quality Audit,394d53bb-5819-4742-af0f-bb5a1c1ee83a,4453a6be-8ed7-45fc-9954-c46c00188130,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,20,Stircase (EC0011),50.000 M3,89000.00 AED,1899 - Backfilling
+
+e56f7890-1234-4c56-7890-7f8a9b0c1d07,PO-1004,Standard,INR,MAT-1005,Bricks,6d08d41d-5e92-42c7-9e70-544221a9f367,4906c2be-c74d-417c-98e0-37f2de8ff376,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,10,Slab (EC0009),30.000 M3,39000.00 AED,1899 - Excavation
+f6789012-3456-4d78-9012-8a9b0c1d2e08,PO-1004,Standard,INR,MAT-1006,Sand,6d08d41d-5e92-42c7-9e70-544221a9f367,4906c2be-c74d-417c-98e0-37f2de8ff376,2026-03-21T09:00:00Z,anonymous,2026-03-21T09:00:00Z,anonymous,20,Stircase (EC0011),50.000 M3,89000.00 AED,1899 - Backfilling

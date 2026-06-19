@@ -1,0 +1,5 @@
+prodType,parent_ID,productTypeName
+FERT,4c7055f5-5c46-463b-abad-5e1ff02eaa9c,Finished Product
+HALB,6125fcb7-d4ca-493b-b7b7-48cbff30b9db,Semi-Finished Product
+ROH,fc8cd9b2-f58e-40e0-9588-135f5d3ac7eb,Raw Material
+SERV,4c7055f5-5c46-463b-abad-5e1ff02eaa9c,abc Product

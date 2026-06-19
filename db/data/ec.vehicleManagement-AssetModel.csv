@@ -1,0 +1,6 @@
+ID,modelMake,modelModel,modelDescr,companyCode,createdAt,createdBy,modifiedAt,modifiedBy
+m1b1c1d1-0001-0001-0001-000000000001,Caterpillar,CAT320,Hydraulic Excavator Model,3310,2026-01-01T00:00:00Z,admin,2026-01-01T00:00:00Z,admin
+m1b1c1d1-0002-0002-0002-000000000002,Liebherr,LTM1100,Mobile Crane Model,1200,2026-01-02T00:00:00Z,admin,2026-01-02T00:00:00Z,admin
+m1b1c1d1-0003-0003-0003-000000000003,Volvo,A40G,Articulated Dump Truck,2000,2026-01-03T00:00:00Z,admin,2026-01-03T00:00:00Z,admin
+m1b1c1d1-0004-0004-0004-000000000004,Schwing,SP1800,Concrete Pump Model,9000,2026-01-04T00:00:00Z,admin,2026-01-04T00:00:00Z,admin
+m1b1c1d1-0005-0005-0005-000000000005,Toyota,8FGCU25,Forklift Model,1100,2026-01-05T00:00:00Z,admin,2026-01-05T00:00:00Z,admin

@@ -1,0 +1,3 @@
+ID,name,company,project_ID,needBy,uom,priority_code,storageLocation,notes,boq_ID,createdAt,createdBy,modifiedAt,modifiedBy
+ba8356f4-671d-44b3-81e9-3442fd503ac5,Material Request,3310,9b1fe95a-0e84-4803-8842-a73f9bf4277e,2026-05-15,BAG,NORMAL,Warehouse A,"Urgent requirement for excavation work",896ee9af-7419-41a2-8993-ef23ed2864b8,2026-03-02T06:27:50.987568800Z,anonymous,2026-03-02T06:27:50.987568800Z,anonymous
+ed137af6-f8ed-4c3b-adc3-0aca796879f7,Asset request,3310,9b1fe95a-0e84-4803-8842-a73f9bf4277e,2026-05-25,TON,HIGH,Electrical Store,"Cables required for temporary power setup",8b8e0625-a0ea-4ca5-980d-e4f4db87ae0b,2026-03-02T06:29:04.065323800Z,anonymous,2026-03-02T06:29:04.065323800Z,anonymous

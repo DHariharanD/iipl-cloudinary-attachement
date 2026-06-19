@@ -1,0 +1,208 @@
+{
+  "_version": "1.83.0",
+  "sap.app": {
+    "id": "ns.procurementpayment",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.21.0",
+      "toolsId": "2b1447b4-e223-4e55-b229-af211e233e98"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/PaymentApplication/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.146.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.procurementpayment.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "procurementPaymentList",
+          "target": "procurementPaymentList"
+        },
+        {
+          "pattern": "procurementPayment({key}):?query:",
+          "name": "procurementPaymentObjectPage",
+          "target": "procurementPaymentObjectPage"
+        },
+        {
+          "name": "procurementPayment_ppaPurchaseOrderItemObjectPage",
+          "pattern": "procurementPayment({key})/ppaPurchaseOrderItem({ppaPurchaseOrderItemKey}):?query:",
+          "target": "procurementPayment_ppaPurchaseOrderItemObjectPage"
+        },
+        {
+          "name": "procurementPayment_ppaPurchaseOrderItem_wbsboqItemsObjectPage",
+          "pattern": "procurementPayment({key})/ppaPurchaseOrderItem({ppaPurchaseOrderItemKey})/wbsboqItems({wbsboqItemsKey}):?query:",
+          "target": "procurementPayment_ppaPurchaseOrderItem_wbsboqItemsObjectPage"
+        }
+      ],
+      "targets": {
+        "procurementPaymentList": {
+          "type": "Component",
+          "id": "procurementPaymentList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/procurementPayment",
+              "variantManagement": "Page",
+              "navigation": {
+                "procurementPayment": {
+                  "detail": {
+                    "route": "procurementPaymentObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "procurementPaymentObjectPage": {
+          "type": "Component",
+          "id": "procurementPaymentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/procurementPayment",
+              "navigation": {
+                "ppaPurchaseOrderItem": {
+                  "detail": {
+                    "route": "procurementPayment_ppaPurchaseOrderItemObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "procurementPayment_ppaPurchaseOrderItemObjectPage": {
+          "type": "Component",
+          "id": "procurementPayment_ppaPurchaseOrderItemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "wbsboqItems": {
+                  "detail": {
+                    "route": "procurementPayment_ppaPurchaseOrderItem_wbsboqItemsObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/procurementPayment/ppaPurchaseOrderItem"
+            }
+          }
+        },
+        "procurementPayment_ppaPurchaseOrderItem_wbsboqItemsObjectPage": {
+          "type": "Component",
+          "id": "procurementPayment_ppaPurchaseOrderItem_wbsboqItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/procurementPayment/ppaPurchaseOrderItem/wbsboqItems"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

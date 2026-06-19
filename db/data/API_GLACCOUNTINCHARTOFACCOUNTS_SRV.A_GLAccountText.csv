@@ -1,0 +1,8 @@
+ChartOfAccounts,GLAccount,Language,GLAccountName,GLAccountLongName
+YCOA,100010,EN,Advance Payment,Advance Payment Account
+YCOA,100020,EN,Cash on Hand,Cash on Hand Account
+YCOA,100030,EN,Accounts Receivable,Accounts Receivable Account
+YCOA,200010,EN,Accounts Payable,Accounts Payable Account
+YCOA,200020,EN,Accrued Expenses,Accrued Expenses Account
+YCOA,200010,AR,Accounts Payable,Accounts Payable Account AR
+YCOA,200020,AR,Accrued Expenses,Accrued Expenses Account AR

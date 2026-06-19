@@ -1,0 +1,6 @@
+ID,type,objectTypeText,Asset,createdAt,createdBy,modifiedAt,modifiedBy
+3f1a2c10-8a4e-4c1f-bb01-111111111111,HEAVY_EQUIP,Heavy Equipment,Excavator,2025-01-20T11:00:00Z,admin,2025-01-20T11:00:00Z,admin
+3f1a2c10-8a4e-4c1f-bb01-222222222222,HEAVY_EQUIP,Heavy Equipment,Bulldozer,2025-01-20T11:05:00Z,admin,2025-01-20T11:05:00Z,admin
+3f1a2c10-8a4e-4c1f-bb01-333333333333,VEHICLE,Construction Vehicle,Dump Truck,2025-01-20T11:10:00Z,admin,2025-01-20T11:10:00Z,admin
+3f1a2c10-8a4e-4c1f-bb01-444444444444,TOOLS,Construction Tools,Concrete Mixer,2025-01-20T11:15:00Z,admin,2025-01-20T11:15:00Z,admin
+3f1a2c10-8a4e-4c1f-bb01-555555555555,SAFETY,Safety Equipment,Safety Helmet,2025-01-20T11:20:00Z,admin,2025-01-20T11:20:00Z,admin

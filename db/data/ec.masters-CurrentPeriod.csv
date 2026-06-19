@@ -1,0 +1,2 @@
+ID,workDone,meterial,totalDue,advPayRecovery,retention,retentionMaterial,advPayRecoveryMaterial,otherDeduction,netPaymentDue,claimAmount,advanceAmount,retentionRelease,customerCurrentPeriod_ID,createdAt,createdBy,modifiedAt,modifiedBy
+f4d1a2b3-aaaa-bbbb-cccc-111122223333,96063140.96,0.00,96063140.96,4803157.05,9606314.10,0.00,0.00,0.00,81653669.81,0.00,0.00,0.00,a1000001-0000-0000-0000-000000000001,2026-02-20T06:52:45.670115100Z,Admin,2026-02-20T06:54:57.227753400Z,Admin

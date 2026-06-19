@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+ <HBox id="_IDGenHBox"  visible="{= ${ui>/editMode} === 'Editable' }">
+    <Button id="_IDGenButton"
+         core:require="{ handler: 'ns/resourcehierarchies/ext/fragment/AddNode' }"
+        icon="sap-icon://add"
+        type="Transparent"
+        tooltip="Add Node"
+        press="handler.onPress"        
+    />
+    </HBox>
+</core:FragmentDefinition>

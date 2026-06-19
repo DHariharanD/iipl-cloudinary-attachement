@@ -1,0 +1,7 @@
+ID,commodityCode,commodityName,companyCode,description,createdAt,createdBy,modifiedAt,modifiedBy
+a1b2c3d4-0001-4000-a000-000000000001,COM001,Cement,3310,Commodity for cement materials,2024-01-01T00:00:00Z,admin,2024-01-01T00:00:00Z,admin
+a1b2c3d4-0003-4000-a000-000000000003,COM003,Copper Wire,1100,Commodity for copper wire materials,2024-01-03T00:00:00Z,admin,2024-01-03T00:00:00Z,admin
+a1b2c3d4-0005-4000-a000-000000000005,COM005,Timber,1200,Commodity for timber and wood,2024-01-05T00:00:00Z,admin,2024-01-05T00:00:00Z,admin
+a1b2c3d4-0007-4000-a000-000000000007,COM007,Diesel Fuel,2000,Commodity for diesel fuel,2024-01-07T00:00:00Z,admin,2024-01-07T00:00:00Z,admin
+a1b2c3d4-0009-4000-a000-000000000009,COM009,Lubricant Oil,9000,Commodity for lubricant oil,2024-01-09T00:00:00Z,admin,2024-01-09T00:00:00Z,admin
+

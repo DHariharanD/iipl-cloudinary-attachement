@@ -1,0 +1,59 @@
+ID,budget_ID,wbsElement,description,cbs,resource,quantity,unitPrice,actualQuantity,actualAmount,budgetQuantity,budgetAmount,createdAt,createdBy,modifiedAt,modifiedBy,UOM
+1,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+2,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+3,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+4,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+5,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+6,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Construction,Excavation works for foundation,FERT,Green Boiler,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+7,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Construction,Excavation works for foundation,VERP,Paper Cover,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+8,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Construction,Excavation works for foundation,NLAG,NON STOCK MATERIAL,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+9,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Construction,Excavation works for foundation,KMAT,Serial Number testing,1200,100,1100,"1,10,000 AED",1200 KG,"120,000 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+10,ab94ac68-e5a8-4c22-9fc7-1cd3b72a4ede,Construction,Excavation works for foundation,NLAG,Non-stock Test,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:53:55Z,anonymous,2026-03-09T03:53:55Z,anonymous,KG
+
+11,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+12,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+13,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+14,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+15,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+
+16,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Construction,Excavation works for foundation,FERT,Green Boiler,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+17,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Construction,Excavation works for foundation,VERP,Paper Cover,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+18,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Construction,Excavation works for foundation,NLAG,NON STOCK MATERIAL,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+19,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Construction,Excavation works for foundation,KMAT,Serial Number testing,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+20,f4fdc1f9-0b53-4d47-92ff-cc7e87c51458,Construction,Excavation works for foundation,NLAG,Non-stock Test,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T03:55:31Z,anonymous,2026-03-09T03:55:31Z,anonymous,KG
+
+21,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+22,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+23,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+24,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+25,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+
+26,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Construction,Excavation works for foundation,FERT,Green Boiler,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+27,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Construction,Excavation works for foundation,VERP,Paper Cover,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+28,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Construction,Excavation works for foundation,NLAG,NON STOCK MATERIAL,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+29,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Construction,Excavation works for foundation,KMAT,Serial Number testing,1200,100,1100,"1,10,000 AED",1200 KG,"120,000 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+30,a9e1c7b2-6f2d-4f52-a7c1-6f8c2e97a001,Construction,Excavation works for foundation,NLAG,Non-stock Test,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:10:15Z,anonymous,2026-03-09T04:10:15Z,anonymous,KG
+
+31,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+32,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+33,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+34,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+35,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+
+36,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Construction,Excavation works for foundation,FERT,Green Boiler,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+37,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Construction,Excavation works for foundation,VERP,Paper Cover,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+38,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Construction,Excavation works for foundation,NLAG,NON STOCK MATERIAL,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+39,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Construction,Excavation works for foundation,KMAT,Serial Number testing,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+40,b2f9d51e-93c8-4d1c-8c8a-72d1c7d41002,Construction,Excavation works for foundation,NLAG,Non-stock Test,1200,100,1100,"1,10,000 AED",1200 KG,"1,20,000 AED",2026-03-09T04:12:45Z,anonymous,2026-03-09T04:12:45Z,anonymous,KG
+
+41,c4a7e3f1-3b7d-4a1c-92f6-9d5c4a831003,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:15:22Z,anonymous,2026-03-09T04:15:22Z,anonymous,KG
+42,c4a7e3f1-3b7d-4a1c-92f6-9d5c4a831003,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:15:22Z,anonymous,2026-03-09T04:15:22Z,anonymous,KG
+43,c4a7e3f1-3b7d-4a1c-92f6-9d5c4a831003,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:15:22Z,anonymous,2026-03-09T04:15:22Z,anonymous,KG
+44,c4a7e3f1-3b7d-4a1c-92f6-9d5c4a831003,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:15:22Z,anonymous,2026-03-09T04:15:22Z,anonymous,KG
+45,c4a7e3f1-3b7d-4a1c-92f6-9d5c4a831003,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:15:22Z,anonymous,2026-03-09T04:15:22Z,anonymous,KG
+
+46,d6e9a4c3-7c3b-45e6-8b4a-1b7a2c9d1004,Design,Backfilling and compaction,Formwork Maintenance,Serial Number testing,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:18:10Z,anonymous,2026-03-09T04:18:10Z,anonymous,KG
+47,d6e9a4c3-7c3b-45e6-8b4a-1b7a2c9d1004,Design,Backfilling and compaction,Indirect costs,Green Boiler,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:18:10Z,anonymous,2026-03-09T04:18:10Z,anonymous,KG
+48,d6e9a4c3-7c3b-45e6-8b4a-1b7a2c9d1004,Design,Backfilling and compaction,Concrete Formwork,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:18:10Z,anonymous,2026-03-09T04:18:10Z,anonymous,KG
+49,d6e9a4c3-7c3b-45e6-8b4a-1b7a2c9d1004,Design,Backfilling and compaction,Preliminaries,NON STOCK MATERIAL,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:18:10Z,anonymous,2026-03-09T04:18:10Z,anonymous,KG
+50,d6e9a4c3-7c3b-45e6-8b4a-1b7a2c9d1004,Design,Backfilling and compaction,Concrete Works,Paper Cover,950,90,900,"81,000 AED",950 KG,"85,500 AED",2026-03-09T04:18:10Z,anonymous,2026-03-09T04:18:10Z,anonymous,KG

@@ -1,0 +1,262 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "ns.costbreakdownhierarchy",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "47df41f4-e5b2-4123-a5f1-af43c1ab9466"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/CostBreakdownStructureService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.costbreakdownhierarchy.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "CostBreakDownHierarchiesList",
+          "target": [
+            "CostBreakDownHierarchiesList"
+          ]
+        },
+        {
+          "pattern": "CostBreakDownHierarchies({key}):?query:",
+          "name": "CostBreakDownHierarchiesObjectPage",
+          "target": [
+            "CostBreakDownHierarchiesList",
+            "CostBreakDownHierarchiesObjectPage"
+          ]
+        },
+        {
+          "pattern": "CostBreakDownHierarchies({key})/cbHierarchies({cbHierarchiesKey}):?query:",
+          "name": "CostBreakDownHierarchies_cbHierarchiesObjectPage",
+          "target": "CostBreakDownHierarchies_cbHierarchiesObjectPage"
+        }
+      ],
+      "targets": {
+        "CostBreakDownHierarchiesList": {
+          "type": "Component",
+          "id": "CostBreakDownHierarchiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/CostBreakDownHierarchies",
+              "variantManagement": "Page",
+              "navigation": {
+                "CostBreakDownHierarchies": {
+                  "detail": {
+                    "route": "CostBreakDownHierarchiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "CBS1": {
+                      "press": "ns.costbreakdownhierarchy.ext.controller.UploadCbsHierarchy.onUploadCbsHierarchy",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "{i18n>upload}"
+                    },
+                    "excelTemplate": {
+                      "press": "ns.costbreakdownhierarchy.ext.controller.ExcelTemplate.downloadTemplate",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Template",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "CBS1"
+                      }
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "CostBreakDownHierarchiesObjectPage": {
+          "type": "Component",
+          "id": "CostBreakDownHierarchiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/CostBreakDownHierarchies",
+              "controlConfiguration": {
+                "cbHierarchies/@com.sap.vocabularies.UI.v1.LineItem#CostBreakdownStructure": {
+                  "tableSettings": {
+                    "hierarchyQualifier": "CostBreakdownStructure",
+                    "type": "TreeTable",
+                    "creationMode": {
+                      "name": "CreationDialog",
+                      "creationFields": "code,name,descr"
+                    }
+                  },
+                  "columns": {
+                    "AddNode": {
+                      "header": "{i18n>actions}",
+                      "width": "5rem",
+                      "position": {
+                        "anchor": "DataField::descr",
+                        "placement": "After"
+                      },
+                      "template": "ns.costbreakdownhierarchy.ext.fragment.AddNode"
+                    }
+                  },
+                  "actions": {
+                    "uploadExcel": {
+                      "press": "ns.costbreakdownhierarchy.ext.controller.Excelupload.uploadExcel",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Upload"
+                    }
+                  }
+                },
+                "cbsTypeCompany/@com.sap.vocabularies.UI.v1.LineItem#CompanyCodes": {
+                  "actions": {
+                    "cbsCompanyCode": {
+                      "press": "ns.costbreakdownhierarchy.ext.controller.AddCompamyCode.addCompanyCode",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Compamy Code"
+                    }
+                  }
+                }
+              },
+              "navigation": {
+                "cbHierarchies": {
+                  "detail": {
+                    "route": "CostBreakDownHierarchies_cbHierarchiesObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CostBreakDownHierarchies_cbHierarchiesObjectPage": {
+          "type": "Component",
+          "id": "CostBreakDownHierarchies_cbHierarchiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/CostBreakDownHierarchies/cbHierarchies",
+              "navigation": {},
+              "controlConfiguration": {
+                "resourceMaterials/@com.sap.vocabularies.UI.v1.LineItem#ProductivityCode": {
+                  "actions": {
+                    "addResource": {
+                      "press": "ns.costbreakdownhierarchy.ext.controller.CbsResourceAdding.cbsResAdding",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add Resource"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

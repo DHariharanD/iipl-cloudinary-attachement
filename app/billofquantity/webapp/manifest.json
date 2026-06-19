@@ -1,0 +1,259 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "ns.billofquantity",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "73d8771d-662c-40c4-b233-19929bdc271d"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/BillofQuantityService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "wbs-display": {
+          "semanticObject": "wbs",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ns.billofquantity.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "BillofQuantityHeaderList",
+          "target": [
+            "BillofQuantityHeaderList"
+          ]
+        },
+        {
+          "pattern": "BillofQuantityHeader({key}):?query:",
+          "name": "BillofQuantityHeaderObjectPage",
+          "target": [
+            "BillofQuantityHeaderList",
+            "BillofQuantityHeaderObjectPage"
+          ]
+        },
+        {
+          "name": "BillofQuantityHeader_bqHeaderHierarchiesObjectPage",
+          "pattern": "BillofQuantityHeader({key})/bqHeaderHierarchies({bqHeaderHierarchiesKey}):?query:",
+          "target": [
+            "BillofQuantityHeaderList",
+            "BillofQuantityHeaderObjectPage",
+            "BillofQuantityHeader_bqHeaderHierarchiesObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "BillofQuantityHeaderList": {
+          "type": "Component",
+          "id": "BillofQuantityHeaderList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/BillofQuantityHeader",
+              "variantManagement": "Page",
+              "navigation": {
+                "BillofQuantityHeader": {
+                  "detail": {
+                    "route": "BillofQuantityHeaderObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "BOQ1": {
+                      "press": "ns.billofquantity.ext.controller.UploadBoq.onUploadBoq",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Upload"
+                    },
+                    "Download": {
+                      "press": "ns.billofquantity.ext.controller.OnExcelDownload.ExcelTemplate",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Template"
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "BillofQuantityHeaderObjectPage": {
+          "type": "Component",
+          "id": "BillofQuantityHeaderObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/BillofQuantityHeader",
+              "navigation": {
+                "bqHeaderHierarchies": {
+                  "detail": {
+                    "route": "BillofQuantityHeader_bqHeaderHierarchiesObjectPage"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/BillofQuantityHeader({key})"
+        },
+        "BillofQuantityHeader_bqHeaderHierarchiesObjectPage": {
+          "type": "Component",
+          "id": "BillofQuantityHeader_bqHeaderHierarchiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/BillofQuantityHeader/bqHeaderHierarchies",
+              "controlConfiguration": {
+                "boqcbs/@com.sap.vocabularies.UI.v1.LineItem#CBS": {
+                  "actions": {
+                    "addCBS": {
+                      "press": "ns.billofquantity.ext.controller.AddCBS.addCbs",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "requiresSelection": false,
+                      "text": "Add"
+                    }
+                  }
+                },
+                "itemMapping/@com.sap.vocabularies.UI.v1.LineItem#CbsResource": {
+                  "actions": {
+                    "AddResourceCBS": {
+                      "press": "ns.billofquantity.ext.controller.AddCbsResources.addCbsResource",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Add"
+                    }
+                  }
+                },
+                "boqResource/@com.sap.vocabularies.UI.v1.LineItem#BoqResource": {
+                  "actions": {
+                    "AddResourceCBS": {
+                      "press": "ns.billofquantity.ext.controller.AddCbsResources.addCbsResource",
+                      "visible": true,
+                      "enabled": "{ui>/isEditable}",
+                      "text": "Add"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/BillofQuantityHeader({key})/bqHeaderHierarchies({bqHeaderHierarchiesKey})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ec_master.service"
+  }
+}

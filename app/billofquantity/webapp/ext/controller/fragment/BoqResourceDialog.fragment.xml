@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="dlgBoqResource"
+        title="Select Resources"
+        contentWidth="70%"
+        contentHeight="60%">
+
+        <content>
+            <Table
+                id="tblBoqResource"
+                mode="MultiSelect"
+                items="{resourceMdl>/}">
+
+                <columns>
+                    <Column><Text text="Product ID"/></Column>
+                    <Column><Text text="Name"/></Column>
+                    <Column><Text text="Type"/></Column>
+                    <Column><Text text="UOM"/></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{resourceMdl>productId}"/>
+                            <Text text="{resourceMdl>productName}"/>
+                            <Text text="{resourceMdl>productType}"/>
+                            <Text text="{resourceMdl>unitofMeasure}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+
+        <beginButton>
+            <Button text="Add" press="onConfirmBoqResource"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancel" press="onCloseBoqResource"/>
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

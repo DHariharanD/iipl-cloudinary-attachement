@@ -1,0 +1,26 @@
+ID,Product,productName,ProductType
+08377d76-509e-425b-85d7-d09ed1407767,3,Green Boiler,FERT
+f37edd3b-e69b-4515-aa41-62455e075f5d,40000000,Transportation Service,SERV
+dfb1fd7c-cdfe-4373-aa32-b22c410786e3,40000032,Property Sale,SERV
+d06c7fb0-70d9-4bfc-85da-1f1485758ed9,40000045,Consulting Service,SERV
+41745273-1a32-4a4c-9d52-b526598b3d0d,40000058,IT Support Service,SERV
+5e84b424-83f6-4fa3-a263-01b80951c784,40000071,Facility Management Service,SERV
+1341ae22-8524-4626-ba57-f017edbc08f5,40000084,Logistics Handling Service,SERV
+78963e2c-b6b5-44f1-be20-7dfff9e47fd4,40000097,Equipment Rental Service,SERV
+4cbad6c9-967c-4142-9c56-b7f32f15583f,40000110,Maintenance Service,SERV
+8505157b-f7f2-420c-8258-49d9068d1aec,40000123,Training and Coaching Service,SERV
+78d25987-cb35-4d40-b9c1-d887d7450279,40000136,Software Licensing Service,SERV
+0f04ca40-b332-4f9b-bfab-71598b0bf844,20000001,Liquid Coolant Oil,FERT
+93839cd9-6c04-49db-b8f4-713f5341ce3a,20000002,Cheese Bar,FERT
+ff68928c-5c5e-4497-b8a7-8864fe187ed0,20000003,Falcon Al Material,FERT
+cc6ca4b5-794b-4d42-8262-e83589d62793,20000004,Cement,FERT
+70cae799-fdaa-4c9c-849f-1663967925b3,20000005,Steel Rod,FERT
+fe0d5ffb-82eb-4dcb-a6cd-6c27f22d72d9,20000006,Copper Wire,FERT
+228a8951-a19d-49e6-b453-15c1baa638c8,20000007,Industrial Lubricant,FERT
+dfd9e340-9719-4857-b143-e7e400e1db19,20000008,Plastic Granules,FERT
+757114b2-7712-4af7-a2b8-f6caea206983,20000009,Aluminium Sheet,FERT
+cd7c4daf-0f2f-4751-b527-06d7245f0c3d,20000010,Packaging Carton,FERT
+c1087e41-5605-4997-9969-83d3bb1160ab,20000011,Glass Fiber,FERT
+164194fc-c112-4b8f-a197-8e57b4890443,20000012,Rubber Gasket,FERT
+a1822a8d-c267-4970-adf8-baec903eedaf,20000013,Ceramic Tile,FERT
+12e94d5f-2b4e-4a26-b065-7db99ec4cd41,20000014,Construction Sand,FERT

@@ -1,0 +1,3 @@
+ID,project_ID,wbs_ID,boqItem_ID,cbs_ID,floorZoneReference,notes
+22222222-2222-2222-2222-222222222222,acd33fc4-c220-47e4-b47a-f8dbdf43e46a,b3b673ff-cc05-46e6-8f5c-87744cc2f1cc,fd5a79ca-5799-45d7-8da5-0dde375ab2e2,72e57cbf-cb49-48d1-97e5-6582a5f0aa30,Zone-B,"Electrical allocation"
+33333333-3333-3333-3333-333333333333,e3f2a8d1-4a6b-4c9e-9d7a-1cfae92a1a11,7aca2918-db67-4900-875d-4ec4c9c3f89f,49afda5b-de7f-4a26-9708-1583bcc3ce84,72e57cbf-cb49-48d1-97e5-6582a5f0aa31,Zone-C,"Steel structure allocation"

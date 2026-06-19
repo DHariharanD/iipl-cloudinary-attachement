@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+        window['sap-ushell-config'] = {
+            defaultRenderer: 'fiori2',
+            services: {
+                NavTargetResolution: {
+                    config: {
+                        allowTestUrlComponentConfig: true,
+                        enableClientSideTargetResolution: true
+                    }
+                }
+            },
+            applications: {
+                // "nsresourcesmaster-tile": {
+                //     title: 'Resource Types',
+                //     description: 'An SAP Fiori application.',
+                //     icon: "sap-icon://s4hana",
+                //     additionalInformation: 'SAPUI5.Component=ns.resourcetypes',
+                //     applicationType: 'URL',
+                //     url: "./resource-types/webapp",
+                //     navigationMode: 'embedded'
+                // },
+                "nsresourcehierarchy-tile": {
+                    title: 'Resource Hierarchy',
+                    description: 'Define and manage Resource Hierarchy.',
+                    additionalInformation: 'SAPUI5.Component=ns.resourcehierarchies',
+                    applicationType: 'URL',
+                    url: "./resourcehierarchies/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nscbshierarchy-tile": {
+                    title: 'Cost Breakdown Hierarchy',
+                    description: 'Define and manage Cost Breakdown Hierarchy.',
+                    additionalInformation: 'SAPUI5.Component=ns.costbreakdownhierarchy',
+                    applicationType: 'URL',
+                    url: "./costbreakdownhierarchy/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsassetType-tile": {
+                    title: 'Asset Type',
+                    description: 'Define and manage Asset Type.',
+                    additionalInformation: 'SAPUI5.Component=ns.assettype',
+                    applicationType: 'URL',
+                    url: "./assettype/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsassetservice-tile": {
+                    title: 'Asset Service',
+                    description: 'Define and manage Asset Service.',
+                    additionalInformation: 'SAPUI5.Component=ns.assetmaster',
+                    applicationType: 'URL',
+                    url: "./assetmaster/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsemployeemaster-tile": {
+                    title: 'Employee Master',
+                    description: 'Define and manage Employee Master.',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.employeemaster',
+                    applicationType: 'URL',
+                    url: "./employeemaster/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsproject-tile": {
+                    title: 'Enterprise Project',
+                    description: 'Define and manage Enterprise Project.',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.enterpriseprojects',
+                    applicationType: 'URL',
+                    url: "./enterpriseprojects/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nswbs-tile": {
+                    title: 'WBS Template',
+                    description: 'Define and manage WBS Template.',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.wbs',
+                    applicationType: 'URL',
+                    url: "./wbs/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsboqtemplate-tile": {
+                    title: 'BOQ Template',
+                    description: 'Define and manage BOQ Template.',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.boqtemplate',
+                    applicationType: 'URL',
+                    url: "./boqtemplate/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsboq-tile": {
+                    title: 'BOQ',
+                    description: 'Define and manage BOQ.',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.billofquantity',
+                    applicationType: 'URL',
+                    url: "./billofquantity/webapp",
+                    navigationMode: 'embedded'
+                },
+                // "nsprojectboqmapping-tile": {
+                //     title: 'Project BOQ Mapping',
+                //     description: 'Define and manage Project BOQ Mapping.',
+                //     icon: "sap-icon://employee-approvals",
+                //     additionalInformation: 'SAPUI5.Component=ns.projectboqmapping',
+                //     applicationType: 'URL',
+                //     url: "./projectboqmapping/webapp",
+                //     navigationMode: 'embedded'
+                // },
+
+                "nsprimaveraprojects-tile": {
+                    title: 'Primavera Project Mapping',
+                    description: 'Define and manage Primavera Projects',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.projectprimaveramapping',
+                    applicationType: 'URL',
+                    url: "./projectprimaveramapping/webapp",
+                    navigationMode: 'embedded'
+                },
+
+                "nsprimaverawbsmapping-tile": {
+                    title: 'Primavera Project WBS Mapping',
+                    description: 'Define and manage Primavera Project WBS',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.projectprimaverawbsmapping',
+                    applicationType: 'URL',
+                    url: "./projectprimaverawbsmapping/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsresourcerequest-tile": {
+                    title: 'Resource Request',
+                    description: 'Define and manage Resource Request',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.resourcerequest',
+                    applicationType: 'URL',
+                    url: "./resourcerequest/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsprojectBudget-tile": {
+                    title: 'Project Budget',
+                    description: 'Define and manage Project Budget',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.projectbudget',
+                    applicationType: 'URL',
+                    url: "./projectbudget/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsProcumentPayment-tile": {
+                    title: 'Procument Payment Application',
+                    description: 'Define and manage Procument Payment Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.procurementpayment',
+                    applicationType: 'URL',
+                    url: "./procurementpayment/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsCustomerPaymentApplication-tile": {
+                    title: 'Customer Payment Application',
+                    description: 'Define and manage Customer Payment Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.customerapplication',
+                    applicationType: 'URL',
+                    url: "./customerapplication/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsEmployeeDetails-tile": {
+                    title: 'Employee Details',
+                    description: 'Define and manage Employee Details Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=employeedetails',
+                    applicationType: 'URL',
+                    url: "./employeedetails/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsManpowerService-tile": {
+                    title: 'Manpower Service',
+                    description: 'Define and manage Manpower Service Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.designation',
+                    applicationType: 'URL',
+                    url: "./designation/webapp",
+                    navigationMode: 'embedded'
+                },
+                // "nsGroups-tile": {
+                //     title: 'Group',
+                //     description: 'Define and manage group Application',
+                //     icon: "sap-icon://employee-approvals",
+                //     additionalInformation: 'SAPUI5.Component=ns.group',
+                //     applicationType: 'URL',
+                //     url: "./group/webapp",
+                //     navigationMode: 'embedded'
+                // },
+                // "nsFamily-tile": {
+                //     title: 'Family',
+                //     description: 'Define and manage family Application',
+                //     icon: "sap-icon://employee-approvals",
+                //     additionalInformation: 'SAPUI5.Component=ns.family',
+                //     applicationType: 'URL',
+                //     url: "./family/webapp",
+                //     navigationMode: 'embedded'
+                // },
+                // "nsClass-tile": {
+                //     title: 'Class',
+                //     description: 'Define and manage class Application',
+                //     icon: "sap-icon://employee-approvals",
+                //     additionalInformation: 'SAPUI5.Component=ns.class',
+                //     applicationType: 'URL',
+                //     url: "./class/webapp",
+                //     navigationMode: 'embedded'
+                // },
+                // "nsCommodity-tile": {
+                //     title: 'Commodity',
+                //     description: 'Define and manage commodity Application',
+                //     icon: "sap-icon://employee-approvals",
+                //     additionalInformation: 'SAPUI5.Component=ns.commodity',
+                //     applicationType: 'URL',
+                //     url: "./commodity/webapp",
+                //     navigationMode: 'embedded'
+                // },
+                "nsBOQSubContract-tile": {
+                    title: 'Sub Contract BOQ',
+                    description: 'Define and manage boq sub contract Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.boqcontract',
+                    applicationType: 'URL',
+                    url: "./boqcontract/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssetCategory-tile": {
+                    title: 'Asset Category',
+                    description: 'Define and manage Asset Category',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.assetcategory',
+                    applicationType: 'URL',
+                    url: "./assetcategory/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssetMake-tile": {
+                    title: 'Asset Make',
+                    description: 'Define and manage Asset Make',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.assetmake',
+                    applicationType: 'URL',
+                    url: "./asset-make/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssetModel-tile": {
+                    title: 'Asset Model',
+                    description: 'Define and manage Asset Model',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.assetmodel',
+                    applicationType: 'URL',
+                    url: "./asset-model/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssets-tile": {
+                    title: 'Assets',
+                    description: 'Define and manage Assets Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.assetservice',
+                    applicationType: 'URL',
+                    url: "./asset_service/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nshiredAssets-tile": {
+                    title: 'Hired Assets',
+                    description: 'Define and manage Hired Asset Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.hiredassetinfo',
+                    applicationType: 'URL',
+                    url: "./hired-assetinfo/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssetRequests-tile": {
+                    title: 'Asset Request',
+                    description: 'Define and manage Asset Request Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.assetrequest',
+                    applicationType: 'URL',
+                    url: "./asset-request/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsFuelManagement-tile": {
+                    title: 'Fuel Request',
+                    description: 'Define and manage Fuel Management',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.fuel',
+                    applicationType: 'URL',
+                    url: "./fuel/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsTripManagement-tile": {
+                    title: 'Trip Management',
+                    description: 'Define and manage Trip Management Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.trip',
+                    applicationType: 'URL',
+                    url: "./trip/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAccidentManagement-tile": {
+                    title: 'Accident Management',
+                    description: 'Define and manage Accident Management Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.accidentmanagement.accidentmanagement',
+                    applicationType: 'URL',
+                    url: "./accident-management/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsProductivityEntry-tile": {
+                    title: 'Productivity Entry',
+                    description: 'Define and manage productivity entry Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.productivityentry',
+                    applicationType: 'URL',
+                    url: "./productivityentry/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsTAVocher-tile": {
+                    title: 'Time Sheet',
+                    description: 'Define and manage Timesheet Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.tavouchers',
+                    applicationType: 'URL',
+                    url: "./ta-vouchers/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAssetTimeSheet-tile": {
+                    title: 'Asset Timesheet',
+                    description: 'Define and manage Asset Timesheet Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.com.asset.timesheet.daily.assettimesheetdaily',
+                    applicationType: 'URL',
+                    url: "./asset-time-sheet-daily/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsConsumptionRates-tile": {
+                    title: 'Consumption Rates',
+                    description: 'Define and manage consumption rates Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.consumptionrates',
+                    applicationType: 'URL',
+                    url: "./consumptionrates/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsProductivityRates-tile": {
+                    title: 'Productivity Rates',
+                    description: 'Define and manage productivity rates Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.productivityrate',
+                    applicationType: 'URL',
+                    url: "./productivity-rate/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsAllocations-tile": {
+                    title: 'Allocations',
+                    description: 'Define and manage Allocations Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.allocations',
+                    applicationType: 'URL',
+                    url: "./allocations/webapp",
+                    navigationMode: 'embedded'
+                },
+                "nsDocuments-tile": {
+                    title: 'Documents',
+                    description: 'Define and manage documents Application',
+                    icon: "sap-icon://employee-approvals",
+                    additionalInformation: 'SAPUI5.Component=ns.documents',
+                    applicationType: 'URL',
+                    url: "./documents/webapp",
+                    navigationMode: 'embedded'
+                },
+
+            }
+        }
+    </script>
+    <script src="https://ui5.sap.com/1.143.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+    <script src="https://ui5.sap.com/1.143.1/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates" data-sap-ui-compatVersion="edge"
+        data-sap-ui-theme="sap_horizon" data-sap-ui-frameOptions="allow" data-sap-ui-bindingSyntax="complex"></script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            sap.ushell.Container.createRenderer().placeAt('content');
+        });
+    </script>
+</head>
+
+<body class="sapUiBody" id="content"></body>
+
+</html>

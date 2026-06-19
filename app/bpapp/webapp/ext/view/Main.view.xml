@@ -1,0 +1,51 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="ns.bpapp.ext.view.Main">
+
+  <Page id="Main" title="Create Business Partner">
+
+    <content>
+        <VBox class="sapUiSmallMargin" width="100%">
+
+            <!-- First Name -->
+            <Label text="First Name" />
+            <Input value="{FirstName}" placeholder="Enter First Name"/>
+
+            <!-- Last Name -->
+            <Label text="Last Name" />
+            <Input value="{LastName}" placeholder="Enter Last Name"/>
+
+            <!-- Business Partner Category -->
+            <Label text="BP Category" />
+            <Select selectedKey="{BusinessPartnerCategory}">
+                <items>
+                    <core:Item key="1" text="Person" />
+                    <core:Item key="2" text="Organization" />
+                </items>
+            </Select>
+
+            <!-- Business Partner Grouping -->
+            <Label text="BP Grouping" />
+            <Input value="{BusinessPartnerGrouping}" placeholder="e.g. BPEE"/>
+
+            <!-- Organization Fields -->
+            <Label text="Organization Name 1" />
+            <Input value="{OrganizationBPName1}" />
+
+            <Label text="Organization Name 2" />
+            <Input value="{OrganizationBPName2}" />
+
+        </VBox>
+    </content>
+
+    <footer>
+        <Toolbar>
+            <ToolbarSpacer/>
+            <Button text="Cancel" press="onCancel" />
+            <Button text="Save" type="Emphasized" press="onSave" />
+        </Toolbar>
+    </footer>
+
+  </Page>
+</mvc:View>

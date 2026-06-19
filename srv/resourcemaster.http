@@ -1,0 +1,12 @@
+### Read ResourceType
+
+GET http://localhost:8080/odata/v4/ResourceTypes/ResourceTypes
+Accept: application/json
+Authorization: Basic admin:admin
+
+
+### Read ResourceTypeByID
+
+GET http://localhost:8080/odata/v4/ResourceTypes/ResourceTypes(fee8be8e-327e-4fce-a9d0-97f3afce5355)
+Accept: application/json
+Authorization: Basic admin:admin
