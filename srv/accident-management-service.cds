@@ -17,7 +17,8 @@ service AccidentService {
         accident_ID : UUID,            // parent Accident record
         fileName    : String(255),     // original file name
         mediaType   : String(100),     // MIME type          e.g. "application/pdf"
-        content     : LargeString   
+        content     : LargeString,
+        description : String(500)      // user-provided description of the file  
     ) returns AccidentAttachments;
 
     action deleteAccidentFile(

@@ -45,8 +45,7 @@ entity Accident : cuid, managed {
     claimAmount       : Decimal(15,2);
     approvedAmount    : Decimal(15,2);
 
-    attachments : Composition of many AccidentAttachments
-                      on attachments.accident = $self;
+    attachments : Association to many AccidentAttachments on attachments.accident = $self;
 }
 
 
@@ -57,6 +56,7 @@ entity AccidentAttachments : cuid, managed {
     url        : String(500);
     fileSize   : Integer64;
     publicId   : String(500);      // Cloudinary public_id 
+    description  : String(500);
 }
 
 

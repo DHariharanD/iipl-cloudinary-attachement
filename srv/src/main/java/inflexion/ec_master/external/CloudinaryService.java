@@ -1,4 +1,4 @@
-package inflexion.ec_master.handlers;
+package inflexion.ec_master.external;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -59,13 +59,11 @@ public class CloudinaryService {
         // Decode base64 → raw bytes
         byte[] fileBytes = Base64.getDecoder().decode(base64Content);
 
-        // Build a unique, human-readable public_id so files are organised
-        // inside a folder called "accident-attachments/" in Cloudinary.
-        // Example: "accident-attachments/a3f2c1d0-report.pdf"
+        // Extension left in public_id makes Cloudinary append a second one on delivery (name.pdf.pdf)
         String publicId = "accident-attachments/"
                 + UUID.randomUUID()
                 + "-"
-                + sanitiseName(originalName);
+                + stripExtension(sanitiseName(originalName));
 
         log.info("Uploading file to Cloudinary: publicId={}, size={} bytes",
                 publicId, fileBytes.length);
@@ -75,6 +73,8 @@ public class CloudinaryService {
                 fileBytes,
                 ObjectUtils.asMap(
                         "public_id",     publicId,
+                        // slashes in public_id are cosmetic only under dynamic folder mode — asset_folder is what actually places the file
+                        "asset_folder",  "accident-attachments",
                         // "auto" lets Cloudinary detect whether the file is
                         // an image, video, or raw (pdf, docx, xlsx, txt …)
                         "resource_type", "auto",
@@ -134,5 +134,11 @@ public class CloudinaryService {
         if (name == null || name.isBlank()) return "file";
         // Replace spaces and special chars with underscores
         return name.replaceAll("[^a-zA-Z0-9._-]", "_");
+    }
+
+    // Removes the trailing extension so Cloudinary doesn't append a second one on delivery
+    private String stripExtension(String name) {
+        int dot = name.lastIndexOf('.');
+        return dot > 0 ? name.substring(0, dot) : name;
     }
 }

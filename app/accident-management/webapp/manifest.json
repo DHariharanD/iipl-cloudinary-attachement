@@ -39,7 +39,12 @@
     "flexEnabled": true,
     "dependencies": {
       "minUI5Version": "1.147.1",
-      "libs": { "sap.m": {}, "sap.ui.core": {}, "sap.fe.templates": {} }
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.ui.layout": {}
+      }
     },
     "contentDensities": { "compact": true, "cozy": true },
     "models": {
@@ -109,13 +114,13 @@
                     "CustomUploadAttachment": {
                       "press": "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt.onUploadAttachment",
                       "text": "Upload Attachment",
-                      "visible": "{= ${ui>/editMode} === 'Editable' }",
+                      "visible": "{= ${ui>/editMode} === 'Editable' && ${HasActiveEntity} === true }",
                       "enabled": true
                     },
                     "CustomDeleteAttachment": {
                       "press": "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt.onDeleteAttachment",
                       "text": "Delete Attachment",
-                      "visible": "{= ${ui>/editMode} === 'Editable' }",
+                      "visible": "{= ${ui>/editMode} === 'Editable' && ${HasActiveEntity} === true }",
                       "enabled": true,
                       "requiresSelection": true
                     }

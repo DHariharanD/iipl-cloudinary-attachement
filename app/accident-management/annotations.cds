@@ -277,15 +277,23 @@ annotate service.Assets with {
 };
 
 
+// ── AccidentAttachments table columns ─────────────────────────────────────────
+// description is listed second so users immediately see context alongside the
+// clickable file name. fileSize and mediaType are secondary technical detail.
 annotate service.AccidentAttachments with @(
 
     UI.LineItem: [
         {
-            // Clickable file name → opens the Cloudinary URL
+            // Clickable file name → opens the Cloudinary URL in a new tab
             $Type : 'UI.DataFieldWithUrl',
             Value : fileName,
             Url   : url,
             Label : 'File Name'
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : description,
+            Label : 'Description'
         },
         {
             $Type : 'UI.DataField',
@@ -309,16 +317,17 @@ annotate service.AccidentAttachments with @(
         }
     ]
 );
-// Disable default FE CRUD on the attachments table —
-// uploads and deletes are handled exclusively via custom actions.
+
+// Disable default Fiori Elements CRUD on the attachments table —
+// uploads and deletes are handled exclusively via the custom toolbar actions.
 annotate service.AccidentAttachments with @(
     Capabilities.InsertRestrictions: { Insertable: false },
     Capabilities.DeleteRestrictions: { Deletable: false },
     Capabilities.UpdateRestrictions: { Updatable: false }
 );
 
-// Hide technical/internal fields — not for direct user input.
+// Hide technical/internal fields — never shown as editable columns.
 annotate service.AccidentAttachments with {
-    publicId  @UI.Hidden;   // Cloudinary internal ID, never shown
-    url       @UI.Hidden;   // used only as Url target in DataFieldWithUrl
+    publicId    @UI.Hidden;   // Cloudinary internal ID
+    url         @UI.Hidden;   // used only as Url target in DataFieldWithUrl
 };
