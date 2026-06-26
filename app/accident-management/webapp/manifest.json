@@ -124,6 +124,17 @@
                       "enabled": true,
                       "requiresSelection": true
                     }
+                  },
+                  "columns": {
+                    "CustomActionsColumn": {
+                      "header": "Actions",
+                      "width": "10rem",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataField::description"
+                      },
+                      "template": "ns.accidentmanagement.accidentmanagement.ext.fragment.AttachmentActionsColumn"
+                    }
                   }
                 }
               }

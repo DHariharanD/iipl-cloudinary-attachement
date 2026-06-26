@@ -24,24 +24,28 @@ import cds.gen.accidentservice.AccidentAttachments_;
 import cds.gen.accidentservice.AccidentService_;
 import cds.gen.accidentservice.DeleteAccidentFileContext;
 import cds.gen.accidentservice.UploadAccidentFileContext;
+import cds.gen.accidentservice.Accident;
+import cds.gen.accidentservice.Accident_;
 import inflexion.ec_master.external.CloudinaryService;
 
 /**
  * Handles the custom OData actions for accident attachment management:
- *   - uploadAccidentFile  : uploads to Cloudinary, writes metadata to HANA
- *   - deleteAccidentFile  : removes from Cloudinary and HANA
+ *   - uploadAccidentFile  : uploads to Cloudinary, writes metadata to PostgreSQL
+ *   - deleteAccidentFile  : removes from Cloudinary and PostgreSQL
  *
- * Design constraints:
- *   - Only operates on ACTIVE (saved) Accident records.
- *     The UI hides both buttons when HasActiveEntity === false (new-record draft),
- *     so accident_ID received here is always a committed, active entity UUID.
- *   - CloudinaryService handles the actual HTTP communication with Cloudinary.
- *   - PersistenceService (db) is used for direct DB operations on AccidentAttachments,
- *     bypassing the OData layer intentionally (uploads are not standard CRUD).
+ * Fix: onUploadAccidentFile previously used Select.byId() to look up the
+ * Accident record, which fails for draft-enabled entities because they have a
+ * composite key (ID + IsActiveEntity). Replaced with a .where() clause
+ * filtering on ID = accidentId AND IsActiveEntity = true.
+ *
+ * Fix: CloudinaryService.upload() now accepts mediaType as a fourth parameter
+ * so it can choose the correct Cloudinary resource_type (image / raw / video)
+ * explicitly rather than relying on auto-detection, which misclassifies PDFs.
  */
 @Component
 @ServiceName(AccidentService_.CDS_NAME)
-public class AccidentAttachmentHandler implements EventHandler {
+public class AccidentAttachmentHandler implements EventHandler
+{
 
     private static final Logger log = LoggerFactory.getLogger(AccidentAttachmentHandler.class);
 
@@ -50,81 +54,107 @@ public class AccidentAttachmentHandler implements EventHandler {
 
     @Autowired
     public AccidentAttachmentHandler(CloudinaryService cloudinaryService,
-                                     PersistenceService db) {
+                                     PersistenceService db)
+    {
         this.cloudinaryService = cloudinaryService;
         this.db = db;
     }
 
     // ── uploadAccidentFile ────────────────────────────────────────────────────
 
-    /**
-     * Uploads a file to Cloudinary, then persists its metadata as an
-     * AccidentAttachments row linked to the given Accident record.
-     *
-     * Expected parameters (from UploadAccidentFileContext):
-     *   accident_ID  – UUID of the active Accident record
-     *   fileName     – original file name (e.g. "police_report.pdf")
-     *   mediaType    – MIME type (e.g. "application/pdf")
-     *   content      – raw base64 string, no "data:...;base64," prefix
-     *   description  – optional human-readable context for the file
-     *
-     * Returns the created AccidentAttachments row (OData action return value).
-     *
-     * NOTE: After adding the `description` parameter to the CDS service action,
-     * run `mvn clean install` (or `cds build`) to regenerate UploadAccidentFileContext
-     * before this handler compiles — the generated getDescription() method only
-     * exists after regeneration.
-     */
     @On(event = "uploadAccidentFile")
-    public void onUploadAccidentFile(UploadAccidentFileContext context) {
+    public void onUploadAccidentFile(UploadAccidentFileContext context)
+    {
 
         // ── 1. Extract and validate parameters ───────────────────────────────
-        String accidentId   = context.getAccidentId();   // accident_ID → accidentId
-        String fileName     = context.getFileName();
-        String mediaType    = context.getMediaType();
+        String accidentId    = context.getAccidentId();
+        String fileName      = context.getFileName();
+        String mediaType     = context.getMediaType();
         String base64Content = context.getContent();
-        String description  = context.getDescription();  // available after CDS regen
+        String description   = context.getDescription();
 
-        if (isBlank(accidentId)) {
+        if (isBlank(accidentId))
+        {
             throw new ServiceException(ErrorStatuses.BAD_REQUEST,
                     "accident_ID is required and cannot be blank.");
         }
-        if (isBlank(fileName)) {
+        if (isBlank(fileName))
+        {
             throw new ServiceException(ErrorStatuses.BAD_REQUEST,
                     "fileName is required and cannot be blank.");
         }
-        if (isBlank(base64Content)) {
+        if (isBlank(base64Content))
+        {
             throw new ServiceException(ErrorStatuses.BAD_REQUEST,
                     "File content (base64) is required and cannot be blank.");
         }
-
-        // Normalise mediaType — browser sometimes sends an empty string
-        if (isBlank(mediaType)) {
+        if (isBlank(mediaType))
+        {
             mediaType = "application/octet-stream";
         }
 
-        // ── 2. Upload to Cloudinary ───────────────────────────────────────────
+        // ── 2. Fetch vehicleNo from active Accident record ────────────────────
+        // Accident has @odata.draft.enabled, so its generated key is composite:
+        // (ID, IsActiveEntity). byId(accidentId) only passes a single value and
+        // CAP throws "must have a single key". We use a where() clause instead,
+        // filtering ID = accidentId AND IsActiveEntity = true to hit the active
+        // table row rather than a draft row.
+        String vehicleNo = "unknown";
+        try
+        {
+            var accidentResult = db.run(
+                Select.from(Accident_.class)
+                      .columns(a -> a.vehicleNo())
+                      .where(a -> a.ID().eq(accidentId)
+                                   .and(a.IsActiveEntity().eq(true)))
+            );
+            Accident accident = accidentResult.first(Accident.class).orElse(null);
+            if (accident != null && !isBlank(accident.getVehicleNo()))
+            {
+                vehicleNo = accident.getVehicleNo();
+                log.info("Resolved vehicleNo='{}' for accidentId='{}'", vehicleNo, accidentId);
+            }
+            else
+            {
+                log.warn("Accident not found or vehicleNo blank for accidentId='{}' — " +
+                         "using 'unknown' as Cloudinary subfolder.", accidentId);
+            }
+        }
+        catch (Exception e)
+        {
+            // Non-fatal — proceed with 'unknown' subfolder rather than blocking.
+            log.warn("Could not fetch vehicleNo for accidentId='{}': {} — " +
+                     "using 'unknown' as Cloudinary subfolder.", accidentId, e.getMessage());
+        }
+
+        // ── 3. Upload to Cloudinary ───────────────────────────────────────────
+        // mediaType is forwarded so CloudinaryService can pick the correct
+        // resource_type (image / raw / video) without relying on auto-detection.
         Map<String, Object> cloudinaryResult;
-        try {
-            cloudinaryResult = cloudinaryService.upload(base64Content, fileName);
-        } catch (IOException e) {
+        try
+        {
+            cloudinaryResult = cloudinaryService.upload(base64Content, fileName,
+                                                        vehicleNo, mediaType);
+        }
+        catch (IOException e)
+        {
             log.error("Cloudinary upload failed for '{}' (accidentId={}): {}",
                     fileName, accidentId, e.getMessage(), e);
             throw new ServiceException(ErrorStatuses.SERVER_ERROR,
                     "File upload to Cloudinary failed: " + e.getMessage(), e);
         }
 
-        String secureUrl = (String) cloudinaryResult.get("secure_url");
-        String publicId  = (String) cloudinaryResult.get("public_id");
+        String secureUrl     = (String) cloudinaryResult.get("secure_url");
+        String publicId      = (String) cloudinaryResult.get("public_id");
         Number fileSizeBytes = (Number) cloudinaryResult.get("bytes");
 
         log.info("Cloudinary upload success: file='{}', publicId='{}', url='{}'",
                 fileName, publicId, secureUrl);
 
-        // ── 3. Persist attachment metadata in HANA ────────────────────────────
+        // ── 4. Persist attachment metadata in PostgreSQL ──────────────────────
         AccidentAttachments attachment = AccidentAttachments.create();
         attachment.setId(UUID.randomUUID().toString());
-        attachment.setAccidentId(accidentId);           // FK to Accident
+        attachment.setAccidentId(accidentId);
         attachment.setFileName(fileName);
         attachment.setMediaType(mediaType);
         attachment.setUrl(secureUrl);
@@ -137,40 +167,30 @@ public class AccidentAttachmentHandler implements EventHandler {
         log.info("AccidentAttachment saved: id='{}', accidentId='{}', file='{}'",
                 attachment.getId(), accidentId, fileName);
 
-        // ── 4. Return the created row ─────────────────────────────────────────
+        // ── 5. Return the created row ─────────────────────────────────────────
         context.setResult(attachment);
         context.setCompleted();
     }
 
     // ── deleteAccidentFile ────────────────────────────────────────────────────
 
-    /**
-     * Deletes an attachment permanently:
-     *   1. Looks up the AccidentAttachments row to retrieve the Cloudinary publicId.
-     *   2. Deletes the file from Cloudinary (tries image / raw / video resource types).
-     *   3. Deletes the HANA row.
-     *
-     * If the row is not found in HANA, a 404 is returned to the client.
-     * If the file is not found in Cloudinary (already deleted externally), the HANA
-     * row is still cleaned up — CloudinaryService.delete() logs a warning but does
-     * not throw in that case.
-     */
     @On(event = "deleteAccidentFile")
-    public void onDeleteAccidentFile(DeleteAccidentFileContext context) {
+    public void onDeleteAccidentFile(DeleteAccidentFileContext context)
+    {
 
-        // ── 1. Validate ───────────────────────────────────────────────────────
-        String attachmentId = context.getAttachmentId();  // attachment_ID → attachmentId
+        String attachmentId = context.getAttachmentId();
 
-        if (isBlank(attachmentId)) {
+        if (isBlank(attachmentId))
+        {
             throw new ServiceException(ErrorStatuses.BAD_REQUEST,
                     "attachment_ID is required and cannot be blank.");
         }
 
-        // ── 2. Fetch the row ──────────────────────────────────────────────────
         var result = db.run(Select.from(AccidentAttachments_.class).byId(attachmentId));
         AccidentAttachments attachment = result.first(AccidentAttachments.class).orElse(null);
 
-        if (attachment == null) {
+        if (attachment == null)
+        {
             log.warn("Attachment not found for deletion: id='{}'", attachmentId);
             throw new ServiceException(ErrorStatuses.NOT_FOUND,
                     "Attachment with ID '" + attachmentId + "' was not found.");
@@ -179,24 +199,26 @@ public class AccidentAttachmentHandler implements EventHandler {
         String publicId = attachment.getPublicId();
         String fileName = attachment.getFileName();
 
-        // ── 3. Delete from Cloudinary ─────────────────────────────────────────
-        if (!isBlank(publicId)) {
-            try {
+        if (!isBlank(publicId))
+        {
+            try
+            {
                 cloudinaryService.delete(publicId);
                 log.info("Cloudinary deletion complete: publicId='{}'", publicId);
-            } catch (IOException e) {
-                // Surface Cloudinary errors to the client — the HANA row is NOT
-                // removed if Cloudinary throws, to prevent a dangling metadata row.
+            }
+            catch (IOException e)
+            {
                 log.error("Cloudinary deletion failed for publicId='{}': {}", publicId, e.getMessage(), e);
                 throw new ServiceException(ErrorStatuses.SERVER_ERROR,
                         "File deletion from Cloudinary failed: " + e.getMessage(), e);
             }
-        } else {
+        }
+        else
+        {
             log.warn("No publicId on attachment '{}' (file='{}') — skipping Cloudinary deletion.",
                     attachmentId, fileName);
         }
 
-        // ── 4. Delete from HANA ───────────────────────────────────────────────
         db.run(Delete.from(AccidentAttachments_.class).byId(attachmentId));
 
         log.info("AccidentAttachment deleted: id='{}', file='{}'", attachmentId, fileName);
@@ -206,7 +228,8 @@ public class AccidentAttachmentHandler implements EventHandler {
 
     // ── helpers ───────────────────────────────────────────────────────────────
 
-    private static boolean isBlank(String s) {
+    private static boolean isBlank(String s)
+    {
         return s == null || s.isBlank();
     }
 }

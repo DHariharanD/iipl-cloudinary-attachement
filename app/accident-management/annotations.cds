@@ -56,7 +56,6 @@ annotate service.Accident with @(
         ]
     },
 
-
     // VERTICAL SECTIONS
     UI.Facets: [
         {
@@ -98,9 +97,7 @@ annotate service.Accident with @(
             Label  : 'Attachments',
             Target : 'attachments/@UI.LineItem'
         }
-        // ────────────────────────────────────────────────────────────────────
     ],
-
 
     UI.LineItem: [
         {
@@ -118,6 +115,7 @@ annotate service.Accident with @(
         isInjury,
         isPoliceInformed
     ],
+
     UI.HeaderInfo : {
         Title : {
             $Type : 'UI.DataField',
@@ -131,7 +129,6 @@ annotate service.Accident with @(
         },
     },
 );
-
 
 
 // AccidentType
@@ -153,7 +150,6 @@ annotate service.Accident with {
             ]
         },
         Common.ValueListWithFixedValues: true,
-
     )
 };
 
@@ -201,21 +197,17 @@ annotate service.Accident with {
     )
 };
 
-
 annotate service.Accident with {
     vehicleNo @(
         Common.ValueList: {
             $Type: 'Common.ValueListType',
             CollectionPath: 'Assets',
             Parameters: [
-
-                // Only one column + mapping
                 {
                     $Type: 'Common.ValueListParameterInOut',
                     LocalDataProperty: vehicleNo,
                     ValueListProperty: 'assetCtegory'
                 },
-
                 {
                     $Type: 'Common.ValueListParameterConstant',
                     ValueListProperty: 'assetType_code',
@@ -226,27 +218,21 @@ annotate service.Accident with {
     )
 };
 
-
-// Hide technical fields in value help
 annotate service.Accident with {
     accidentType @(
         Common.Text : accidentType.name,
         Common.Text.@UI.TextArrangement : #TextOnly
     );
-
     severity @(
         Common.Text : severity.name,
         Common.Text.@UI.TextArrangement : #TextOnly
     );
-
     claimStatus @(
         Common.Text : claimStatus.name,
         Common.Text.@UI.TextArrangement : #TextOnly
     );
 };
 
-
-// Hide code in valuehelp inside and show only description
 annotate service.ClaimStatus with {
     code @UI.Hidden;
 };
@@ -258,8 +244,6 @@ annotate service.Severity with {
 annotate service.AccidentType with {
     code @UI.Hidden;
 };
-
-
 
 annotate service.Assets with {
     ID @(
@@ -278,56 +262,28 @@ annotate service.Assets with {
 
 
 // ── AccidentAttachments table columns ─────────────────────────────────────────
-// description is listed second so users immediately see context alongside the
-// clickable file name. fileSize and mediaType are secondary technical detail.
 annotate service.AccidentAttachments with @(
-
     UI.LineItem: [
-        {
-            // Clickable file name → opens the Cloudinary URL in a new tab
-            $Type : 'UI.DataFieldWithUrl',
-            Value : fileName,
-            Url   : url,
-            Label : 'File Name'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : description,
-            Label : 'Description'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : mediaType,
-            Label : 'Type'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : fileSize,
-            Label : 'Size (bytes)'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : createdAt,
-            Label : 'Uploaded On'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : createdBy,
-            Label : 'Uploaded By'
-        }
+        { $Type: 'UI.DataField', Value: fileName,   Label: 'File Name' },
+        { $Type: 'UI.DataField', Value: description, Label: 'Description' },
+        { $Type: 'UI.DataField', Value: createdAt,   Label: 'Uploaded On' },
+        { $Type: 'UI.DataField', Value: createdBy,   Label: 'Uploaded By' },
+        { $Type: 'UI.DataField', Value: url,         ![@UI.Hidden]: true },
+        { $Type: 'UI.DataField', Value: mediaType,   ![@UI.Hidden]: true }
     ]
 );
 
-// Disable default Fiori Elements CRUD on the attachments table —
-// uploads and deletes are handled exclusively via the custom toolbar actions.
+// Disable standard FE insert and update.
+// DeleteRestrictions intentionally omitted — setting Deletable:false causes
+// FE to set sapMListModeNone on the table which removes row selection entirely,
+// breaking the custom Delete toolbar button's requiresSelection behaviour.
 annotate service.AccidentAttachments with @(
     Capabilities.InsertRestrictions: { Insertable: false },
-    Capabilities.DeleteRestrictions: { Deletable: false },
     Capabilities.UpdateRestrictions: { Updatable: false }
 );
 
-// Hide technical/internal fields — never shown as editable columns.
+// Hide technical/internal fields — never shown as columns
 annotate service.AccidentAttachments with {
-    publicId    @UI.Hidden;   // Cloudinary internal ID
-    url         @UI.Hidden;   // used only as Url target in DataFieldWithUrl
+    publicId  @UI.Hidden;
+    fileSize  @UI.Hidden;
 };

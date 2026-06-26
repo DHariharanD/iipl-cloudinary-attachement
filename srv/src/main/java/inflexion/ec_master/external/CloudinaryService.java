@@ -14,24 +14,23 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
 @Service
-public class CloudinaryService {
+public class CloudinaryService
+{
 
     private static final Logger log = LoggerFactory.getLogger(CloudinaryService.class);
 
     private final Cloudinary cloudinary;
 
-    // ── Constructor ──────────────────────────────────────────────────────────
-    // Spring injects the three values from application.yaml / VCAP_SERVICES.
     public CloudinaryService(
             @Value("${cloudinary.cloud-name}") String cloudName,
             @Value("${cloudinary.api-key}")    String apiKey,
-            @Value("${cloudinary.api-secret}") String apiSecret) {
-
+            @Value("${cloudinary.api-secret}") String apiSecret)
+    {
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", cloudName,
                 "api_key",    apiKey,
                 "api_secret", apiSecret,
-                "secure",     true       // always use HTTPS URLs
+                "secure",     true
         ));
 
         log.info("CloudinaryService initialised for cloud: {}", cloudName);
@@ -39,47 +38,55 @@ public class CloudinaryService {
 
     // ── upload ───────────────────────────────────────────────────────────────
     /**
-     * Uploads a file to Cloudinary.
+     * Uploads a file to Cloudinary under accident-attachments/<vehicleNo>/<uuid>-<name-without-ext>
      *
-     * @param base64Content  Raw base64 string (no "data:...;base64," prefix —
-     *                       the UI extension controller strips that before
-     *                       sending the action parameter).
-     * @param originalName   Original file name, used to build a readable
-     *                       public_id in Cloudinary (e.g. "report.pdf").
-     * @return Cloudinary response map containing at minimum:
-     *         "secure_url"    — HTTPS CDN URL to store in HANA
-     *         "public_id"     — identifier needed for future deletion
-     *         "bytes"         — file size in bytes
-     *         "resource_type" — "image" / "video" / "raw"
-     * @throws IOException if the Cloudinary API call fails
+     * resource_type is now determined explicitly from the mediaType parameter
+     * instead of using "auto". Cloudinary classifies PDFs as "image" when using
+     * auto-detection, which results in /image/upload/ URLs that require signed
+     * delivery (401 for unsigned access). By forcing "raw" for all non-image,
+     * non-video MIME types, PDFs and documents are stored under /raw/upload/
+     * and are publicly accessible without signing.
+     *
+     * @param base64Content  Raw base64 string (no data URI prefix)
+     * @param originalName   Original file name
+     * @param vehicleNo      Vehicle number — used as subfolder name in Cloudinary
+     * @param mediaType      MIME type of the file — used to pick resource_type
+     * @return Cloudinary response map
      */
-    public Map<String, Object> upload(String base64Content, String originalName)
-            throws IOException {
+    public Map<String, Object> upload(String base64Content, String originalName,
+                                      String vehicleNo, String mediaType)
+            throws IOException
+    {
 
-        // Decode base64 → raw bytes
         byte[] fileBytes = Base64.getDecoder().decode(base64Content);
 
-        // Extension left in public_id makes Cloudinary append a second one on delivery (name.pdf.pdf)
+        // Sanitise vehicleNo for use as a folder name
+        String sanitisedVehicleNo = sanitiseName(vehicleNo != null ? vehicleNo : "unknown");
+
+        // Full path: accident-attachments/<vehicleNo>/<uuid>-<name-without-ext>
         String publicId = "accident-attachments/"
+                + sanitisedVehicleNo
+                + "/"
                 + UUID.randomUUID()
                 + "-"
                 + stripExtension(sanitiseName(originalName));
 
-        log.info("Uploading file to Cloudinary: publicId={}, size={} bytes",
-                publicId, fileBytes.length);
+        // Determine Cloudinary resource_type explicitly from MIME type.
+        // Using "auto" causes Cloudinary to classify PDFs as "image", resulting
+        // in /image/upload/ URLs that require signed delivery on most plans.
+        String resourceType = resolveResourceType(mediaType);
+
+        log.info("Uploading to Cloudinary: publicId={}, resourceType={}, size={} bytes",
+                publicId, resourceType, fileBytes.length);
 
         @SuppressWarnings("unchecked")
         Map<String, Object> result = (Map<String, Object>) cloudinary.uploader().upload(
                 fileBytes,
                 ObjectUtils.asMap(
-                        "public_id",     publicId,
-                        // slashes in public_id are cosmetic only under dynamic folder mode — asset_folder is what actually places the file
-                        "asset_folder",  "accident-attachments",
-                        // "auto" lets Cloudinary detect whether the file is
-                        // an image, video, or raw (pdf, docx, xlsx, txt …)
-                        "resource_type", "auto",
-                        // Keep the original file name as a tag for easy search
-                        "tags",          "accident-management"
+                "public_id",     publicId,
+                "asset_folder",  "accident-attachments/" + sanitisedVehicleNo,
+                "resource_type", resourceType,
+                "tags",          "accident-management"
                 ));
 
         log.info("Cloudinary upload successful: url={}", result.get("secure_url"));
@@ -88,56 +95,67 @@ public class CloudinaryService {
 
     // ── delete ───────────────────────────────────────────────────────────────
     /**
-     * Permanently deletes a file from Cloudinary using its public_id.
-     *
-     * Cloudinary requires the resource_type to be specified for non-image
-     * files (e.g. PDFs are "raw", videos are "video").  We try all three
-     * types so the caller doesn't need to track resource_type separately.
-     *
-     * @param publicId the Cloudinary public_id stored in AccidentAttachments
-     * @throws IOException if all deletion attempts fail
+     * Tries image/raw/video in order until one succeeds.
      */
-    public void delete(String publicId) throws IOException {
+    public void delete(String publicId) throws IOException
+    {
 
-        log.info("Deleting file from Cloudinary: publicId={}", publicId);
+        log.info("Deleting from Cloudinary: publicId={}", publicId);
 
-        // Try image first (most common for photos), then raw (pdf/docx/xlsx),
-        // then video.  Cloudinary returns "ok" on success, "not found" if the
-        // type doesn't match — we only throw if ALL three return non-ok.
         String[] resourceTypes = { "image", "raw", "video" };
 
-        for (String resourceType : resourceTypes) {
+        for (String resourceType : resourceTypes)
+        {
             @SuppressWarnings("unchecked")
             Map<String, Object> result = (Map<String, Object>) cloudinary.uploader()
                     .destroy(publicId,
                              ObjectUtils.asMap("resource_type", resourceType));
 
             String outcome = (String) result.get("result");
-            if ("ok".equals(outcome)) {
+            if ("ok".equals(outcome))
+            {
                 log.info("Deleted from Cloudinary [resourceType={}]: {}", resourceType, publicId);
                 return;
             }
         }
 
-        // If we get here the file wasn't found in Cloudinary — log a warning
-        // but do NOT throw, so the HANA row is still cleaned up.
         log.warn("File not found in Cloudinary (already deleted?): publicId={}", publicId);
     }
 
     // ── helpers ──────────────────────────────────────────────────────────────
 
     /**
-     * Strips characters that are invalid in a Cloudinary public_id
-     * (spaces, slashes other than the folder separator, etc.).
+     * Maps a MIME type to a Cloudinary resource_type string.
+     * - image/*         → "image"
+     * - video/* / audio/* → "video"
+     * - everything else → "raw"  (PDFs, Word, Excel, text, etc.)
      */
-    private String sanitiseName(String name) {
+    private String resolveResourceType(String mediaType)
+    {
+        if (mediaType == null || mediaType.isBlank())
+        {
+            return "raw";
+        }
+        String lower = mediaType.toLowerCase();
+        if (lower.startsWith("image/"))
+        {
+            return "image";
+        }
+        if (lower.startsWith("video/") || lower.startsWith("audio/"))
+        {
+            return "video";
+        }
+        return "raw";
+    }
+
+    private String sanitiseName(String name)
+    {
         if (name == null || name.isBlank()) return "file";
-        // Replace spaces and special chars with underscores
         return name.replaceAll("[^a-zA-Z0-9._-]", "_");
     }
 
-    // Removes the trailing extension so Cloudinary doesn't append a second one on delivery
-    private String stripExtension(String name) {
+    private String stripExtension(String name)
+    {
         int dot = name.lastIndexOf('.');
         return dot > 0 ? name.substring(0, dot) : name;
     }

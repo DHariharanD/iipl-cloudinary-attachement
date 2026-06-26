@@ -183,24 +183,7 @@ sap.ui.define([
 
     // ── Dialog builder ────────────────────────────────────────────────────────
 
-    /**
-     * Builds and opens the pre-upload confirmation dialog.
-     *
-     * Shows auto-filled read-only fields (name, type, size) and a description
-     * TextArea the user fills in before confirming the upload.
-     *
-     * The actual upload is only triggered when the user clicks "Upload" —
-     * cancelling here means nothing is sent to Cloudinary.
-     *
-     * @param {File}     oFile           The File object from the file picker.
-     * @param {string}   sBase64         Raw base64 content (no data URI prefix).
-     * @param {Array}    aActionArgs     Original action arguments (for state resolution).
-     * @param {object}   oHandlerContext `this` from the calling action handler.
-     * @param {object}   oView           SAP UI5 view reference, used as dialog parent.
-     */
     function openUploadDialog(oFile, sBase64, aActionArgs, oHandlerContext, oView) {
-
-        // ── Read-only fields showing auto-detected file metadata ──────────────
 
         var oFileNameInput = new Input({
             value:    oFile.name,
@@ -220,8 +203,6 @@ sap.ui.define([
             width:    "100%"
         });
 
-        // ── Editable description field ────────────────────────────────────────
-
         var oDescriptionArea = new TextArea({
             placeholder: "Describe what this document covers, e.g. 'Police report filed at Koramangala station on 12-Jun-2025'",
             rows:        4,
@@ -229,32 +210,19 @@ sap.ui.define([
             maxLength:   500
         });
 
-        // ── Layout ────────────────────────────────────────────────────────────
-
-        var labelStyle = { paddingBottom: "4px", paddingTop: "12px" };
-
         var oContent = new VBox({
             width: "100%",
             items: [
-                // File Name
                 new Label({ text: "File Name", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                 oFileNameInput,
-
-                // File Type
                 new Label({ text: "File Type", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                 oFileTypeInput,
-
-                // File Size
                 new Label({ text: "File Size", design: "Bold" }).addStyleClass("sapUiTinyMarginTop"),
                 oFileSizeInput,
-
-                // Description (editable)
                 new Label({ text: "Description", design: "Bold" }).addStyleClass("sapUiSmallMarginTop"),
                 oDescriptionArea
             ]
         }).addStyleClass("sapUiSmallMarginBeginEnd sapUiSmallMarginBottom");
-
-        // ── Dialog ────────────────────────────────────────────────────────────
 
         var oDialog = new Dialog({
             title:         "Upload Attachment",
@@ -292,7 +260,6 @@ sap.ui.define([
             }
         });
 
-        // Attach to view for proper lifecycle; fall back to static area
         if (oView && oView.addDependent) {
             oView.addDependent(oDialog);
         }
@@ -305,25 +272,11 @@ sap.ui.define([
     var AttachmentActions = {
 
         // ── onUploadAttachment ────────────────────────────────────────────────
-        /**
-         * Entry point wired to the "Upload Attachment" toolbar button in manifest.json.
-         *
-         * Opens a hidden file input.  After the user picks a file:
-         *   1. Validates file size (≤ 10 MB).
-         *   2. Reads the file as a Data URL (base64).
-         *   3. Opens the confirmation dialog with auto-filled metadata fields
-         *      and an editable description field.
-         *   4. The actual upload to Cloudinary only happens when the user
-         *      confirms inside the dialog.
-         */
         onUploadAttachment: function () {
             var oHandlerContext = this;
             var aActionArgs     = Array.prototype.slice.call(arguments);
             var oState          = resolveAccidentState(oHandlerContext, aActionArgs);
 
-            // ── Safety check: must be an active (saved) Accident record ───────
-            // The manifest's visible binding (HasActiveEntity === true) already
-            // hides this button during new-record creation, but we double-guard here.
             if (!oState.context) {
                 MessageBox.error(
                     "Cannot determine the current Accident record.\n" +
@@ -340,7 +293,6 @@ sap.ui.define([
                 var oFile = oChangeEvent.target.files[0];
                 if (!oFile) { return; }
 
-                // ── File size guard ───────────────────────────────────────────
                 if (oFile.size > MAX_FILE_SIZE_BYTES) {
                     MessageBox.error(
                         "File is too large. Maximum allowed size is 10 MB.\n" +
@@ -349,12 +301,11 @@ sap.ui.define([
                     return;
                 }
 
-                // ── Read as base64 ────────────────────────────────────────────
-                var oReader   = new FileReader();
+                var oReader = new FileReader();
 
                 oReader.onload = function (oLoadEvent) {
                     var sDataUri = oLoadEvent.target.result;
-                    var sBase64  = sDataUri.split(",")[1];  // strip "data:...;base64,"
+                    var sBase64  = sDataUri.split(",")[1];
 
                     openUploadDialog(
                         oFile,
@@ -376,16 +327,6 @@ sap.ui.define([
         },
 
         // ── _callUploadAction ─────────────────────────────────────────────────
-        /**
-         * Called by the dialog's Upload button.
-         * Fires the OData action uploadAccidentFile with all parameters.
-         *
-         * @param {string} sFileName       Original file name.
-         * @param {string} sMediaType      MIME type.
-         * @param {string} sBase64Content  Raw base64 content (no data URI prefix).
-         * @param {string} sDescription    User-entered document description.
-         * @param {Array}  aActionArgs     Original action arguments.
-         */
         _callUploadAction: function (sFileName, sMediaType, sBase64Content, sDescription, aActionArgs) {
             var oState   = resolveAccidentState(this, aActionArgs || []);
             var oModel   = oState.model;
@@ -442,10 +383,6 @@ sap.ui.define([
         },
 
         // ── onDeleteAttachment ────────────────────────────────────────────────
-        /**
-         * Entry point wired to the "Delete Attachment" toolbar button.
-         * Reads the selected row from the attachments table and confirms deletion.
-         */
         onDeleteAttachment: function () {
             var aActionArgs = Array.prototype.slice.call(arguments);
             var oState      = resolveAccidentState(this, aActionArgs);
@@ -487,9 +424,6 @@ sap.ui.define([
         },
 
         // ── _callDeleteAction ─────────────────────────────────────────────────
-        /**
-         * Fires the OData action deleteAccidentFile for the given attachment ID.
-         */
         _callDeleteAction: function (sAttachmentId, aActionArgs) {
             var oState = resolveAccidentState(this, aActionArgs || []);
             var oModel = oState.model;
@@ -520,6 +454,126 @@ sap.ui.define([
                         )
                     );
                 });
+        },
+
+        // ── onPreviewAttachment ───────────────────────────────────────────────
+        // Fired by the eye icon button in AttachmentActionsColumn.fragment.xml.
+        // Uses requestProperty() instead of getProperty() because url and
+        // mediaType are marked @UI.Hidden in the LineItem annotation — FE's
+        // autoExpandSelect therefore omits them from the initial $select, so
+        // they are absent from the OData V4 cache. requestProperty() issues a
+        // targeted server fetch for those fields if they are not cached yet.
+        onPreviewAttachment: function (oEvent) {
+            var oContext = oEvent.getSource().getBindingContext();
+            if (!oContext) {
+                MessageBox.error("Could not read the attachment row context.");
+                return;
+            }
+
+            BusyIndicator.show(0);
+
+            Promise.all([
+                oContext.requestProperty("url"),
+                oContext.requestProperty("mediaType")
+            ]).then(function (aValues) {
+                BusyIndicator.hide();
+                var sUrl       = aValues[0];
+                var sMediaType = aValues[1];
+
+                if (!sUrl) {
+                    MessageBox.error("No URL found for this attachment.");
+                    return;
+                }
+
+                var bPreviewable = sMediaType === "application/pdf"
+                    || (sMediaType && sMediaType.indexOf("image/") === 0);
+
+                if (!bPreviewable) {
+                    MessageBox.information(
+                        "This file type cannot be previewed in the browser.\n" +
+                        "Please use the Download button to save and open it locally."
+                    );
+                    return;
+                }
+
+                window.open(sUrl, "_blank");
+            }).catch(function (oError) {
+                BusyIndicator.hide();
+                MessageBox.error(
+                    "Could not load attachment data:\n" + (oError && oError.message
+                        ? oError.message
+                        : "An unknown error occurred.")
+                );
+            });
+        },
+
+        // ── onDownloadAttachment ──────────────────────────────────────────────
+        // Uses requestProperty() for url (same reason as onPreviewAttachment —
+        // omitted from $select because it is @UI.Hidden in the LineItem).
+        // fileName IS in the $select (it is a visible column) but is requested
+        // together with url in the same Promise.all so both are guaranteed fresh
+        // before the fetch begins.
+        // Uses fetch → blob → object URL to force correct file extension on
+        // download. Direct cross-origin anchor downloads are blocked by browsers
+        // and result in navigation or save with wrong extension (.file).
+        onDownloadAttachment: function (oEvent) {
+            var oContext = oEvent.getSource().getBindingContext();
+            if (!oContext) {
+                MessageBox.error("Could not read the attachment row context.");
+                return;
+            }
+
+            BusyIndicator.show(0);
+
+            Promise.all([
+                oContext.requestProperty("url"),
+                oContext.requestProperty("fileName")
+            ]).then(function (aValues) {
+                var sUrl      = aValues[0];
+                var sFileName = aValues[1];
+
+                if (!sUrl) {
+                    BusyIndicator.hide();
+                    MessageBox.error("No URL found for this attachment.");
+                    return;
+                }
+
+                // Appending fl_attachment forces Cloudinary to send
+                // Content-Disposition: attachment with the original filename,
+                // preventing the browser from saving as .file
+                var sFetchUrl = sUrl + (sUrl.indexOf("?") === -1 ? "?" : "&")
+                    + "fl_attachment=" + encodeURIComponent(sFileName || "attachment");
+
+                return fetch(sFetchUrl)
+                    .then(function (oResponse) {
+                        if (!oResponse.ok) {
+                            throw new Error("HTTP " + oResponse.status + " — " + oResponse.statusText);
+                        }
+                        return oResponse.blob();
+                    })
+                    .then(function (oBlob) {
+                        var sObjectUrl = URL.createObjectURL(oBlob);
+                        var oAnchor    = document.createElement("a");
+                        oAnchor.href     = sObjectUrl;
+                        oAnchor.download = sFileName || "attachment";
+                        document.body.appendChild(oAnchor);
+                        oAnchor.click();
+                        document.body.removeChild(oAnchor);
+
+                        setTimeout(function () {
+                            URL.revokeObjectURL(sObjectUrl);
+                        }, 2000);
+
+                        BusyIndicator.hide();
+                    });
+            }).catch(function (oError) {
+                BusyIndicator.hide();
+                MessageBox.error(
+                    "Download failed:\n" + (oError && oError.message
+                        ? oError.message
+                        : "An unknown error occurred.")
+                );
+            });
         }
     };
 
