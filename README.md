@@ -2,58 +2,60 @@
 
 ## Overview
 
-This document covers the file attachment feature added to the **Accident Management** module of the IIPL EC project. The original `iipl_ec` project had no attachment capability on the `Accident` entity. This implementation adds full upload, display, and delete support for accident-related documents (PDFs, images, spreadsheets, etc.) using **Cloudinary** as the external file storage backend.
+This repository now includes a working attachment flow for the Accident Management app. Users can upload accident-related files, preview or download them, and delete them again. Files are stored in Cloudinary, while the attachment metadata is saved in the CAP service layer and exposed through the Fiori UI.
 
-Files are stored in Cloudinary and their metadata (URL, file name, size, type) is persisted in the local PostgreSQL database. The feature is fully integrated with CAP's draft/activate lifecycle so files behave consistently whether the user is creating a new record or editing an existing one.
-
----
-
-## What Was Changed vs the Original Project
-
-The original `iipl_ec` project had this minimal schema for attachments:
-
-```cds
-entity AccidentAttachments : cuid, managed {
-    accident  : Association to Accident;
-    fileName  : String(255);
-    mediaType : String(100);
-    url       : String(500);
-}
-```
-
-No handler, no service action, no UI controller, and no external storage were wired up.
+The current implementation is centered around the Accident Management UI, the CAP service, and the Java handler layer that connects the app to Cloudinary.
 
 ---
 
-## What Was Added
+## What changed in the current implementation
 
-### 1. Schema — `db/vehiclemanagement/accident-management.cds`
+The main work completed in this repo includes:
 
-The `AccidentAttachments` entity was extended with two additional fields needed for Cloudinary integration:
+- A new attachment entity and metadata fields in the schema
+- Custom OData actions for upload and delete
+- A Java handler that calls the Cloudinary SDK
+- UI annotations for the attachments table
+- A Fiori extension for upload, delete, preview, and download actions
+- Manifest wiring for the new toolbar and action column
+
+---
+
+## 1. Schema changes
+
+The schema is defined in [db/vehiclemanagement/accident-management.cds](db/vehiclemanagement/accident-management.cds).
+
+The Accident entity already exposes an attachments composition, and the attachment entity now carries the fields needed for Cloudinary integration:
 
 ```cds
 entity AccidentAttachments : cuid, managed {
-    accident   : Association to Accident;
-    fileName   : String(255);
-    mediaType  : String(100);
-    url        : String(500);
-    fileSize   : Integer64;       -- added: file size in bytes for display
-    publicId   : String(500);     -- added: Cloudinary public_id needed for deletion
+    accident     : Association to Accident;
+    fileName     : String(255);
+    mediaType    : String(100);
+    url          : String(500);
+    fileSize     : Integer64;
+    publicId     : String(500);
+    description  : String(500);
 }
 ```
 
-The `Accident` entity itself was unchanged except for the addition of the `attachments` composition (which was already present but had no backing handler).
+This allows the app to keep the Cloudinary URL, public ID, file size, and an optional description alongside the standard managed fields.
 
-### 2. Service — `srv/accident-management-service.cds`
+---
 
-Two custom OData actions were added to `AccidentService`:
+## 2. Service layer changes
+
+The service contract is defined in [srv/accident-management-service.cds](srv/accident-management-service.cds).
+
+Two custom OData actions were added to the Accident service:
 
 ```cds
 action uploadAccidentFile(
     accident_ID : UUID,
     fileName    : String(255),
     mediaType   : String(100),
-    content     : LargeString      -- base64-encoded file content
+    content     : LargeString,
+    description : String(500)
 ) returns AccidentAttachments;
 
 action deleteAccidentFile(
@@ -61,195 +63,185 @@ action deleteAccidentFile(
 );
 ```
 
-Standard CRUD on `AccidentAttachments` was disabled via annotations (insert, update, delete are all locked) since all mutations go through these custom actions.
-
-### 3. Backend Handler — `srv/src/main/java/inflexion/ec_master/handlers/AccidentAttachmentHandler.java`
-
-**New file.** This is the core of the feature. It handles three concerns:
-
-**Upload (`onUploadAccidentFile`):**
-- Receives base64 file content from the UI
-- Uploads the file to Cloudinary via `CloudinaryService`
-- Always inserts the resulting metadata row into the **draft** attachments table (`AccidentService.AccidentAttachments.drafts`) regardless of whether the user is creating or editing a record
-- Returns the new attachment record so the UI can display it immediately
-
-**Save (draftActivate — `beforeDraftActivate`):**
-- Fires when the user clicks Save on the Accident Object Page
-- Copies all draft attachment rows for the accident into the **active** attachments table (`AccidentService.AccidentAttachments`) with `IsActiveEntity=true`
-- Deletes the draft rows after promotion
-- Handles the case where CAP also fires this hook during `draftPrepare` (which has a null accident ID) by skipping silently
-
-**Discard (draftCancel — `beforeDraftCancel`):**
-- Fires when the user clicks Discard
-- Deletes all draft attachment rows for the accident from both Cloudinary and the database
-- Skips Cloudinary deletion gracefully if the `publicId` is missing, so the DB row still gets cleaned up
-
-**Delete (`onDeleteAccidentFile`):**
-- Searches the draft table first (for in-edit-mode deletes), then the active table (for view-mode deletes)
-- Deletes the file from Cloudinary by `publicId`, trying `image`, `raw`, and `video` resource types in sequence
-- Deletes the row from the database
-
-### 4. Cloudinary Service — `srv/src/main/java/inflexion/ec_master/handlers/CloudinaryService.java`
-
-**New file.** A Spring `@Service` that wraps the Cloudinary Java SDK:
-
-- **`upload(base64Content, originalName)`** — decodes base64 bytes, uploads to Cloudinary under the `accident-attachments/` folder with a UUID-prefixed public ID, returns the full Cloudinary response map including `secure_url`, `public_id`, and `bytes`
-- **`delete(publicId)`** — attempts deletion across all three Cloudinary resource types (`image`, `raw`, `video`) so the caller does not need to track resource type; logs a warning if the file is already gone rather than throwing
-- **`sanitiseName(name)`** — strips characters invalid in a Cloudinary public ID
-
-Cloudinary credentials are injected from environment variables via `application.yaml`:
-
-```yaml
-cloudinary:
-  cloud-name: ${CLOUDINARY_CLOUD_NAME}
-  api-key:    ${CLOUDINARY_API_KEY}
-  api-secret: ${CLOUDINARY_API_SECRET}
-```
-
-### 5. UI Annotations — `app/accident-management/annotations.cds`
-
-The `AccidentAttachments` line item table was annotated to show a clickable file name, MIME type, file size, upload date, and uploader. The file name column uses `UI.DataFieldWithUrl` so clicking it opens the Cloudinary URL directly in the browser:
-
-```cds
-annotate service.AccidentAttachments with @(
-    UI.LineItem: [
-        { $Type: 'UI.DataFieldWithUrl', Value: fileName, Url: url, Label: 'File Name' },
-        { $Type: 'UI.DataField', Value: mediaType, Label: 'Type' },
-        { $Type: 'UI.DataField', Value: fileSize,  Label: 'Size (bytes)' },
-        { $Type: 'UI.DataField', Value: createdAt, Label: 'Uploaded On' },
-        { $Type: 'UI.DataField', Value: createdBy, Label: 'Uploaded By' }
-    ]
-);
-```
-
-Internal fields (`publicId`, `url`) are hidden with `@UI.Hidden` since they are only used for the link target and Cloudinary deletion, not for direct display.
-
-### 6. UI Controller — `app/accident-management/webapp/ext/controller/AccidentObjectPageExt.js`
-
-**New file.** A plain JavaScript module (not a ControllerExtension class, exported as a mixin object) that provides the two toolbar action handlers:
-
-**`onUploadAttachment`:**
-- Creates a hidden `<input type="file">` element programmatically and triggers a file picker dialog
-- Accepts `.pdf`, `.doc`, `.docx`, `.xls`, `.xlsx`, `.png`, `.jpg`, `.jpeg`, `.txt`, `.csv`
-- Enforces a 10 MB size limit client-side before reading the file
-- Reads the file as a base64 Data URL using `FileReader`, strips the `data:...;base64,` prefix
-- Calls the `/uploadAccidentFile(...)` unbound OData action via `oModel.bindContext`
-- Shows a `BusyIndicator` while uploading, shows a `MessageToast` on success, `MessageBox.error` on failure
-- Calls `oModel.refresh()` after success so the table reloads
-
-**`onDeleteAttachment`:**
-- Reads the selected row from the attachments table using `getSelectedItems()` on the inner table
-- Shows a confirmation `MessageBox` naming the file to be deleted
-- On confirmation, calls the `/deleteAccidentFile(...)` unbound OData action
-- Refreshes the model on success
-
-Both handlers use a `resolveAccidentState` helper that walks the component tree to find the current Accident's binding context, with a fallback to the SAP UI5 element registry. This is necessary because Fiori Elements passes action arguments differently depending on whether the button is in the toolbar or a table column.
-
-### 7. UI Controller Wrapper — `app/accident-management/webapp/ext/controller/AccidentObjectPageExt.controller.js`
-
-**New file.** The standard SAP Fiori Elements `ControllerExtension` wrapper that registers `AccidentObjectPageExt.js` as the extension for the Accident Object Page:
-
-```javascript
-return ControllerExtension.extend(
-    "ns.accidentmanagement.accidentmanagement.ext.controller.AccidentObjectPageExt",
-    Object.assign({ override: { onAfterRendering: function() {} } },
-                  AccidentObjectPageExt)
-);
-```
-
-### 8. `manifest.json`
-
-The controller extension was registered and two custom toolbar actions were wired into the `attachments` table's `controlConfiguration`:
-
-```json
-"CustomUploadAttachment": {
-    "press": "...AccidentObjectPageExt.onUploadAttachment",
-    "text": "Upload Attachment",
-    "visible": "{= ${ui>/editMode} === 'Editable' }"
-},
-"CustomDeleteAttachment": {
-    "press": "...AccidentObjectPageExt.onDeleteAttachment",
-    "text": "Delete Attachment",
-    "visible": "{= ${ui>/editMode} === 'Editable' }",
-    "requiresSelection": true
-}
-```
-
-Both buttons are only visible when the page is in edit mode.
+The Accident service is also enabled for drafts through the CAP draft mechanism.
 
 ---
 
-## How the Draft Lifecycle Works
+## 3. Backend handler
 
-Understanding why uploads always go to the draft table is important for maintaining this code.
+The core backend logic is implemented in [srv/src/main/java/inflexion/ec_master/handlers/AccidentAttachmentHandler.java](srv/src/main/java/inflexion/ec_master/handlers/AccidentAttachmentHandler.java).
 
-```
-User opens Accident in Edit mode
-        │
-        ▼
-CAP creates a draft shadow (IsActiveEntity=false)
-UI reads from the DRAFT table
-        │
-User clicks "Upload Attachment"
-        │
-        ▼
-File → Cloudinary
-Row inserted into DRAFT table (IsActiveEntity=false)
-UI table refreshes → file appears immediately
-        │
-        ├── User clicks Save (draftActivate)
-        │       │
-        │       ▼
-        │   beforeDraftActivate fires
-        │   Draft attachment rows copied → ACTIVE table (IsActiveEntity=true)
-        │   Draft rows deleted
-        │   CAP activates the Accident draft
-        │   UI switches to IsActiveEntity=true view → files still visible
-        │
-        └── User clicks Discard (draftCancel)
-                │
-                ▼
-            beforeDraftCancel fires
-            Files deleted from Cloudinary
-            Draft attachment rows deleted from DB
-            Draft Accident discarded by CAP
-```
+The handler currently covers:
 
-A key design decision: uploads during **create** flow also go to the draft table, because a brand-new Accident is always in draft state until first Save. The same code path handles both cases.
+- Uploading a file from the UI as base64 content
+- Sending the file to Cloudinary
+- Saving the resulting metadata to the attachment entity
+- Deleting the Cloudinary object and the DB row when an attachment is removed
+
+The handler validates the incoming parameters, resolves the accident context, and returns the created attachment metadata to the UI.
 
 ---
 
-## Environment Variables Required
+## 4. Cloudinary integration
 
+The Cloudinary SDK wrapper is implemented in [srv/src/main/java/inflexion/ec_master/external/CloudinaryService.java](srv/src/main/java/inflexion/ec_master/external/CloudinaryService.java).
+
+It currently provides:
+
+- Upload support using the Cloudinary Java SDK
+- Public ID generation with a UUID-based naming strategy
+- Folder handling based on the accident vehicle number
+- Resource type selection based on the provided MIME type
+- Deletion support that tries the common Cloudinary resource types
+
+The service expects these environment variables:
+
+```text
+CLOUDINARY_CLOUD_NAME
+CLOUDINARY_API_KEY
+CLOUDINARY_API_SECRET
 ```
+
+---
+
+## 5. UI annotations and table behavior
+
+The UI annotations are in [app/accident-management/annotations.cds](app/accident-management/annotations.cds).
+
+The attachments table now exposes:
+
+- File name
+- Description
+- Uploaded date
+- Uploaded by
+
+The technical fields such as public ID, file size, and URL are hidden from the UI and are used internally for storage and deletion logic.
+
+---
+
+## 6. Fiori UI extension
+
+The main UI logic is in [app/accident-management/webapp/ext/controller/AccidentObjectPageExt.js](app/accident-management/webapp/ext/controller/AccidentObjectPageExt.js).
+
+It provides:
+
+- Upload action for selecting and sending files to the backend
+- Delete action for removing the selected attachment
+- Preview action for opening supported files in a browser tab
+- Download action for saving files locally with the correct extension
+
+### Current client-side limits
+
+- Maximum file size: 10 MB
+- Accepted file types: .pdf, .doc, .docx, .xls, .xlsx, .png, .jpg, .jpeg, .txt, .csv
+
+The upload flow includes a confirmation dialog where the user can add a short description before sending the file.
+
+---
+
+## 7. Action buttons and manifest wiring
+
+The controller wrapper is in [app/accident-management/webapp/ext/controller/AccidentObjectPageExt.controller.js](app/accident-management/webapp/ext/controller/AccidentObjectPageExt.controller.js), and the action fragment is in [app/accident-management/webapp/ext/fragment/AttachmentActionsColumn.fragment.xml](app/accident-management/webapp/ext/fragment/AttachmentActionsColumn.fragment.xml).
+
+The manifest in [app/accident-management/webapp/manifest.json](app/accident-management/webapp/manifest.json) wires the new toolbar actions into the attachments table and registers the controller extension for the Object Page flow.
+
+---
+
+## 8. Current behavior summary
+
+When a user uploads an attachment:
+
+1. The file is selected in the UI.
+2. The file is read as base64 and sent to the upload action.
+3. The backend uploads it to Cloudinary.
+4. The Cloudinary URL and metadata are stored in the attachment entity.
+5. The attachments table is refreshed so the new file appears immediately.
+
+When a user deletes an attachment:
+
+1. The selected row is identified.
+2. The backend deletes the Cloudinary object using the stored public ID.
+3. The attachment record is removed from the service data.
+4. The model is refreshed.
+
+---
+
+## Cloudinary storage pattern
+
+Uploaded files are stored under a Cloudinary path that follows this pattern:
+
+```text
+accident-attachments/<vehicleNo>/<uuid>-<sanitised-file-name>
+```
+
+All uploads are tagged with the label accident-management for easier identification in the Cloudinary dashboard.
+
+---
+
+## How to run locally
+
+1. Set the required Cloudinary environment variables before starting the app at .env / default-env.json in root / srv:
+
+```text
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-These must be set in the environment before starting the application with the `posts` profile. The `application.yaml` binds them under the `posts` profile section.
+These values are required by the Cloudinary service so uploads can be sent to your Cloudinary account.
 
----
+2. Install the Node.js dependencies:
 
-## File Size and Type Limits
-
-Enforced client-side in `AccidentObjectPageExt.js`:
-
-- **Maximum file size:** 10 MB
-- **Accepted types:** `.pdf`, `.doc`, `.docx`, `.xls`, `.xlsx`, `.png`, `.jpg`, `.jpeg`, `.txt`, `.csv`
-
-Server-side, Cloudinary enforces its own limits based on the account plan. No additional server-side type validation is currently implemented.
-
----
-
-## Cloudinary Folder Structure
-
-All uploaded files land under `accident-attachments/` in your Cloudinary media library, with the naming pattern:
-
-```
-accident-attachments/{uuid}-{sanitised-filename}
+```bash
+npm install
 ```
 
-For example: `accident-attachments/3a7f1c2d-Police_Report.pdf`
+This installs the frontend and CAP-related packages used by the project.
 
-The `accident-management` tag is applied to every upload for easy filtering in the Cloudinary dashboard.
+3. Build the CAP project:
+
+```bash
+cds build
+```
+
+This compiles the CAP application artifacts and prepares the project for deployment and runtime.
+
+4. Build the Java service:
+
+```bash
+mvn clean install -DskipTests
+```
+
+This compiles the Java backend, packages it, and installs the build output without running tests.
+
+5. Compile the Java sources again if needed:
+
+```bash
+mvn compile
+```
+
+This runs a direct Java compilation step and is useful when you want a quick rebuild.
+
+6. Deploy the CAP model and database artifacts:
+
+```bash
+cds deploy
+```
+
+This applies the CDS model changes and deploys the relevant database/service artifacts.
+
+7. Start the backend service with CAP watch:
+
+```bash
+mvn cds:watch
+```
+
+This runs the service in development mode and watches for changes.
+
+Alternatively, you can start the Spring Boot app directly:
+
+```bash
+mvn spring-boot:run
+```
+
+8. Open the app and navigate to the Accident Management Object Page to test upload, preview, download, and delete actions.

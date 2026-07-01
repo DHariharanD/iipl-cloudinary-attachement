@@ -32,15 +32,6 @@ import inflexion.ec_master.external.CloudinaryService;
  * Handles the custom OData actions for accident attachment management:
  *   - uploadAccidentFile  : uploads to Cloudinary, writes metadata to PostgreSQL
  *   - deleteAccidentFile  : removes from Cloudinary and PostgreSQL
- *
- * Fix: onUploadAccidentFile previously used Select.byId() to look up the
- * Accident record, which fails for draft-enabled entities because they have a
- * composite key (ID + IsActiveEntity). Replaced with a .where() clause
- * filtering on ID = accidentId AND IsActiveEntity = true.
- *
- * Fix: CloudinaryService.upload() now accepts mediaType as a fourth parameter
- * so it can choose the correct Cloudinary resource_type (image / raw / video)
- * explicitly rather than relying on auto-detection, which misclassifies PDFs.
  */
 @Component
 @ServiceName(AccidentService_.CDS_NAME)
@@ -94,11 +85,9 @@ public class AccidentAttachmentHandler implements EventHandler
         }
 
         // ── 2. Fetch vehicleNo from active Accident record ────────────────────
-        // Accident has @odata.draft.enabled, so its generated key is composite:
-        // (ID, IsActiveEntity). byId(accidentId) only passes a single value and
-        // CAP throws "must have a single key". We use a where() clause instead,
-        // filtering ID = accidentId AND IsActiveEntity = true to hit the active
-        // table row rather than a draft row.
+        // Accident has draft enabled, so its generated key is composite: (ID, IsActiveEntity). byId(accidentId) only passes a single value and
+        // CAP throws "must have a single key". We use a where() clause instead, filtering ID = accidentId AND IsActiveEntity = true to hit the 
+        // active table row rather than a draft row.
         String vehicleNo = "unknown";
         try
         {
@@ -122,14 +111,13 @@ public class AccidentAttachmentHandler implements EventHandler
         }
         catch (Exception e)
         {
-            // Non-fatal — proceed with 'unknown' subfolder rather than blocking.
+            // Non-fatal — proceed with 'unknown' subfolder rather than blocking the upload itself.
             log.warn("Could not fetch vehicleNo for accidentId='{}': {} — " +
                      "using 'unknown' as Cloudinary subfolder.", accidentId, e.getMessage());
         }
 
         // ── 3. Upload to Cloudinary ───────────────────────────────────────────
-        // mediaType is forwarded so CloudinaryService can pick the correct
-        // resource_type (image / raw / video) without relying on auto-detection.
+        // mediaType is forwarded so CloudinaryService can pick the correct resource_type (image / raw / video) without relying on auto-detection.
         Map<String, Object> cloudinaryResult;
         try
         {
